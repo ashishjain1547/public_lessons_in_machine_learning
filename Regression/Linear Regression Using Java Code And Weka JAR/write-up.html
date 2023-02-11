@@ -1,0 +1,165 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        i.ib {
+            color: blue;
+        }
+
+        i.ig {
+            color: green;
+        }
+
+        .customOl {
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<pre><h2>File: Regression.java</h2>
+
+<i>import weka.core.Instance;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
+import weka.classifiers.functions.LinearRegression;
+
+public class Regression{
+    public static void main(String args[]) throws Exception{
+        //Load Data set
+        DataSource source = new DataSource("/home/ashish/Desktop/ws/weka/e4_linear_regression_using_java_code/house.arff");
+        Instances dataset = source.getDataSet();
+        //set class index to the last attribute
+        dataset.setClassIndex(dataset.numAttributes()-1);
+        
+        //Build model
+        LinearRegression model = new LinearRegression();
+        model.buildClassifier(dataset);
+        //output model
+        System.out.println("LR FORMULA : "+model);	
+        
+        // Now Predicting the cost 
+        Instance myHouse = dataset.lastInstance();
+        double price = model.classifyInstance(myHouse);
+        System.out.println("-------------------------");	
+        System.out.println("PRECTING THE PRICE : "+price);	
+    }
+}</i>
+
+<h2>File: house.arff</h2>
+
+<i>@RELATION house
+
+@ATTRIBUTE houseSize NUMERIC
+@ATTRIBUTE lotSize NUMERIC
+@ATTRIBUTE bedrooms NUMERIC
+@ATTRIBUTE granite NUMERIC
+@ATTRIBUTE bathroom NUMERIC
+@ATTRIBUTE sellingPrice NUMERIC
+
+@DATA
+3529,9191,6,0,0,205000 
+3247,10061,5,1,1,224900 
+4032,10150,5,0,1,197900 
+2397,14156,4,1,0,189900 
+2200,9600,4,0,1,195000 
+3536,19994,6,1,1,325000 
+2983,9365,5,0,1,230000</i>
+
+<h2>File: Execution.log</h2>
+
+<i>~/Desktop/ws/weka/e4_linear_regression_using_java_code$ javac -cp ./weka-3.7.0.jar Regression.java
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ 
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ ls -l
+total 5232
+-rw-rw-r-- 1 ashish ashish     365 Mar  5 09:05 house.arff
+drwxrwxr-x 2 ashish ashish    4096 Mar  5 09:12 jar
+-rw-rw-r-- 1 ashish ashish    1714 Mar  5 09:24 Regression.class
+-rw-rw-r-- 1 ashish ashish     924 Mar  5 09:18 Regression.java
+-rw-rw-r-- 1 ashish ashish 5340945 Sep 27  2011 weka-3.7.0.jar
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.7.0.jar Regression
+LR FORMULA : 
+Linear Regression Model
+
+sellingPrice =
+
+    -26.6882 * houseSize +
+      7.0551 * lotSize +
+  43166.0767 * bedrooms +
+  42292.0901 * bathroom +
+ -21661.1208
+-------------------------
+PRECTING THE PRICE : 222921.57101904938
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ 
+
+
+
+
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ ls -l
+total 13852
+-rw-rw-r-- 1 ashish ashish      923 Mar  5 09:25 execution.log
+-rw-rw-r-- 1 ashish ashish      365 Mar  5 09:05 house.arff
+drwxrwxr-x 2 ashish ashish     4096 Mar  6 15:04 jar
+-rw-rw-r-- 1 ashish ashish     1714 Mar  5 09:24 Regression.class
+-rw-rw-r-- 1 ashish ashish      924 Mar  5 09:18 Regression.java
+-rwxrwxrwx 1 ashish ashish 14163929 Jan 25 16:06 weka-3.8.6.jar
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.8.6.jar Regression
+Exception in thread "main" java.lang.NoClassDefFoundError: no/uib/cipr/matrix/Matrix
+	at Regression.main(Regression.java:15)
+Caused by: java.lang.ClassNotFoundException: no.uib.cipr.matrix.Matrix
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 1 more
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ javac -cp .:./weka-3.8.6.jar Regression.java
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.8.6.jar Regression
+Exception in thread "main" java.lang.NoClassDefFoundError: no/uib/cipr/matrix/Matrix
+	at Regression.main(Regression.java:15)
+Caused by: java.lang.ClassNotFoundException: no.uib.cipr.matrix.Matrix
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 1 more
+
+- - - 
+
+TRYING AGAIN WITH WEKA-3.7.0.JAR:
+
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.7.0.jar Regression
+LR FORMULA : 
+Linear Regression Model
+
+sellingPrice =
+
+    -26.6882 * houseSize +
+      7.0551 * lotSize +
+  43166.0767 * bedrooms +
+  42292.0901 * bathroom +
+ -21661.1208
+-------------------------
+PRECTING THE PRICE : 222921.57101904938</i>
+</pre>
+<span style="display: none;">Tags: Technology,Machine Learning,Regression</span>

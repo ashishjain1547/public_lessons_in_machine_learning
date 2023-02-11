@@ -1,0 +1,313 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        });
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<!--
+    Improvements over OLS (Forward Stepwise, Ridge, Lasso and LARS forms of Regression)
+-->
+<pre><i class="">1) When the targets are real numbers, the problem is called a “regression problem”.
+2) “Linear regression” implies using a linear method to solve a “regression problem”.</i>
+
+<h3>1. What Are Penalized Regression Methods?</h3>
+
+Penalized linear regression is a derivative of ordinary least squares (OLS) regression— a method developed by Gauss and Legendre roughly 200 years ago. Penalized linear regression methods were designed to overcome some basic limitations of OLS regression. The basic problem with OLS is that sometimes it overfits the problem. Think of OLS as fitting a line through a group of points. This is a simple prediction problem: predicting y, the target value given a single attribute x. For example, the problem might be to predict men's salaries using only their heights. Height is slightly predictive of salaries for men (but not for women).
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-9S-EoV1TlGg/YPLF3MA83dI/AAAAAAAAHBQ/k7bp8KgfnWYh7ITDAoyY6GLH_pkyFWtTwCLcBGAsYHQ/s482/i1.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="398" data-original-width="482"
+        src="https://1.bp.blogspot.com/-9S-EoV1TlGg/YPLF3MA83dI/AAAAAAAAHBQ/k7bp8KgfnWYh7ITDAoyY6GLH_pkyFWtTwCLcBGAsYHQ/s600/i1.png" /></a>
+</div>
+
+Suppose that the data set had only two points in it. Imagine that there's a population of points, like the ones in Figure 1-1, but that you do not get to see all the points. Maybe they are too expensive to generate, like genetic data. There are enough humans available to isolate the gene that is the culprit; the problem is that you do not have gene sequences for many of them because of cost.
+To simulate this in the simple example, imagine that instead of six points you're given only two of the six points. How would that change the nature of the line fit to those points? It would depend on which two points you happened to get. To see how much effect that would have, pick any two points from Figure 1-1 and imagine a line through them. Figure 1-2 shows some of the possible lines through pairs of points from Figure 1-1. Notice how much the lines vary depending on the choice of points.
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-U3SS-zjLeJs/YPLF6hoEn-I/AAAAAAAAHB8/RPW8wPhKPssI0msJFlPHnJXSnUMZwyqsACLcBGAsYHQ/s562/i2.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="473" data-original-width="562"
+        src="https://1.bp.blogspot.com/-U3SS-zjLeJs/YPLF6hoEn-I/AAAAAAAAHB8/RPW8wPhKPssI0msJFlPHnJXSnUMZwyqsACLcBGAsYHQ/s600/i2.png" /></a>
+</div>
+
+The problem with having only two points to fit a line is that there is not enough data for the number of degrees of freedom. A line has two degrees of freedom. Having two degrees of freedom means that there are two independent parameters that uniquely determine a line. You can imagine grabbing hold of a line in the plane and sliding it up and down in the plane or twisting it to change its slope. So, vertical position and slope are independent. They can be changed separately, and together they completely specify a line. The degrees of freedom of a line can be expressed in several equivalent ways (where it intercepts the y‐axis and its slope, two points that are on the line, and so on). All of these representations of a line require two parameters to specify. 
+
+<b class="">When the number of degrees of freedom is equal to the number of points, the predictions are not very good. The lines hit the points used to draw them, but there is a lot of variation among lines drawn with different pairs of points.</b> You cannot place much faith in a prediction that has as many degrees of freedom as the number of points in your data set.
+
+Solution:
+<i>Penalized linear regression provides a way to systematically reduce degrees of freedom to match the amount of data available and the complexity of the underlying phenomena. These methods have become very popular for problems with very many degrees of freedom. They are a favorite for genetic problems where the number of degrees of freedom (that is, the number of genes) can be several tens of thousands and for problems like text classification where the number of degrees of freedom can be more than a million.</i>
+
+<h3>2. What’s in a name?</h3>
+
+Attributes and labels go by a variety of names, and new machine learners can get tripped up by the name switching from one author to another or even one paragraph to another from a single author.
+
+Attributes (the variables being used to make predictions) are also known as the following:
+
+■ Predictors
+■ Features
+■ Independent variables
+■ Inputs
+
+Labels are also known as the following:
+
+■ Outcomes
+■ Targets
+■ Dependent variables
+■ Responses
+
+<h3>3. Linear Regression in Mathematical Equations</h3>
+
+Following is an m-by-n matrix.
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-wdxEqZd16p4/YPLF7nBOC_I/AAAAAAAAHCE/EVuYAhevlDAUaslOFaPnH4u9VrzObIFIACLcBGAsYHQ/s488/i3.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="237" data-original-width="488"
+        src="https://1.bp.blogspot.com/-wdxEqZd16p4/YPLF7nBOC_I/AAAAAAAAHCE/EVuYAhevlDAUaslOFaPnH4u9VrzObIFIACLcBGAsYHQ/s600/i3.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-_4N3tQQil7I/YPLF7kqzuQI/AAAAAAAAHCI/Wu4ckTlnWaklNqVhIIBW5ZimzTRDEdxAACLcBGAsYHQ/s498/i4.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="236" data-original-width="498"
+        src="https://1.bp.blogspot.com/-_4N3tQQil7I/YPLF7kqzuQI/AAAAAAAAHCI/Wu4ckTlnWaklNqVhIIBW5ZimzTRDEdxAACLcBGAsYHQ/s600/i4.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-mQqZQqelqHQ/YPLF8PDMY8I/AAAAAAAAHCM/R-BXTcWQrsEzyit-4HgsVrls11-wVERuQCLcBGAsYHQ/s571/i5.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="105" data-original-width="571"
+        src="https://1.bp.blogspot.com/-mQqZQqelqHQ/YPLF8PDMY8I/AAAAAAAAHCM/R-BXTcWQrsEzyit-4HgsVrls11-wVERuQCLcBGAsYHQ/s600/i5.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-R6nYEEGghrI/YPLF8kqgBJI/AAAAAAAAHCU/no0RavVlJ-YEN7GDbAQWTr-Kh2rP45QwQCLcBGAsYHQ/s694/i6.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="164" data-original-width="694"
+        src="https://1.bp.blogspot.com/-R6nYEEGghrI/YPLF8kqgBJI/AAAAAAAAHCU/no0RavVlJ-YEN7GDbAQWTr-Kh2rP45QwQCLcBGAsYHQ/s600/i6.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-apzqCtYI2N0/YPLF8XD5WoI/AAAAAAAAHCQ/geXNVuPb2S4WBdTNE__9hiBWcGJMtN2TwCLcBGAsYHQ/s661/i7.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="152" data-original-width="661"
+        src="https://1.bp.blogspot.com/-apzqCtYI2N0/YPLF8XD5WoI/AAAAAAAAHCQ/geXNVuPb2S4WBdTNE__9hiBWcGJMtN2TwCLcBGAsYHQ/s600/i7.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-8RwWs-1WvP8/YPLF9OH-kWI/AAAAAAAAHCY/JisAM2vLH3MBS5zE0jx6uOs8TvJvb7rYQCLcBGAsYHQ/s722/i8.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="152" data-original-width="722"
+        src="https://1.bp.blogspot.com/-8RwWs-1WvP8/YPLF9OH-kWI/AAAAAAAAHCY/JisAM2vLH3MBS5zE0jx6uOs8TvJvb7rYQCLcBGAsYHQ/s600/i8.png" /></a>
+</div>
+
+<h3>4. Forward Stepwise Regression to Control Overfitting</h3>
+
+# ‘Forward stepwise regression’ is an improvement over “best subset selection regression”.
+
+<i class="">Initialize: ColumnList = NULL
+    Out-of-sample-error = NULL
+    Break X and Y into test and training sets
+  
+  For number of column in X:
+    For each trialColumn (column not in ColumnList):
+      Build submatrix of X using ColumnList + trialColumn
+      Train OLS on submatrix and store RSS Error on test data
+  
+    ColumnList.append(trialColumn that minimizes RSS Error)
+    Out-of-sample-error.append(minimum RSS Error)</i>
+
+RSS: Residual sum of squares.
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-QzSdWImwV-g/YPLF9_5l48I/AAAAAAAAHCc/rodhTrENf8cNsrZLs6z4mIvD-bnh972UwCLcBGAsYHQ/s813/i9.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="678" data-original-width="813"
+        src="https://1.bp.blogspot.com/-QzSdWImwV-g/YPLF9_5l48I/AAAAAAAAHCc/rodhTrENf8cNsrZLs6z4mIvD-bnh972UwCLcBGAsYHQ/s600/i9.png" /></a>
+</div>
+
+<h3 class="">5. Control Overfitting by Penalizing Regression Coefficients—Ridge Regression</h3>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-z_ezH9PjVzM/YPLF3JNKV0I/AAAAAAAAHBU/HyQrVgAvVXEBUfeyUgHllIzf5Z5Bcrs5wCLcBGAsYHQ/s559/i10.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="159" data-original-width="559"
+        src="https://1.bp.blogspot.com/-z_ezH9PjVzM/YPLF3JNKV0I/AAAAAAAAHBU/HyQrVgAvVXEBUfeyUgHllIzf5Z5Bcrs5wCLcBGAsYHQ/s600/i10.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-rXjLv1VWW_E/YPLF3BbSZLI/AAAAAAAAHBY/JFP5qnTdgjYwxvdzb285cw2lnXVN5SV-gCLcBGAsYHQ/s1314/i11.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="266" data-original-width="1314"
+        src="https://1.bp.blogspot.com/-rXjLv1VWW_E/YPLF3BbSZLI/AAAAAAAAHBY/JFP5qnTdgjYwxvdzb285cw2lnXVN5SV-gCLcBGAsYHQ/s600/i11.png" /></a>
+</div>
+
+<i>The expression argmin means the “values of b0 and b that minimize the expression.” The resulting coefficients b0, b-star are the ordinary least squares solution. Best subset regression and forward stepwise regression throttle back ordinary regression by limiting the number of attributes used. That’s equivalent to imposing a constraint that some of the entries in the vector be equal to zero.
+Another approach is called coefficient penalized regression. Coefficient penalized regression accomplishes the same thing by making all the coefficients smaller instead of making some of them zero. One version of coefficient penalized linear regression is called ridge regression. Equation 3-15 shows the problem formulation for ridge regression.</i>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-P_Ep5vmFQm0/YPLF4D_f4FI/AAAAAAAAHBc/PqbZNaAYMTUhuR7Xm2GosXw8a7fkTamQQCLcBGAsYHQ/s638/i12.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="146" data-original-width="638"
+        src="https://1.bp.blogspot.com/-P_Ep5vmFQm0/YPLF4D_f4FI/AAAAAAAAHBc/PqbZNaAYMTUhuR7Xm2GosXw8a7fkTamQQCLcBGAsYHQ/s600/i12.png" /></a>
+</div>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-bb-IXxibm9I/YPLF4bvmIrI/AAAAAAAAHBk/YQzNBm020LIyMERaTyl7hUOJThnQLhIdwCLcBGAsYHQ/s1286/i13.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="170" data-original-width="1286"
+        src="https://1.bp.blogspot.com/-bb-IXxibm9I/YPLF4bvmIrI/AAAAAAAAHBk/YQzNBm020LIyMERaTyl7hUOJThnQLhIdwCLcBGAsYHQ/s600/i13.png" /></a>
+</div>
+
+<b class=""><i class="">Ridge regression is available in scikit-learn.</i></b>
+
+<h3>6. Why Penalized Linear Regression Methods Are So Useful</h3>
+
+Several properties make penalized linear regression methods outstandingly useful, including the following:
+
+■ Extremely fast model training
+
+■ Variable importance information
+
+■ Extremely fast evaluation when deployed
+
+■ Reliable performance on a wide variety of problems—particularly on attribute matrices that are not very tall compared to their width or that are sparse. Sparse solutions (that is, a more parsimonious model)
+
+■ May require linear model
+
+<h3 class="">7. OLS and Lasso Regression in Using Equations</h3>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-tIDg8LgeVBU/YPLF4b5y7-I/AAAAAAAAHBg/CEGM3lFTHA8V1jPHEvhq1a1MQRi0t-XVACLcBGAsYHQ/s396/i14.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="256" data-original-width="396"
+        src="https://1.bp.blogspot.com/-tIDg8LgeVBU/YPLF4b5y7-I/AAAAAAAAHBg/CEGM3lFTHA8V1jPHEvhq1a1MQRi0t-XVACLcBGAsYHQ/s600/i14.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-7CBqXLAejzU/YPLF43DYMyI/AAAAAAAAHBo/Dc6gYlGse7ACR_ORCt4Pe1n10yIFJu0lwCLcBGAsYHQ/s386/i15.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="247" data-original-width="386"
+        src="https://1.bp.blogspot.com/-7CBqXLAejzU/YPLF43DYMyI/AAAAAAAAHBo/Dc6gYlGse7ACR_ORCt4Pe1n10yIFJu0lwCLcBGAsYHQ/s600/i15.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-y0NSveWct_4/YPLF5FrZMNI/AAAAAAAAHBs/jNKL2X5HDVgZcXqDdlU9iYzxDLoVVQIaACLcBGAsYHQ/s503/i16.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="241" data-original-width="503"
+        src="https://1.bp.blogspot.com/-y0NSveWct_4/YPLF5FrZMNI/AAAAAAAAHBs/jNKL2X5HDVgZcXqDdlU9iYzxDLoVVQIaACLcBGAsYHQ/s600/i16.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-N4dLOztM3QM/YPLF5ZbNmzI/AAAAAAAAHBw/p1BxiPgkV58JIMvju3J8juhRLW-ehdN7ACLcBGAsYHQ/s662/i17.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="163" data-original-width="662"
+        src="https://1.bp.blogspot.com/-N4dLOztM3QM/YPLF5ZbNmzI/AAAAAAAAHBw/p1BxiPgkV58JIMvju3J8juhRLW-ehdN7ACLcBGAsYHQ/s600/i17.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-HMZ9Xj_b2t0/YPLF53w8kII/AAAAAAAAHB0/F-nyzh9Vdg8fvSE3nKGbiLHcdJYRklu_ACLcBGAsYHQ/s990/i18.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="663" data-original-width="990"
+        src="https://1.bp.blogspot.com/-HMZ9Xj_b2t0/YPLF53w8kII/AAAAAAAAHB0/F-nyzh9Vdg8fvSE3nKGbiLHcdJYRklu_ACLcBGAsYHQ/s600/i18.png" /></a>
+</div>
+
+<h3 class="">8. Forward Stepwise Regression Algorithm (for computing β)</h3>
+
+■ Initialize all the β’s equal to zero.
+
+At each step
+
+■ Find residuals (errors) after using variables already chosen.
+
+■ Determine which unused variable best explains residuals and add it to the mix.
+
+~ ~ ~
+
+The LARS algorithm is very similar. The main difference with LARS is that instead of unreservedly incorporating each new attribute, it only partially incorporates them.
+
+<h3 class="">9. Least Angle Regression Algorithm (for computing β)</h3>
+
+■ Initialize all β’s to zero.
+
+At Each Step
+■ Determine which attribute has the largest correlation with the residuals.
+■ Increment that variable’s coefficient by a small amount if the correlation is positive or decrement by a small amount if negative.
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-qtW0LPov_pc/YPLF6SD-HPI/AAAAAAAAHB4/IURNBnnNLXIQIxpUYE5z8Dx_kqa9F7AGwCLcBGAsYHQ/s784/i19.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="614" data-original-width="784"
+        src="https://1.bp.blogspot.com/-qtW0LPov_pc/YPLF6SD-HPI/AAAAAAAAHB4/IURNBnnNLXIQIxpUYE5z8Dx_kqa9F7AGwCLcBGAsYHQ/s600/i19.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-wm8PvHdmKsc/YPLF7elQPGI/AAAAAAAAHCA/kUG26hC6MXQnyspUTPsc1AxcVdRDTPFEwCLcBGAsYHQ/s768/i20.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="622" data-original-width="768"
+        src="https://1.bp.blogspot.com/-wm8PvHdmKsc/YPLF7elQPGI/AAAAAAAAHCA/kUG26hC6MXQnyspUTPsc1AxcVdRDTPFEwCLcBGAsYHQ/s600/i20.png" /></a>
+</div>
+
+<h3 class="">10. Practice Question</h3>
+
+Ques: Tickets are being raised in a software such as Service Now. You have some tickets already logged and marked as 'VDI' or 'Others'. Now, for any incoming ticket, predict if it is VDI related or not using Linear Regression.
+
+Ans.
+We would convert our target column (VDI (Yes/No)) into two columns VDI-Y and VDI-N using One-hot encoding.
+
+Value for VDI column: yes or no
+
+   VDI-yes , VDI-no
+Y    1         0
+N    0         1 
+
+Over here we know that VDI-Y can be infered as 1 if VDI-N is 0 and vice-versa.
+
+When you would run regression for one of these two columns as target columns, we would get a value between 0 and 1.
+
+For making prediction, we set a threshold, if my vdi-yes value is greater 0.5, I would assume it is a yes and predict that the incoming ticket in ServiceNow is about VDI.
+
+<b>DO NOT USE REGRESSION ALGORITHMS FOR CLASSIFICATION PROBLEM.</b>
+<span class="" style="display: none;">Tags: Artificial Intelligence,Machine Learning,Technology</span></pre>

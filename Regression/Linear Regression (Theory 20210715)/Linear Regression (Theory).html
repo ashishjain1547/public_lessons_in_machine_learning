@@ -1,0 +1,242 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre class=""><h3>1. PREFACE TO LINEAR REGRESSION</h3>
+
+Linear regression falls under a class of Machine Learning problems generally referred to as “function approximation”.
+
+Function approximation is a subset of problems that are called supervised learning problems. 
+
+Linear regression also has a classifier cousin called logistic regression.
+
+<h3 class="">2. Ordinary least squares (OLS) regression</h3>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-pqI3MTqkybY/YO-9rk_ssXI/AAAAAAAAHAA/JsyOKJKLvAEemdWTW8ghS7zQuvbZkr9XQCLcBGAsYHQ/s486/i1.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="410" data-original-width="486"
+        src="https://1.bp.blogspot.com/-pqI3MTqkybY/YO-9rk_ssXI/AAAAAAAAHAA/JsyOKJKLvAEemdWTW8ghS7zQuvbZkr9XQCLcBGAsYHQ/s600/i1.png" /></a>
+</div>
+
+Think of OLS as fitting a line through a group of points, as in Figure 1-1. This is a simple prediction problem: predicting y, the target value given a single attribute x. For example, the problem might be to predict men's salaries using only their heights. Height is slightly predictive of salaries for men (but not for women).
+
+<h3 class="">3. DEGREES OF FREEDOM</h3>
+
+The points represent men's salaries versus their heights. The line in Figure 1-1 represents the OLS solution to this prediction problem. In some sense, the line is the best predictive model for men's salaries given their heights. The data set has six points in it. Suppose that the data set had only two points in it. Imagine that there's a population of points, like the ones in Figure 1-1, but that you do not get to see all the points. Maybe they are too expensive to generate.
+To simulate this in the simple example, imagine that instead of six points you're given only two of the six points. How would that change the nature of the line fit to those points? It would depend on which two points you happened to get. To see how much effect that would have, pick any two points from Figure 1-1 and imagine a line through them. Figure 1-2 shows some of the possible lines through pairs of points from Figure 1-1. Notice how much the lines vary depending on the choice of points.
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-t1yWpyRgb_o/YO-9slMu5NI/AAAAAAAAHAQ/vCAcci4COrEpatM0WRg7ZwfKKpCv08sywCLcBGAsYHQ/s431/i2.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="375" data-original-width="431"
+        src="https://1.bp.blogspot.com/-t1yWpyRgb_o/YO-9slMu5NI/AAAAAAAAHAQ/vCAcci4COrEpatM0WRg7ZwfKKpCv08sywCLcBGAsYHQ/s600/i2.png" /></a>
+</div>
+
+The problem with having only two points to fit a line is that there is not enough data for the number of degrees of freedom. <b>A line has two degrees of freedom. Having two degrees of freedom means that there are two independent parameters that uniquely determine a line.</b> You can imagine grabbing hold of a line in the plane and sliding it up and down in the plane or twisting it to change its slope. So, vertical position and slope are independent. They can be changed separately, and together they completely specify a line. The degrees of freedom of a line can be expressed in several equivalent ways (where it intercepts the y‐axis and its slope, two points that are on the line, and so on). All of these representations of a line require two parameters to specify. 
+
+When the number of degrees of freedom is equal to the number of points, the predictions are not very good. The lines hit the points used to draw them, but there is a lot of variation among lines drawn with different pairs of points. You cannot place much faith in a prediction that has as many degrees of freedom as the number of points in your data set. The plot in Figure 1-1 had six points and fit a line (two degrees of freedom) through them. That is six points and two degrees of freedom.
+
+<h3>4. REGRESSION:</h3>
+
+Regression is the task of learning a target function ‘f’ that maps each attribute set x into a continuous-valued output y.
+
+<h3>5. ERROR FUNCTION:</h3>
+
+Individual Error Term:
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEgWvF41eqTdp24jlo96qzTHekkcOizcfEH6aU_6f6i3YgC4vJaMic_0NAcIHC9oRwh5q_tZAvV99jBhKJUsdY0lfn85ODc_ceHja9rdCYhtTI11sNT8oFMo6uglnuSftvISId6CPQIFqP4ANL9YYkcSZhXljncGaQc6v_K0R4VkkZxoIPPHLdmSxWJBOQ" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="72" data-original-width="265" src="https://blogger.googleusercontent.com/img/a/AVvXsEgWvF41eqTdp24jlo96qzTHekkcOizcfEH6aU_6f6i3YgC4vJaMic_0NAcIHC9oRwh5q_tZAvV99jBhKJUsdY0lfn85ODc_ceHja9rdCYhtTI11sNT8oFMo6uglnuSftvISId6CPQIFqP4ANL9YYkcSZhXljncGaQc6v_K0R4VkkZxoIPPHLdmSxWJBOQ"/></a></div>
+
+<b>Mapping errors on the graph</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEgW6SuQWyZ0BzMGm0hs19HWrCm1sjUPGOkmGS41Wcz0qGxU-TPyb3F11Xl4L4fIY_bqfiwsYtATcQawJ6198DPdthJbo0Mk5u9zcNy1f-KVvvuwauv9kBu0qww63RzdSRc-_HI78l5zRKy9kbmOfpgrl2Y4Hc3lOVfAKgL2hpZoAUD9gP-I_1uUCFONQg=s484" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="397" data-original-width="484" src="https://blogger.googleusercontent.com/img/a/AVvXsEgW6SuQWyZ0BzMGm0hs19HWrCm1sjUPGOkmGS41Wcz0qGxU-TPyb3F11Xl4L4fIY_bqfiwsYtATcQawJ6198DPdthJbo0Mk5u9zcNy1f-KVvvuwauv9kBu0qww63RzdSRc-_HI78l5zRKy9kbmOfpgrl2Y4Hc3lOVfAKgL2hpZoAUD9gP-I_1uUCFONQg=s600"/></a></div>
+
+The goal of regression is to find a target function that can fit the input data with minimum error. The error function for a regression task can be expressed in terms of the sum of absolute or squared error:
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-Ayr_1XRQSn8/YO-9skW0RUI/AAAAAAAAHAU/NEeSpYEA7i465ZH2C7dfrK7LWqvyYNOuwCLcBGAsYHQ/s583/i3.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="513" data-original-width="583"
+        src="https://1.bp.blogspot.com/-Ayr_1XRQSn8/YO-9skW0RUI/AAAAAAAAHAU/NEeSpYEA7i465ZH2C7dfrK7LWqvyYNOuwCLcBGAsYHQ/s600/i3.png" /></a>
+</div>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-V6gbFSzWH4k/YO-9sx0sN6I/AAAAAAAAHAY/AxlCZaGXfLkKi-a_11oBHD-l9DMjDEpoQCLcBGAsYHQ/s974/i4.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="720" data-original-width="974"
+        src="https://1.bp.blogspot.com/-V6gbFSzWH4k/YO-9sx0sN6I/AAAAAAAAHAY/AxlCZaGXfLkKi-a_11oBHD-l9DMjDEpoQCLcBGAsYHQ/s600/i4.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-7xmHB3e_Y-I/YO-9tGE8J_I/AAAAAAAAHAc/xoLqye_0F4gTgZRNS_ryrVlMtyQn1_ZEQCLcBGAsYHQ/s1283/i5.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="557" data-original-width="1283"
+        src="https://1.bp.blogspot.com/-7xmHB3e_Y-I/YO-9tGE8J_I/AAAAAAAAHAc/xoLqye_0F4gTgZRNS_ryrVlMtyQn1_ZEQCLcBGAsYHQ/s600/i5.png" /></a>
+</div>
+
+We are only showing d(E)/d(w0) here:
+
+Let “a” is equal to: yi – (w1).xi
+E = sum((a – w0)^2)
+E = sum(a^2 + (w0)^2 – 2(a)(w0))
+d(E)/d(w0) = sum(0 + 2(w0) – 2a)
+RHS = sum(-2 . (a - w0))
+
+Putting back the values of ‘a’:
+RHS = sum(-2 . (yi – (w1).xi – w0))
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-WC9_Xp6syVM/YO-9tIBK3ZI/AAAAAAAAHAg/PLzAWPUCT7Ymj7XSVm-EhkbXeErxyOeHACLcBGAsYHQ/s1135/i6.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="640" data-original-width="1135"
+        src="https://1.bp.blogspot.com/-WC9_Xp6syVM/YO-9tIBK3ZI/AAAAAAAAHAg/PLzAWPUCT7Ymj7XSVm-EhkbXeErxyOeHACLcBGAsYHQ/s600/i6.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-fko_U0ycZe4/YO-9thT9S0I/AAAAAAAAHAk/QaOCh9XTZvA2xlH0U9kl1knUAEJ9IXD7wCLcBGAsYHQ/s720/i7.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600"
+        data-original-height="720" data-original-width="568"
+        src="https://1.bp.blogspot.com/-fko_U0ycZe4/YO-9thT9S0I/AAAAAAAAHAk/QaOCh9XTZvA2xlH0U9kl1knUAEJ9IXD7wCLcBGAsYHQ/s600/i7.png" /></a>
+</div>
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-4B3bHf_3in0/YO-9t4pYJRI/AAAAAAAAHAs/2QiGBtlL0o0J9ncVzyjxiei2vWuJhYp8QCLcBGAsYHQ/s1285/i8.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="545" data-original-width="1285"
+        src="https://1.bp.blogspot.com/-4B3bHf_3in0/YO-9t4pYJRI/AAAAAAAAHAs/2QiGBtlL0o0J9ncVzyjxiei2vWuJhYp8QCLcBGAsYHQ/s600/i8.png" /></a>
+</div>
+
+<h3>8. SCATTER PLOT FOR OUR DATA</h3>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-d5xjXyy1I2E/YO-9t5FRSXI/AAAAAAAAHAo/dhSUDEh_ifok6T6uJWDqB5Ozadb7k8i9gCLcBGAsYHQ/s780/i9.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="559" data-original-width="780"
+        src="https://1.bp.blogspot.com/-d5xjXyy1I2E/YO-9t5FRSXI/AAAAAAAAHAo/dhSUDEh_ifok6T6uJWDqB5Ozadb7k8i9gCLcBGAsYHQ/s600/i9.png" /></a>
+</div>
+
+<h3>9. SOLVING THE PROBLEM</h3>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-gAphP5gDiP8/YO-9rr3-qLI/AAAAAAAAHAI/M9ea5dYQxg4T4uT0jElx52IicDWo3FaAQCLcBGAsYHQ/s1073/i10.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="427" data-original-width="1073"
+        src="https://1.bp.blogspot.com/-gAphP5gDiP8/YO-9rr3-qLI/AAAAAAAAHAI/M9ea5dYQxg4T4uT0jElx52IicDWo3FaAQCLcBGAsYHQ/s600/i10.png" /></a>
+</div>
+
+<div class="separator" style="clear: both;"><a
+    href="https://1.bp.blogspot.com/-5TCMZrbPd2Y/YO-9rqTQvaI/AAAAAAAAHAE/_w4n2ralt5UepoQNulpo_kRiHqP5246CgCLcBGAsYHQ/s902/i11.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="694" data-original-width="902"
+        src="https://1.bp.blogspot.com/-5TCMZrbPd2Y/YO-9rqTQvaI/AAAAAAAAHAE/_w4n2ralt5UepoQNulpo_kRiHqP5246CgCLcBGAsYHQ/s600/i11.png" /></a>
+</div>
+
+<h3 class="">10. LINER – CONDITIONS THAT SHOULD BE MET BY THE DATASET BEFORE WE USE LINEAR REGRESSION ON IT</h3>
+
+Ref: <a href="https://www.khanacademy.org/math/ap-statistics/inference-slope-linear-regression/inference-slope/v/conditions-inference-slope" target="_blank">Khan Academy</a>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEhvfCDW7K5-dblPfNVu4Rk5Lc6SLWZqM8trloSFWKAKc-JUA5F5y04rV51OyOXIfoXTTn5QvyUY0K-6mJ0tDZYCKfxFyor9iLf4aytRFpddf-gg1WdwPByVzmiGPtHhzK2QnApp0G_Y1DYISgLcWRD4lYp97qEUz7B-1H6_kF-PQpwCRmHrNEGB7gUGGQ=s1061" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="578" data-original-width="1061" src="https://blogger.googleusercontent.com/img/a/AVvXsEhvfCDW7K5-dblPfNVu4Rk5Lc6SLWZqM8trloSFWKAKc-JUA5F5y04rV51OyOXIfoXTTn5QvyUY0K-6mJ0tDZYCKfxFyor9iLf4aytRFpddf-gg1WdwPByVzmiGPtHhzK2QnApp0G_Y1DYISgLcWRD4lYp97qEUz7B-1H6_kF-PQpwCRmHrNEGB7gUGGQ=s600"/></a></div>
+
+<h3>11. LINER (From Transcript)</h3>
+
+<b>L: Linear</b>
+
+The condition is that the actual relationship in the population between your x and y variables actually is a linear relationship. 
+
+Now, in a lot of cases you might just have to assume that this is going to be the case when you see it on an exam, like an AP exam, for example. They might say, hey assume this condition is met. Oftentimes, it'll say assume of these conditions are met. They just want you to maybe know about these conditions. 
+
+But this is something to think about. If the underlying relationship is nonlinear, well, then maybe some of your inferences might not be as robust. 
+
+<b>I: Independence</b>
+
+Now, the next one is one we have seen before when we're talking about general conditions for inference, and this is the independence, independence condition And there's a couple of ways to think about it. Either individual observations are independent of each other. So you could be sampling with replacement. 
+
+Or you could be thinking about your 10% rule.
+The size of our sample is no more than 10% of the size of the population. 
+Similar to independence condition for proportions and for means.
+
+<b>N: Normal Condition</b>
+
+<b>Arithmetic Mean</b>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEiTMfwCY3XHjH9h549hhI-afTkyB0NYj8q5LDflzitCtFMOCElH0jjj3Qy1dIAcOizCOdkuEeA4b04jmC1_CK7IPrJ0GxUb4o29ydw8fTHn7RDJuh2KrJGmT22VmMVVCageJWRjqDTreA6uWkZP1MuFwKrysGlXkbDft4ux1aicwjD4EpNzF5ihe3W-Tg" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="266" data-original-width="349" src="https://blogger.googleusercontent.com/img/a/AVvXsEiTMfwCY3XHjH9h549hhI-afTkyB0NYj8q5LDflzitCtFMOCElH0jjj3Qy1dIAcOizCOdkuEeA4b04jmC1_CK7IPrJ0GxUb4o29ydw8fTHn7RDJuh2KrJGmT22VmMVVCageJWRjqDTreA6uWkZP1MuFwKrysGlXkbDft4ux1aicwjD4EpNzF5ihe3W-Tg"/></a></div>
+
+<b>Standard Deviation</b>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEhnuO6M70OybocljyHSN6Rcnbp0u5pC8xx_JzbLdPibhsiHUQKS8RtdxvF70iHnYdOvLBNCALWMq53ItygNyXx-EdZp4UFnCsxeKgwiBFrWmw87lq_a-LxHkl6by2af6LaBCDn_3OHGQOsGn7xL8LWPo97zuAPsVoG3e_bId0Jiv4hj9EuY-Rm5dwBOPA" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="303" data-original-width="403" src="https://blogger.googleusercontent.com/img/a/AVvXsEhnuO6M70OybocljyHSN6Rcnbp0u5pC8xx_JzbLdPibhsiHUQKS8RtdxvF70iHnYdOvLBNCALWMq53ItygNyXx-EdZp4UFnCsxeKgwiBFrWmw87lq_a-LxHkl6by2af6LaBCDn_3OHGQOsGn7xL8LWPo97zuAPsVoG3e_bId0Jiv4hj9EuY-Rm5dwBOPA"/></a></div>
+
+<b>Normal Distribution</b>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEiclMVn-dVS58P5vHk6aVFw8QvyXKHBFJG6oipVuj2cjIhXNGfVp5CaEwcx_9eQIsZM1aiPIu7rPxNmhsQJ1UstyQbM-a-wSRfj-7KpEevQWcAPH6-UsiivLSFIQ7ELxNvecwVacf-Juu6MizQxVuzOcIi1XCWuwehtpgf-xSe_wFmPDwXuYkoK7n88tQ" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="427" data-original-width="671" src="https://blogger.googleusercontent.com/img/a/AVvXsEiclMVn-dVS58P5vHk6aVFw8QvyXKHBFJG6oipVuj2cjIhXNGfVp5CaEwcx_9eQIsZM1aiPIu7rPxNmhsQJ1UstyQbM-a-wSRfj-7KpEevQWcAPH6-UsiivLSFIQ7ELxNvecwVacf-Juu6MizQxVuzOcIi1XCWuwehtpgf-xSe_wFmPDwXuYkoK7n88tQ"/></a></div>
+
+Now, the next one is the normal condition.
+Although it means something a little bit more sophisticated when we're dealing with a regression. 
+The normal condition, and, once again many times people just say assume it's been met. 
+
+But let me actually draw a regression line, but do it with a little perspective, and I'm gonna add a third dimension.
+Let's say that's the x-axis, and let's say this is the y-axis. And the true population regression line looks like this. And so the normal condition tells us that for any given x in the true population, the distribution of y's that you would expect is normal, is normal So let me see if I can draw a normal distribution for the y's given that x. So that would be that normal distribution there. 
+And then let's say for this x right over here, you would expect a normal distribution as well so just like, just like this. So if we're given x, the distribution of y's should be normal. 
+
+Once again many times you'll just be told to assume that that has been met because it might, at least in an introductory statistics class be a little bit hard to figure this out on your own. 
+
+<b>E: Equal Variance</b>
+
+And that's just saying that each of these normal distributions (for y) should have the same spread for a given x. 
+And so you could say equal variance or you could even think about them having the equal standard deviation. 
+So, for example, if, for a given x, let's say for this x, all of sudden you had a much lower variance, made it look like this, then you would no longer meet your conditions for inference. 
+
+<b>R: Random Condition</b>
+
+This condition is that the data comes from a well-designed random sample or some type of randomized experiment And this condition we have seen in every type of condition for inference that we have looked at so far. So I'll leave you there. It's good to know It will show up on some exams. But many times, when it comes to problem solving, in an introductory statistics class, they will tell you, hey just assume the conditions for inference have been met. Or what are the conditions for inference? But they're not going to actually make you prove, for example the normal or the equal variance condition. That might be a bit much for an introductory statistics class.  
+
+<h3 class="">12. Practice Question</h3>
+Ques 1: Can we solve this "<b>y = (x^m)c</b>" equation with linear regression?
+
+Ans 1:
+Equation of line: y = mx + c
+
+Log(y) = log((x^m)c)
+
+Log(y) = log(x^m) + log(c)
+
+
+Log(y) = m.log(x) + log(c)
+
+Y = log(y)
+X = log(x)
+C = log(c)
+
+Y = mX + C
+So answer is 'yes'.
+
+Ques 2: What does the term “Linear” mean in phrase “Linear Regression”?
+
+Ans 2: 
+The model we are going to use is “Linear” in nature and we are assuming a linear relationship between dependent attributes and independent attributes.
+And, regression analysis is a set of statistical processes for estimating the relationships between a dependent variable and one or more real-valued independent variables.
+
+Ques 3: What is 'y-intercept'?
+Ans 3:
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEjoO0QWdypfKQkOlT2PhsDp3DUuaWC_BW5Sp4TIHe2ER-eXL6hXgGz5GnhI5ykSniwf6IsxJ8auMNKc0-a0E2-bv0US_NuIDtJu7AXi1m7tH1Ceo6t82grAR9drnPPvCgNBzTBqs5cOXhM5SfRcZhEvQxKzs6-itg9m7DbyT6r4FbKtGifD4l_sbwwj1A" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="303" data-original-width="334" src="https://blogger.googleusercontent.com/img/a/AVvXsEjoO0QWdypfKQkOlT2PhsDp3DUuaWC_BW5Sp4TIHe2ER-eXL6hXgGz5GnhI5ykSniwf6IsxJ8auMNKc0-a0E2-bv0US_NuIDtJu7AXi1m7tH1Ceo6t82grAR9drnPPvCgNBzTBqs5cOXhM5SfRcZhEvQxKzs6-itg9m7DbyT6r4FbKtGifD4l_sbwwj1A"/></a></div>
+
+</pre>
+<span style="display: none;">Tags: Technology,Artificial Intelligence,Data Visualization,Machine Learning,</span>

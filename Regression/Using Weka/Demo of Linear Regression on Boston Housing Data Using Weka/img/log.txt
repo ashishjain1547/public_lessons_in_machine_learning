@@ -1,0 +1,16 @@
+1 - Boston Housing ARFF file.png
+10 - Weka Exp Env - Add New Algo - Linear Regression.png
+11 - Save Weka Experiment.png
+12 - Weka SimpleCLI.png
+13 - Weka KnowledgeFlow Environment.png
+14 - Weka JSON KnowledgeFlow Configuration.png
+15 - Weka Workbench - Classify Tab - Linear Regression.png
+2 - Weka Home Screen.png
+3 - Weka Explorer.png
+4 - Weka Explorer - Preprocess Tab - Boston Relation - MEDV Attribute.png
+5 - Weka Explorer - Classify Tab.png
+6 - Weka Explorer - Classify Tab - Linear Reg Equation.png
+7 - Weka Explorer - Classify Tab - Select Linear Reg.png
+8 - Weka Experiment Environment.png
+9 - Weka Exp Env - Add New Algorithm.png
+log.txt

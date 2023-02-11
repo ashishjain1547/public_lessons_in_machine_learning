@@ -1,0 +1,77 @@
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ javac -cp ./weka-3.7.0.jar Regression.java
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ 
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ ls -l
+total 5232
+-rw-rw-r-- 1 ashish ashish     365 Mar  5 09:05 house.arff
+drwxrwxr-x 2 ashish ashish    4096 Mar  5 09:12 jar
+-rw-rw-r-- 1 ashish ashish    1714 Mar  5 09:24 Regression.class
+-rw-rw-r-- 1 ashish ashish     924 Mar  5 09:18 Regression.java
+-rw-rw-r-- 1 ashish ashish 5340945 Sep 27  2011 weka-3.7.0.jar
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.7.0.jar Regression
+LR FORMULA : 
+Linear Regression Model
+
+sellingPrice =
+
+    -26.6882 * houseSize +
+      7.0551 * lotSize +
+  43166.0767 * bedrooms +
+  42292.0901 * bathroom +
+ -21661.1208
+-------------------------
+PRECTING THE PRICE : 222921.57101904938
+~/Desktop/ws/weka/e4_linear_regression_using_java_code$ 
+
+
+
+
+
+
+
+
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ ls -l
+total 13852
+-rw-rw-r-- 1 ashish ashish      923 Mar  5 09:25 execution.log
+-rw-rw-r-- 1 ashish ashish      365 Mar  5 09:05 house.arff
+drwxrwxr-x 2 ashish ashish     4096 Mar  6 15:04 jar
+-rw-rw-r-- 1 ashish ashish     1714 Mar  5 09:24 Regression.class
+-rw-rw-r-- 1 ashish ashish      924 Mar  5 09:18 Regression.java
+-rwxrwxrwx 1 ashish ashish 14163929 Jan 25 16:06 weka-3.8.6.jar
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.8.6.jar Regression
+Exception in thread "main" java.lang.NoClassDefFoundError: no/uib/cipr/matrix/Matrix
+	at Regression.main(Regression.java:15)
+Caused by: java.lang.ClassNotFoundException: no.uib.cipr.matrix.Matrix
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 1 more
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ javac -cp .:./weka-3.8.6.jar Regression.java
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.8.6.jar Regression
+Exception in thread "main" java.lang.NoClassDefFoundError: no/uib/cipr/matrix/Matrix
+	at Regression.main(Regression.java:15)
+Caused by: java.lang.ClassNotFoundException: no.uib.cipr.matrix.Matrix
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 1 more
+
+- - - 
+
+TRYING AGAIN WITH WEKA-3.7.0.JAR:
+
+(base) ashish@ashish-VirtualBox:~/Desktop/ws/weka/e4_linear_regression_using_java_code$ java -cp .:./weka-3.7.0.jar Regression
+LR FORMULA : 
+Linear Regression Model
+
+sellingPrice =
+
+    -26.6882 * houseSize +
+      7.0551 * lotSize +
+  43166.0767 * bedrooms +
+  42292.0901 * bathroom +
+ -21661.1208
+-------------------------
+PRECTING THE PRICE : 222921.57101904938
+
+
+
