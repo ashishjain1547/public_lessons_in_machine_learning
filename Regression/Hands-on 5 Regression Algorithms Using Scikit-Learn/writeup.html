@@ -1,0 +1,299 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .ib {
+            color: blue
+        }
+
+        .ig {
+            color: green
+        }
+
+        .ir {
+            color: red
+        }
+
+        .customLink {
+            background-color: #4CAF50;
+            border: none;
+            color: white !important;
+            padding: 8px 13px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .customLink:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<a class="customLink toggleBtn" href="https://github.com/ashishjain1547/pubML/tree/main/e1_predicting_bengaluru_housing_prices_using_regression" target="_blank">Download Code and Data</a>
+
+<pre><b>What is Regression?</b>
+
+When the targets are real numbers and we are trying the establish a relationship between a target and a predictor, the problem is called a “regression problem”.
+
+<b>Example 1: Salary vs Years of Experience</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-sLdBfuXGfbFhr5nP6rm5ssZBjPgTBqI-PssfY_ZwmRuXS1kgIXcP7gEXTzbf744U6nnDltFzZScKKaJ4gYY8zweBKGV8z-NAby4JhH4cQxqRHUjiLgIty678NiEWy9VEk6i-l6DaMsb6MPRARB3qLR15ssA5RjBHrSi6RJZIlWHPT7GF9Z80tyA6dw/s640/salvsyrs.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="480" data-original-width="640" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-sLdBfuXGfbFhr5nP6rm5ssZBjPgTBqI-PssfY_ZwmRuXS1kgIXcP7gEXTzbf744U6nnDltFzZScKKaJ4gYY8zweBKGV8z-NAby4JhH4cQxqRHUjiLgIty678NiEWy9VEk6i-l6DaMsb6MPRARB3qLR15ssA5RjBHrSi6RJZIlWHPT7GF9Z80tyA6dw/s600/salvsyrs.png"/></a></div>
+
+<b>Example 2: Weight vs Height</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAFVx5oMxri0eXb5qPa4dQtVrpXN1I4RJc5iJSZzdlDvAHOlDKmMs_3ghj1YK_XGloXm58f1pKMLTrFTW8WG98DmhklAOnl_FKJDjaTiP4FoB1MkPMAOkZvFbu13rYGL9vOEPuxgNNS4lPCVw8hHz5cgYPxVCNs2MXt7aulgYNzeg0eRNcGX9tfWT-yQ/s500/weightvsheight.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="337" data-original-width="500" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAFVx5oMxri0eXb5qPa4dQtVrpXN1I4RJc5iJSZzdlDvAHOlDKmMs_3ghj1YK_XGloXm58f1pKMLTrFTW8WG98DmhklAOnl_FKJDjaTiP4FoB1MkPMAOkZvFbu13rYGL9vOEPuxgNNS4lPCVw8hHz5cgYPxVCNs2MXt7aulgYNzeg0eRNcGX9tfWT-yQ/s600/weightvsheight.png"/></a></div>
+
+<b>Regression: Predicting Bengaluru Housing Prices</b>
+
+1. Linear Regression (Ordinary Least Squares algorithm)
+2. Polynomial Regression
+3. Linear Regression using Stochastic Gradient Descent
+4. Regression using Support Vector Machines
+5. Regression using Decision Trees
+
+<b>Linear Regression (Ordinary Least Squares algorithm)</b>
+
+1: In Linear Regression, you try to fit a line to the data.
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDKgNAOC95euMiDrc8ZCZaDpPH6aAucOcs7r2-ULFzsnYmkOQ5HhCc0qO-hpHwXkq_OltDe_xxcqcsSEb73yKJffFSChgk-piET4ivWUxtwpLUPYeyZU7BtwEJf33dwlQsvRBtWXpD5M976RC1b1HNLEzpxeMB-TJ7TueP6F5dXkPN3cB8AhRf6UGKVg/s941/linreg.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="648" data-original-width="941" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDKgNAOC95euMiDrc8ZCZaDpPH6aAucOcs7r2-ULFzsnYmkOQ5HhCc0qO-hpHwXkq_OltDe_xxcqcsSEb73yKJffFSChgk-piET4ivWUxtwpLUPYeyZU7BtwEJf33dwlQsvRBtWXpD5M976RC1b1HNLEzpxeMB-TJ7TueP6F5dXkPN3cB8AhRf6UGKVg/s600/linreg.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggp3qCH2LFU__-eREznAPdAN5X39_rz2xwL2L9YJtOZ8ukQgljOoqd_NKZznAr22DuWwKaWKpU283iEJMB60FhvuujSx_DxoOrgZN75x4Ayu73ipHwah3XPcZ4yhYMGk9QUs0ZUWNWwZ7sxEG8pkCAveeayE66MvKg6-_k1Y8_sEuOhR03xFdGJCsndA/s940/linregpreds.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="640" data-original-width="940" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggp3qCH2LFU__-eREznAPdAN5X39_rz2xwL2L9YJtOZ8ukQgljOoqd_NKZznAr22DuWwKaWKpU283iEJMB60FhvuujSx_DxoOrgZN75x4Ayu73ipHwah3XPcZ4yhYMGk9QUs0ZUWNWwZ7sxEG8pkCAveeayE66MvKg6-_k1Y8_sEuOhR03xFdGJCsndA/s600/linregpreds.png"/></a></div>
+
+Basic Idea Behind Ordinary Least Squares Algorithm:
+How much predictions are deviating from the actual data?
+
+Mapping errors on the graph:
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5BhdbPPKHKOYG2Sq0mNJEkJ0Fc9xPeVvXDh4HD7BUEoZ3zdHVLwPyzyb5nklRMvzB-D8zC_-5Q94Nlzm41m12lPH5qpDjKxASloodF6Lz_Nxj-D5B3Hg0Y_kLNdZhPyUwQeGKkGfVxDzaPfzIa4tYMGKddW8xj5cwYg7RS6K-uQVjyuQECowg8exAOA/s484/mappingerrors.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="397" data-original-width="484" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5BhdbPPKHKOYG2Sq0mNJEkJ0Fc9xPeVvXDh4HD7BUEoZ3zdHVLwPyzyb5nklRMvzB-D8zC_-5Q94Nlzm41m12lPH5qpDjKxASloodF6Lz_Nxj-D5B3Hg0Y_kLNdZhPyUwQeGKkGfVxDzaPfzIa4tYMGKddW8xj5cwYg7RS6K-uQVjyuQECowg8exAOA/s600/mappingerrors.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuqQxvpK0OiOIs08eJNqE6VmV4xpmMMRYBmo61XMfZrhERRaJLlrHd_5Udn7ivYrlT3tI8jmEGK27ismn6ZfI97roKzSp7UAr0kS2OoMWWBIjMtK-qptuHRez479aOH_t7Q_d-NnlteDAtcyJ4Xow0tHSgU3udr7lezeJv8WLPcmuAjsQE4dcVlzbBQg/s744/minerrors.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="606" data-original-width="744" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuqQxvpK0OiOIs08eJNqE6VmV4xpmMMRYBmo61XMfZrhERRaJLlrHd_5Udn7ivYrlT3tI8jmEGK27ismn6ZfI97roKzSp7UAr0kS2OoMWWBIjMtK-qptuHRez479aOH_t7Q_d-NnlteDAtcyJ4Xow0tHSgU3udr7lezeJv8WLPcmuAjsQE4dcVlzbBQg/s600/minerrors.png"/></a></div>
+
+<i class="ib">
+>>> import numpy as np
+>>> from sklearn.linear_model import LinearRegression
+>>> X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
+>>> # y = 1 * x_0 + 2 * x_1 + 3
+>>> y = np.dot(X, np.array([1, 2])) + 3
+>>> reg = LinearRegression().fit(X, y)
+>>> reg.score(X, y)
+1.0
+>>> reg.coef_
+array([1., 2.])
+>>> reg.intercept_
+3.0...
+>>> reg.predict(np.array([[3, 5]]))
+array([16.])
+</i>
+
+Ref: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html" target="_blank">scikit-learn.org</a>
+
+Which attributes to transform during EDA?
+
+1. Check if you model requires numerical features and if you can make the attributes numerical.
+
+For ex, for the problem of predicting housing prices, we can convert BHK column to floating point numbers:
+2 BHK -> 2
+2 BHK + Study -> 2.5
+3 BHK -> 3
+3 BHK + Servent -> 3.5
+
+2. What if the ‘bhk’ attribute is not given?
+>>> pandas_df.dropna(subset = [‘bhk’])
+
+If we have engineered all the features, can we drop null records from all the features?
+
+>>> pandas_df.dropna(inplace = True)
+
+<b>2. Polynomial Regression</b>
+
+What if your data is actually more complex than a simple straight line?
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibNBtXkma5_fUTlIgHr6E1n0VW1YPgwKfdiEhEu7NrGkldyT0wtfiIcwBJ2vsa5gYBAiXeO2yRSBJv3TAITtM8YazIsieqNcx7R55xxfYoIirJ-zC2wtt_EU4ThgmWmgGj2M8osDtVJlsGCI2i1alIuPv_3Qxj3y1MAFs9fnfyD5rqIQz0zQWvqJny_Q/s1126/polyreg.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="777" data-original-width="1126" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibNBtXkma5_fUTlIgHr6E1n0VW1YPgwKfdiEhEu7NrGkldyT0wtfiIcwBJ2vsa5gYBAiXeO2yRSBJv3TAITtM8YazIsieqNcx7R55xxfYoIirJ-zC2wtt_EU4ThgmWmgGj2M8osDtVJlsGCI2i1alIuPv_3Qxj3y1MAFs9fnfyD5rqIQz0zQWvqJny_Q/s600/polyreg.png"/></a></div>
+
+<b>Generating Polynomial Features</b>
+
+Generate a new feature matrix consisting of all polynomial combinations of the features with degree less than or equal to the specified degree. For example, if an input sample is two dimensional and of the form [a, b], the degree-2 polynomial features are [1, a, b, a^2, ab, b^2].
+
+include_bias:
+bool, default=True ::: If True (default), then include a bias column, the feature in which all polynomial powers are zero (i.e. a column of ones - acts as an intercept term in a linear model).
+
+<i class="ib">
+>>> import numpy as np
+>>> from sklearn.preprocessing import PolynomialFeatures
+>>> X = np.arange(6).reshape(3, 2)
+>>> X
+array([[0, 1],
+       [2, 3],
+       [4, 5]])
+>>> poly = PolynomialFeatures(2)
+>>> poly.fit_transform(X)
+array([[ 1.,  0.,  1.,  0.,  0.,  1.],
+       [ 1.,  2.,  3.,  4.,  6.,  9.],
+       [ 1.,  4.,  5., 16., 20., 25.]])
+</i>
+
+<b>Building the Polynomial Regression Model</b>
+
+>>> from sklearn.preprocessing import PolynomialFeatures
+>>> poly_features = PolynomialFeatures(degree=2, include_bias=False)
+>>> X_poly = poly_features.fit_transform(X)
+>>> X[0]
+array([-0.75275929])
+>>> X_poly[0]
+Array([-0.75275929, 0.56664654])
+
+X_poly now contains the original feature of X plus the square of this feature. Now you can fit a LinearRegression model to this extended training data:
+
+>>> lin_reg = LinearRegression()
+>>> lin_reg.fit(X_poly, y)
+>>> lin_reg.intercept_, lin_reg.coef_
+(array([ 1.78134581]), array([[ 0.93366893, 0.56456263]]))
+
+<h2>3. Linear Regression using Stochastic Gradient Descent</h2>
+
+<b>What’s Gradient Descent?</b>
+
+Gradient Descent is a very generic optimization algorithm capable of finding optimal solutions to a wide range of problems. The general idea of Gradient Descent is to tweak parameters iteratively in order to minimize a cost function.
+
+Suppose you are lost in the mountains in a dense fog; you can only feel the slope of the ground below your feet. A good strategy to get to the bottom of the valley quickly is to go downhill in the direction of the steepest slope. This is exactly what Gradient Descent does: it measures the local gradient of the error function with regards to the parameter vector θ, and it goes in the direction of descending gradient. Once the gradient is zero, you have reached a minimum!
+Concretely, you start by filling θ with random values (this is called random initialization), and then you improve it gradually, taking one baby step at a time, each step attempting to decrease the cost function (e.g., the MSE), until the algorithm converges to a minimum (see the figure below).
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLHMf6VV_kZItYUcSNU_tPTTMkhUPvWYXkByRgYi1CyR14D7SiMMttAsYjDiVPc97Zqbd1_c8mu7hJFCCvfJuh6h8Ykb3R6Wga9HXNP4AuJb_GxePDwbCq4Y8RLd-syT9fvN4LF7CcO6kDPCMvdX7SsjJLV3BoYvO4AAqSWvcLtze2kBc_tXPuzuSlkw/s1128/gradientdesc.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="753" data-original-width="1128" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLHMf6VV_kZItYUcSNU_tPTTMkhUPvWYXkByRgYi1CyR14D7SiMMttAsYjDiVPc97Zqbd1_c8mu7hJFCCvfJuh6h8Ykb3R6Wga9HXNP4AuJb_GxePDwbCq4Y8RLd-syT9fvN4LF7CcO6kDPCMvdX7SsjJLV3BoYvO4AAqSWvcLtze2kBc_tXPuzuSlkw/s600/gradientdesc.png"/></a></div>
+
+<b>Solving the problem of Linear Regression (Using SGD)</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGd5jWf_LcCHdKuaksgCs33utl1lqqg_S8_QZO-U7dmdo7WVty30SIooa0Yh85oRM1bvyV2eLgDhuFg2xOJoJfXS-HVARqfAboAmvRCVov6_BYgoKSYh4ektudbsXASdStIiq7ORMChNnycqUMdaajCsy6eVSj3wGzI3uqds4Fda7aJUerFYwLoRbrTw/s1127/sgdreg.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="767" data-original-width="1127" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGd5jWf_LcCHdKuaksgCs33utl1lqqg_S8_QZO-U7dmdo7WVty30SIooa0Yh85oRM1bvyV2eLgDhuFg2xOJoJfXS-HVARqfAboAmvRCVov6_BYgoKSYh4ektudbsXASdStIiq7ORMChNnycqUMdaajCsy6eVSj3wGzI3uqds4Fda7aJUerFYwLoRbrTw/s600/sgdreg.png"/></a></div>
+
+Here are the high level steps that we take in implementing a simple and naive Linear Regression model using SGD:
+
+1. Random Initialization: Initialize the model with a line along the x-axis.
+
+2. Calculate the error function for this line.
+
+3. By doing minor changes (d(slope) and d(intercept)) in slope and intercept, adjust the linear model to reduce the error function.
+
+4. Repeat steps (2) and (3) until convergence.
+
+<b>Code</b>
+
+from sklearn.linear_model import SGDRegressor
+sgd_reg = SGDRegressor(n_iter=50, penalty=None, eta0=0.1)
+sgd_reg.fit(X, y.ravel())
+
+>>> sgd_reg.intercept_, sgd_reg.coef_
+(array([ 4.18380366]), array([ 2.74205299]))
+
+<h2>4. Regression using Support Vector Machines</h2>
+
+We start with explaining what SVM is and then move on to using it for regression:
+
+The fundamental idea behind SVMs is best explained with some pictures. Figures below shows part of the iris dataset. The two classes can clearly be separated easily with a straight line (they are linearly separable). The left plot shows the decision boundaries of three possible linear classifiers. The model whose decision boundary is represented by the dashed line is so bad that it does not even separate the classes properly. The other two models work perfectly on this training set, but their decision boundaries come so close to the instances that these models will probably not perform as well on new instances. In contrast, the solid line in the plot on the right represents the decision boundary of an SVM classifier; this line not only separates the two classes but also stays as far away from the closest training instances as possible. You can think of an SVM classifier as fitting the widest possible street (represented by the parallel dashed lines) between the classes. This is called large margin classification. And the circled points are your ‘support vectors’.
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdVfUzuoYdIJlLNMUe-aHUyim4uboZa7BDkVqh0AI8oDJy0BbXseTZoWcLevGbN-Iq6RZ3jD5BaLVKU7LV6l-rjkAdXz0pNx58Q2-7D3nJxuBN2Ep6OqcUmcIjfXATR0dVptzFc4AFB9TacFjRpdv4_zC01IV97pKIvdBQJ5l9ePk85CDtJPAb8W6NWQ/s586/svm%20dtst.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="242" data-original-width="586" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdVfUzuoYdIJlLNMUe-aHUyim4uboZa7BDkVqh0AI8oDJy0BbXseTZoWcLevGbN-Iq6RZ3jD5BaLVKU7LV6l-rjkAdXz0pNx58Q2-7D3nJxuBN2Ep6OqcUmcIjfXATR0dVptzFc4AFB9TacFjRpdv4_zC01IV97pKIvdBQJ5l9ePk85CDtJPAb8W6NWQ/s600/svm%20dtst.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggvmLrSfX0QQSAakiNtQp6QbdFCQ09AnejaJ8RiR8CQRXFeB3bjf9HZb0HH-sYrlcWCCVLPmmOgM_3FlHdyd4LsBB0cKFvz72Mb3QkQjz_sStPU0fouqqaiUtFAI9iO7JddsX2h1C_J5QQNok3If6JzNQkyrYe2gEGuUL4oRgjkeJryZVYX8e2UDje_g/s567/svm.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="242" data-original-width="567" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggvmLrSfX0QQSAakiNtQp6QbdFCQ09AnejaJ8RiR8CQRXFeB3bjf9HZb0HH-sYrlcWCCVLPmmOgM_3FlHdyd4LsBB0cKFvz72Mb3QkQjz_sStPU0fouqqaiUtFAI9iO7JddsX2h1C_J5QQNok3If6JzNQkyrYe2gEGuUL4oRgjkeJryZVYX8e2UDje_g/s600/svm.png"/></a></div>
+
+<b>SVM Regression</b>
+
+As we mentioned earlier, the SVM algorithm is quite versatile: not only does it support linear and nonlinear classification, but it also supports linear and nonlinear regression. The trick is to reverse the objective: 
+
+Instead of trying to fit the largest possible street between two classes while limiting margin violations, SVM Regression tries to fit as many instances as possible on the street while limiting margin violations (i.e., instances off the street). 
+
+The width of the street is controlled by a hyperparameter ϵ.
+
+Figure below shows two linear SVM Regression models trained on some random linear data, one with a large margin (ϵ = 1.5) and the other with a small margin (ϵ = 0.5).
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiGWRCGl9QhD7gAdMxoEWgeo-xH337zxbHYBLxapBqT8NnFdKVWIYJRfLeg4BF_zVwdEd35DC5JeMgX8uaANXneVUilik3pfrdWb471rmKJ7vb40jsTLWi7QE4Q0yvPbOhnzF7mR47Jhe0HnXgAcFELmriHl4jiZCWgxyyZmGQ50M3FEWYXnTpFRcw5Q/s1129/svm-reg.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="496" data-original-width="1129" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiGWRCGl9QhD7gAdMxoEWgeo-xH337zxbHYBLxapBqT8NnFdKVWIYJRfLeg4BF_zVwdEd35DC5JeMgX8uaANXneVUilik3pfrdWb471rmKJ7vb40jsTLWi7QE4Q0yvPbOhnzF7mR47Jhe0HnXgAcFELmriHl4jiZCWgxyyZmGQ50M3FEWYXnTpFRcw5Q/s600/svm-reg.png"/></a></div>
+
+<h2>5. Regression using Decision Trees</h2>
+
+First we would explain what Decision Trees are and how they work.
+
+Binary decision trees operate by subjecting attributes to a series of binary (yes / no) decisions. Each decision leads to one of two possibilities. Each decision leads to another decision or it leads to prediction.
+
+How a Binary Decision Tree Generates Predictions?
+
+When an observation or row is passed to a nonterminal node, the row answers the node’s question. If it answers yes, the row of attributes is passed to the leaf node below and to the left of the current node. If the row answers no, the row of attributes is passed to the leaf node below and to the right of the current node. The process continues recursively until the row arrives at a terminal (that is, leaf) node where a prediction value is assigned to the row. The value assigned by the leaf node is the mean of the outcomes of the all the training observations that wound up in the leaf node.
+
+Below is the Decision Tree for Iris Dataset.
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIa-dG1LSgK8C_UD3fhlZcOrRcJfYwVlFUVXuQk-2FqM_wrkFZF4_finjLcuZa2s3NbgC776x2SUfSz6xC1t6lbzF8nIs7VEvoXTtHyeZYRb_uXkxqTf2anXxCu0TQs2q6NksmzKm3I2VbkrDrpBmbJMVZPXK8TD_HfIaCeR6m8A7ur55pZq_aZqprZg/s756/iris%20dt.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="756" data-original-width="756" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIa-dG1LSgK8C_UD3fhlZcOrRcJfYwVlFUVXuQk-2FqM_wrkFZF4_finjLcuZa2s3NbgC776x2SUfSz6xC1t6lbzF8nIs7VEvoXTtHyeZYRb_uXkxqTf2anXxCu0TQs2q6NksmzKm3I2VbkrDrpBmbJMVZPXK8TD_HfIaCeR6m8A7ur55pZq_aZqprZg/s600/iris%20dt.png"/></a></div>
+
+Simple Psuedo Code for ‘Regression Using Decision Tree’ Only For The Purpose of Demonstration.
+
+Step 1: Find avarage value for interval of x and y. Let us call these values XA abd YA.
+
+Step 2: Split the curve into two by drawing a vertical line.
+
+Step 3: For x < XA, choose the average values of (x, y) from left side, drawing a horizontal line passing from this point on the left side. 
+
+Step 4: For x > XA, choose the average values of (x, y) from right side, drawing a horizontal line passing from this point on the left side.
+
+Repeat steps (1) to (4) for (n-1) times where n is the depth you want in your decision tree.
+
+<b>Moving on to Regression. Below is our sample data:</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMu1-DSSq_nBy7KK0r21PKd1CqdvCRVNwauKXOI1rckINUZQu-gWsCPaJBDHwFib99yBrEfhqf6rmXqyLbxvH1Tbxh9M7IAE8pQJUHbZ88RXz-c3Es-Z8snC0nMGFry8USOBJDcRWKxDYXrxmq_L1TSBQmh0zM6APBPU4BL6F0zLA9w9cpT2x4-GS9FQ/s643/dtreereg_dt.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="534" data-original-width="643" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMu1-DSSq_nBy7KK0r21PKd1CqdvCRVNwauKXOI1rckINUZQu-gWsCPaJBDHwFib99yBrEfhqf6rmXqyLbxvH1Tbxh9M7IAE8pQJUHbZ88RXz-c3Es-Z8snC0nMGFry8USOBJDcRWKxDYXrxmq_L1TSBQmh0zM6APBPU4BL6F0zLA9w9cpT2x4-GS9FQ/s600/dtreereg_dt.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVbTSTn-8kKMJf1qx0svu8_ZOJVsDt5cCl87axxyurzUfYnCKtuTt9OKHK8dZip9d-GdZdIPTHgFCIVKivSOsYg8BlQRZUrGmif-t6veH0lrVvSarLBcRfbXlC455vhpF4_1btAcTT49TJQMSpKNyrbqbJ4PrTcaEWGVpdzaoYE1CanVf0f9wDBuqYOg/s443/one%20node%20dtree.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="216" data-original-width="443" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVbTSTn-8kKMJf1qx0svu8_ZOJVsDt5cCl87axxyurzUfYnCKtuTt9OKHK8dZip9d-GdZdIPTHgFCIVKivSOsYg8BlQRZUrGmif-t6veH0lrVvSarLBcRfbXlC455vhpF4_1btAcTT49TJQMSpKNyrbqbJ4PrTcaEWGVpdzaoYE1CanVf0f9wDBuqYOg/s600/one%20node%20dtree.png"/></a></div>
+
+Block diagram of depth 1 tree for simple problem
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh07hmQlvqJb6rdcj_P2Nv83HaWJzV4_3mfJG-nMmdfCAmdjkA_L3ugUjqyShkvyz0fXt9mWjvKhKb3N5MVCGtXgMQ3kO4eZjzZNeOZVTY7Re7xf38CdLrGs2iJEV5PkMq2lfTor_c6uyrvYJ_8RfAen9AXdla7antaPn9OSbdXSPAlWEvGbowjum5ojA/s552/one%20node%20dtree%20decb.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="420" data-original-width="552" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh07hmQlvqJb6rdcj_P2Nv83HaWJzV4_3mfJG-nMmdfCAmdjkA_L3ugUjqyShkvyz0fXt9mWjvKhKb3N5MVCGtXgMQ3kO4eZjzZNeOZVTY7Re7xf38CdLrGs2iJEV5PkMq2lfTor_c6uyrvYJ_8RfAen9AXdla7antaPn9OSbdXSPAlWEvGbowjum5ojA/s600/one%20node%20dtree%20decb.png"/></a></div>
+
+Comparison of predictions and actual values versus attribute for simple example
+
+Notice how the predicted value for each region is always the average target value of the instances in that region. The algorithm splits each region in a way that makes most training instances as close as possible to that predicted value.
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxYx-vKltKULWuQeBEmEruD6Jc8957d32lLccysX1iqDSdgnO-6orWqMGCiMN5QTk7paHbDhRcnCX7RUQnuDKBa1eIo7F-H2c1bwoPAgIMTknfmxRlHc7nlKPRfoULAZWAvAQVUXaRW9sD8R638-oAm7a5LyqqzUct1tN2yGGkDSkG5l1DhpzWsnwlfQ/s664/2%20depth%20dtree.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="541" data-original-width="664" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxYx-vKltKULWuQeBEmEruD6Jc8957d32lLccysX1iqDSdgnO-6orWqMGCiMN5QTk7paHbDhRcnCX7RUQnuDKBa1eIo7F-H2c1bwoPAgIMTknfmxRlHc7nlKPRfoULAZWAvAQVUXaRW9sD8R638-oAm7a5LyqqzUct1tN2yGGkDSkG5l1DhpzWsnwlfQ/s600/2%20depth%20dtree.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf6cwznIsFveBpqocY3o7iPvaFHPPd0xOfeehRsVuinrlXmUdSAdkEv5dyszLopiafSdXK1cR7mFoBTaybR08gFvCgtD1ZZ1s3XnJlet2111p5YcIV6DcFa-LvSCiUZHI3DG-irfoJ36fOG2zDil_8QAZUIbIhKuUJsQKGEbxnO3h416UV-t5TSoqURA/s746/block%20diag%202d%20dectree.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="339" data-original-width="746" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf6cwznIsFveBpqocY3o7iPvaFHPPd0xOfeehRsVuinrlXmUdSAdkEv5dyszLopiafSdXK1cR7mFoBTaybR08gFvCgtD1ZZ1s3XnJlet2111p5YcIV6DcFa-LvSCiUZHI3DG-irfoJ36fOG2zDil_8QAZUIbIhKuUJsQKGEbxnO3h416UV-t5TSoqURA/s600/block%20diag%202d%20dectree.png"/></a></div>
+
+<b>DecisionTreeRegressor using sklearn</b>
+
+from sklearn.tree import DecisionTreeRegressor
+tree_reg = DecisionTreeRegressor(max_depth=2)
+tree_reg.fit(X, y)
+
+<h2>References</h2>
+
+1. Linear Regression (Ordinary Least Squares algorithm)
+
+1.1. <a href="https://survival8.blogspot.com/2021/07/linear-regression-theory.html" target="_blank">linear-regression-theory</a> 
+1.2. <a href="https://survival8.blogspot.com/2021/07/improvements-over-ols-forward-stepwise.html" target="_blank">penalized linear regression</a> 
+
+2, 3, 4:
+Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems
+Book by Aurelien Geron
+
+5:
+Machine Learning in Python (Essential Techniques For Predictive Analysis)
+By: Michael Bowles
+</pre>
+<span style="display: none;">Tags: Machine Learning,Technology,</span>
