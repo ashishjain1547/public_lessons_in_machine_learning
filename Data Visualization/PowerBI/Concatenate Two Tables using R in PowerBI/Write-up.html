@@ -1,0 +1,213 @@
+<head>
+  <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $.ajax({
+              url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+              success: function (result) {
+                  $("div.customTemporaryCodeHolder").html(result);
+                  $("nav.customDynamicNav").html(
+                      $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                  );
+              }
+          });
+
+          $.ajax({
+              url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+              success: function (result) {
+                  $("span.customTempCodeHolderForSocialMedia").html(result);
+                  $("div.customSocialMediaBtnsWrapper").html(
+                      $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                  );
+              }
+
+          });
+      }); 
+  </script>
+  <!-- Google AdSense Using Machine Learning Code -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3071098372371409",
+          enable_page_level_ads: true
+      });
+  </script>
+
+  <style>
+      .customTempCodeHolderForSocialMedia {
+          display: none;
+      }
+
+      pre {
+          white-space: pre-wrap;
+          white-space: -moz-pre-wrap;
+          white-space: -pre-wrap;
+          white-space: -o-pre-wrap;
+          word-wrap: break-word;
+      }
+  </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>We have two Excel files. 
+x1.xlsx has sheet "EngSheet".
+x2.xlsx has sheet "HindiSheet".
+
+(1) Load the data. For that we use "Get Data" functionality of PowerBI.
+
+(2) We will concatenate the two sheets vertically.
+
+For that, we go to "Transform" tab of "Dashboard" (this opens "Power Query Editor") and then "Transform" tab of "Power Query Editor".
+
+(3) We select "EngSheet" from the given "Queries" column.
+
+Then, we click on "Run R Script", provided we have R installed on our system and PowerBI is configured to use it.
+
+This opens the editor, but we do not write any code in this step and "CLICK OK" to close it.
+
+(4) Ignore all "Privacy" warnings related to running scripts in the prompts that appear after step (3).
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-5XK8PrqeZqE/X5r4_ZpiCnI/AAAAAAAAFyQ/EtZcZUlRZu0kj07FT_nRCcge7S7g_E7wwCLcBGAsYHQ/s604/3%2B-%2BPrivacy%2BPrompt.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="299" data-original-width="604"
+    src="https://1.bp.blogspot.com/-5XK8PrqeZqE/X5r4_ZpiCnI/AAAAAAAAFyQ/EtZcZUlRZu0kj07FT_nRCcge7S7g_E7wwCLcBGAsYHQ/s600/3%2B-%2BPrivacy%2BPrompt.png" /></a>
+</div>
+
+(5) We go to "View" tab in "Power Query Editor" and enable "Formula Bar".
+
+The "Formula Bar" has some code like this:
+
+<i style="color: blue;">= R.Execute("# 'dataset' holds the input data for this script",[dataset=#"Changed Type"]) </i>
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-X0VFao1EAJA/X5r4_Rd04qI/AAAAAAAAFyU/NbzJNx56XYohaalwzbFc8tOs05MuU0dOACLcBGAsYHQ/s1006/1%2B-%2BView%252C%2BFormula%2BBar%252C%2BEnter%2BR%2Bcode.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="513" data-original-width="1006"
+    src="https://1.bp.blogspot.com/-X0VFao1EAJA/X5r4_Rd04qI/AAAAAAAAFyU/NbzJNx56XYohaalwzbFc8tOs05MuU0dOACLcBGAsYHQ/s600/1%2B-%2BView%252C%2BFormula%2BBar%252C%2BEnter%2BR%2Bcode.png" /></a>
+</div>
+
+(6) We modify this line in "Formula Bar" to pass our two datasets as the input to the R script.
+
+For that the code is:
+
+<i style="color: blue">= R.Execute("# 'dataset' holds the input data for this script",[dataset=EngSheet, dataset2=HindiSheet]) </i>
+
+<b>Note: The output of this activity will go into the "EngSheet" (denoted by "dataset" above) overwriting its contents.</b>
+
+If you have selected "HindiSheet" from "Queries" column in step (3), and in you are passing it as one of the table in arguments as in: <i style="color: blue">dataset=EngSheet, dataset2=HindiSheet</i>
+
+You will encounter error: <i style="color: red">Expression.Error: A cyclic reference was encountered during evaluation.</i>
+
+(7) To resolve this we create a third "XLSX" file (xl3.xlsx) with a sheet named "Sheet1" and sheet has a header with "col1" and "col2" written in the first two cells of the first row. 
+
+(8) Load xl3.xlsx in PowerBI workspace.
+
+(9) We go to "Transform" tab of "Dashboard" (this opens "Power Query Editor") and then "Transform" tab of "Power Query Editor". Now, we select "Sheet1" from the given "Queries" column. "Queries" column shows all the three sheets we have loaded in the PowerBI workspace.
+
+(10) We click on "Run R Script" and "CLICK OK" to close the "Script Editor".
+
+(11) In the formula bar, enter:
+
+= R.Execute("# 'dataset' holds the input data for this script",[dataset=EngSheet, dataset2=HindiSheet])
+
+(12) We need an R package, "sqldf" for this activity. If you don't have it, install it first from "RGui":
+
+<i style="color: blue;">> library(sqldf)</i>
+<i style="color: red;">Error in library(sqldf) : there is no package called ‘sqldf’</i>
+<i style="color: blue;">> install.packages('sqldf')</i>
+<i style="color: green;">Warning in install.packages("sqldf") :
+  'lib = "C:/Program Files/R/R-4.0.3/library"' is not writable
+Installing it in "Temp" or "Local Documents".
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘ellipsis’, ‘glue’, ‘bit’, ‘rlang’, ‘vctrs’, ‘digest’, ‘bit64’, ‘blob’, ‘memoise’, ‘pkgconfig’, ‘Rcpp’, ‘BH’, ‘plogr’, ‘gsubfn’, ‘proto’, ‘RSQLite’, ‘DBI’, ‘chron’
+
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.0/ellipsis_0.3.1.zip'
+Content type 'application/zip' length 46014 bytes (44 KB)
+downloaded 44 KB
+...
+...
+etc., etc.</i>
+
+(13) In the "Power Query Editor", Click "Run R Script".
+
+(14) Enter the following R code:
+
+<i style="color: blue"># 'dataset' holds the input data for this script
+library(sqldf)
+m &lt;- sqldf("select Name as AllNames, Personal_Number as AllNums from dataset
+union all 
+select Naam as AllNames, Ank as AllNums from dataset2") </i>
+
+Click "OK". 
+If you encounter an error such as <i style="color: red">"Error: no such table: dataset2"</i>, make sure you have a code snippet like the one below in the "Formula Bar":
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-w8mJeYiwaWs/X5r5AGtWTjI/AAAAAAAAFyg/EQ8jSCfuE6ouRRuAgfvIeZcR6XXG377_gCLcBGAsYHQ/s1057/6%2B-%2BTable%2Bnot%2Bfound.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="343" data-original-width="1057"
+    src="https://1.bp.blogspot.com/-w8mJeYiwaWs/X5r5AGtWTjI/AAAAAAAAFyg/EQ8jSCfuE6ouRRuAgfvIeZcR6XXG377_gCLcBGAsYHQ/s600/6%2B-%2BTable%2Bnot%2Bfound.png" /></a>
+</div>
+
+<i style="color: blue">= R.Execute("# 'dataset' holds the input data for this script#(lf)library(sqldf)#(lf)m &lt;- sqldf(""select Name as AllNames, Personal_Number as AllNums from dataset#(lf)union all #(lf)select Naam as AllNames, Ank as AllNums from dataset2"")",[dataset=EngSheet, dataset2=HindiSheet]) </i>
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-_pUKG9F4Fos/X5r4_yEKysI/AAAAAAAAFyY/BVoraxesidYyM5kKTszKAyOOerJOvwaFACLcBGAsYHQ/s748/4%2B-%2BCreated%2Bnew%2Bconcatenated%2Btable.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="182" data-original-width="748"
+    src="https://1.bp.blogspot.com/-_pUKG9F4Fos/X5r4_yEKysI/AAAAAAAAFyY/BVoraxesidYyM5kKTszKAyOOerJOvwaFACLcBGAsYHQ/s600/4%2B-%2BCreated%2Bnew%2Bconcatenated%2Btable.png" /></a>
+</div>
+
+If you have a Space in a column (if "Personal_Number" is present as "Personal Number"), you get following error for code:
+
+<i style="color: blue"># 'dataset' holds the input data for this script
+library(sqldf)
+m &lt;- sqldf("select Name as AllNames, 'Personal Number' as AllNums from dataset
+union all 
+select Naam as AllNames, Ank as AllNums from dataset2") </i>
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-HOWNQLDoRV8/X5r5APqSKMI/AAAAAAAAFyc/VD7ECpZ5Jx4ZLN8ydHdLDuQPl2ObAELPgCLcBGAsYHQ/s557/5%2B-%2BNew%2Bconcatenated%2Btable.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="171" data-original-width="557"
+    src="https://1.bp.blogspot.com/-HOWNQLDoRV8/X5r5APqSKMI/AAAAAAAAFyc/VD7ECpZ5Jx4ZLN8ydHdLDuQPl2ObAELPgCLcBGAsYHQ/s600/5%2B-%2BNew%2Bconcatenated%2Btable.png" /></a>
+</div>
+
+(15) "Close And Apply" the "Power Query Editor".
+
+(16) "Table Visual" of Sheet1:
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-ntug51hYdGI/X5r5AahtO3I/AAAAAAAAFyk/q0f2J8EdcXg9OHgCbiN2mc_1_iCK7B87ACLcBGAsYHQ/s198/7%2B-%2BTable%2Bview%2Bof%2Bsheet1.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="123" data-original-width="198"
+    src="https://1.bp.blogspot.com/-ntug51hYdGI/X5r5AahtO3I/AAAAAAAAFyk/q0f2J8EdcXg9OHgCbiN2mc_1_iCK7B87ACLcBGAsYHQ/s600/7%2B-%2BTable%2Bview%2Bof%2Bsheet1.png" /></a>
+</div>
+
+<b>Additional Note</b>
+1: If you want to format a 'Date' type column in R:
+
+  <i style="color: blue">dataset$derived_date &lt;- format(as.Date(dataset$GIVEN_DATE), '%Y-%m-%d') </i>
+
+2: If you want to create a new column (of String type) by concatenating values from two other columns:
+
+  <i style="color: blue">select OLD_COL_1 || ', ' || OLD_COL_2 as NEW_COL from dataset </i>
+
+<b>GitHub Link to Excel Files and PowerBI Dashboard:</b> <a href="https://github.com/ashishjain1547/PublicSurvival8CodeSnippets/tree/main/Concatenate%20Two%20Tables%20using%20R%20in%20PowerBI" target="_blank">GitHub</a>
+
+<b>References</b>
+
+% <a href="https://docs.microsoft.com/en-us/power-bi/connect-data/service-r-packages-support#r-scripts-that-are-not-supported-in-power-bi" target="_blank">R Packages that are not supported in PowerBI</a>
+
+% <a href="https://stackoverflow.com/questions/57689581/dax-create-empty-table-with-specific-column-names-and-no-rows" target="_blank">Create an Empty DAX Table</a>
+
+  <i style="color: blue">CustomTable1 = DATATABLE ( "Other Measures", INTEGER, {{0}}) </i>
+
+</pre>

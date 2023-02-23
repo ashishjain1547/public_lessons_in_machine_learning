@@ -1,0 +1,155 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>Suppose we have a correlation matrix for comparison of results from various outlier detection algorithms as follows:
+This correlation matrix was generated in this <a href="https://survival8.blogspot.com/p/unsupervised-outlier-detection-using.html" target="_blank">post</a>.
+
+<i style='color: green'>
+               ae     a_knn     cblof        fb      hbos        if       knn  \
+ae       1.000000 -0.002106  0.292843  0.005122  0.494888  0.466024  0.216526   
+a_knn   -0.002106  1.000000  0.206014 -0.002029  0.067267  0.206014  0.230566   
+cblof    0.292843  0.206014  1.000000 -0.009849  0.134093  0.437160  0.490545   
+fb       0.005122 -0.002029 -0.009849  1.000000 -0.009849 -0.009849 -0.008801   
+hbos     0.494888  0.067267  0.134093 -0.009849  1.000000  0.350570  0.184289   
+if       0.466024  0.206014  0.437160 -0.009849  0.350570  1.000000  0.409951   
+knn      0.216526  0.230566  0.490545 -0.008801  0.184289  0.409951  1.000000   
+lof     -0.009460 -0.001949  0.006117 -0.009112 -0.009460 -0.009460  0.008945   
+loda     0.081817  0.062475  0.125143 -0.032479  0.072189  0.139584  0.158056   
+m_knn    0.218000  0.269756  0.387356 -0.007522  0.142730  0.312087  0.749635   
+mcd      0.278411 -0.002106  0.004207 -0.009849  0.321706  0.047502  0.006983   
+mo_gaal -0.010225 -0.002106 -0.010225 -0.009849 -0.010225 -0.010225 -0.009136   
+ocsvm    0.191820  0.206014  0.466024 -0.009849  0.177388  0.509319  0.667851   
+pca      0.985568 -0.002106  0.307274  0.005122  0.494888  0.466024  0.216526   
+so_gaal  0.004207 -0.002106 -0.010225 -0.009849  0.018639 -0.010225 -0.009136   
+vae      1.000000 -0.002106  0.292843  0.005122  0.494888  0.466024  0.216526   
+
+              lof      loda     m_knn       mcd   mo_gaal     ocsvm       pca  \
+ae      -0.009460  0.081817  0.218000  0.278411 -0.010225  0.191820  0.985568   
+a_knn   -0.001949  0.062475  0.269756 -0.002106 -0.002106  0.206014 -0.002106   
+cblof    0.006117  0.125143  0.387356  0.004207 -0.010225  0.466024  0.307274   
+fb      -0.009112 -0.032479 -0.007522 -0.009849 -0.009849 -0.009849  0.005122   
+hbos    -0.009460  0.072189  0.142730  0.321706 -0.010225  0.177388  0.494888   
+if      -0.009460  0.139584  0.312087  0.047502 -0.010225  0.509319  0.466024   
+knn      0.008945  0.158056  0.749635  0.006983 -0.009136  0.667851  0.216526   
+lof      1.000000  0.031157  0.013086 -0.009460 -0.009460  0.006117 -0.009460   
+loda     0.031157  1.000000  0.118617  0.048120 -0.028903  0.235863  0.081817   
+m_knn    0.013086  0.118617  1.000000  0.011009 -0.007809  0.537895  0.218000   
+mcd     -0.009460  0.048120  0.011009  1.000000 -0.010225 -0.010225  0.278411   
+mo_gaal -0.009460 -0.028903 -0.007809 -0.010225  1.000000 -0.010225 -0.010225   
+ocsvm    0.006117  0.235863  0.537895 -0.010225 -0.010225  1.000000  0.206252   
+pca     -0.009460  0.081817  0.218000  0.278411 -0.010225  0.206252  1.000000   
+so_gaal -0.009460  0.028864 -0.007809  0.004207 -0.010225 -0.010225  0.004207   
+vae     -0.009460  0.081817  0.218000  0.278411 -0.010225  0.191820  0.985568   
+
+          so_gaal       vae  
+ae       0.004207  1.000000  
+a_knn   -0.002106 -0.002106  
+cblof   -0.010225  0.292843  
+fb      -0.009849  0.005122  
+hbos     0.018639  0.494888  
+if      -0.010225  0.466024  
+knn     -0.009136  0.216526  
+lof     -0.009460 -0.009460  
+loda     0.028864  0.081817  
+m_knn   -0.007809  0.218000  
+mcd      0.004207  0.278411  
+mo_gaal -0.010225 -0.010225  
+ocsvm   -0.010225  0.191820  
+pca      0.004207  0.985568  
+so_gaal  1.000000  0.004207  
+vae      0.004207  1.000000  </i>
+
+We will plot this correlation matrix in three ways using Pandas, Matplotlib and Seaborn.
+
+# Imports
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+1: Pandas
+
+cmap=sns.diverging_palette(0, 255, sep=1, n=256, as_cmap=True)
+corr.style.background_gradient(cmap, axis=1).set_precision(2)
+<div class="separator" style="clear: both; text-align: center;">
+    <a href="https://1.bp.blogspot.com/-tDZ-vc3xiOg/Xp8OgHaAdxI/AAAAAAAAEoY/YNk-PUfxqF0WPfjhYq5KSPwjy-Dm84GgQCLcBGAsYHQ/s1600/Pandas.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="455" data-original-width="920" height="316" src="https://1.bp.blogspot.com/-tDZ-vc3xiOg/Xp8OgHaAdxI/AAAAAAAAEoY/YNk-PUfxqF0WPfjhYq5KSPwjy-Dm84GgQCLcBGAsYHQ/s640/Pandas.PNG" width="640" /></a></div>
+    
+2: Matplotlib
+
+plt.figure(figsize = (7,7))
+plt.title("Correlation between results from various outlier detection algos", y=1.05)
+plt.xticks(range(len(corr.columns)), corr.columns, rotation=70)
+plt.yticks(range(len(corr.columns)), corr.columns)
+plt.imshow(corr, interpolation='nearest', cmap=sns.diverging_palette(0, 255, sep=1, n=256, as_cmap=True), vmin=-1, vmax=1) 
+# cmap could also be set to: 'hot' or 'jet' or "YlGnBu" 
+plt.colorbar()
+plt.show()
+<div class="separator" style="clear: both; text-align: center;">
+    <a href="https://1.bp.blogspot.com/-VBqBDxG47Xo/Xp8On8HeDKI/AAAAAAAAEoc/YH9jiOXetG4HONP7QMUzg2sB6xQmwlG1ACLcBGAsYHQ/s1600/Matplotlib.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="414" data-original-width="445" src="https://1.bp.blogspot.com/-VBqBDxG47Xo/Xp8On8HeDKI/AAAAAAAAEoc/YH9jiOXetG4HONP7QMUzg2sB6xQmwlG1ACLcBGAsYHQ/s1600/Matplotlib.PNG" /></a></div>
+
+# Ref: 1 and 2 
+
+3: Seaborn
+
+sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns, cmap=sns.diverging_palette(0, 255, sep=1, n=256), vmin=-1, vmax=1)
+<div class="separator" style="clear: both; text-align: center;">
+    <a href="https://1.bp.blogspot.com/-YPugjnt7CvI/Xp8OoGoXbiI/AAAAAAAAEog/Vr1ZB5jh450_SqTLWeKjK440t_0M9s2tQCLcBGAsYHQ/s1600/Seaborn.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="289" data-original-width="393" src="https://1.bp.blogspot.com/-YPugjnt7CvI/Xp8OoGoXbiI/AAAAAAAAEog/Vr1ZB5jh450_SqTLWeKjK440t_0M9s2tQCLcBGAsYHQ/s1600/Seaborn.PNG" /></a></div>
+
+References:
+Ref 1: https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.imshow.html
+Ref 2: https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks
+</pre>

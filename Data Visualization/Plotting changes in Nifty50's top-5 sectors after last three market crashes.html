@@ -1,0 +1,202 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>In this post we draw Pie plots, Bar charts and Grouped Bar Chart to visualize how top-5 sectors of Nifty50 have changes after last three market crashes:
+
+<h3>Drawing the Pie plots </h3>
+
+<i style="color: blue">import pandas as pd
+import matplotlib.pyplot as plt
+
+pd_00 = pd.DataFrame({
+    "Sector": ['CONSUMER GOODS', 'OIL & GAS', 'IT', 'FINANCIAL SERVICES', 'PHARMA'],
+    "Weightage": [27.5, 24.2, 12.2, 10.1, 7.2]
+})
+
+pd_08 = pd.DataFrame({
+    "Sector": ['OIL & GAS', 'TELECOM', 'FINANCIAL SERVICES', 'POWER', 'CONSTRUCTION'],
+    "Weightage": [19.3, 9.7, 8.9, 5.5, 3.6]
+})
+
+pd_20 = pd.DataFrame({
+    "Sector": ['FINANCIAL SERVICES', 'OIL & GAS', 'IT', 'CONSUMER GOODS', 'AUTOMOBILE'],
+    "Weightage": [34.4, 14.8, 14.2, 13.5, 5.5]
+})
+
+def add_others_col(df):
+    return pd.concat([df, pd.DataFrame({'Sector': ['OTHERS'], 'Weightage': [(100 - sum(df.Weightage.values))] })], axis = 0)
+	
+
+pd_00 = add_others_col(pd_00)
+pd_08 = add_others_col(pd_08)
+pd_20 = add_others_col(pd_20)
+
+def plot_pie(labels, sizes, title = ""):
+    colors = ['#f47961', '#f0c419', '#255c61', '#78909c', '#6ad4cf', '#17aee8', '#5c6bc0', '#444b6e', '#ef4c60', '#744593', 
+              '#ee5691', '#9ccc65', '#708b75', '#d1cb65', '#0d8de1', '#a4554b', '#694f5d', '#45adb3', '#26a69a', '#bdc7cc', ]
+    colors = colors[0:len(labels)]
+    
+    explode = (0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)  # explode 1st slice
+    explode = explode[0:len(labels)]
+    
+    # Plot
+    plt.figure(num=None, figsize=(9, 7), dpi=80, facecolor='w', edgecolor='k')
+    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.title(title)
+    plt.axis('equal')
+    plt.show()
+
+plot_pie(pd_00.Sector.values, pd_00.Weightage.values, '2000 (Dot Com Bubble)')
+plot_pie(pd_08.Sector.values, pd_08.Weightage.values, '2008 (Lehman Crisis)')
+plot_pie(pd_20.Sector.values, pd_20.Weightage.values, '2020 (In Second Half Post COVID-19 Pandemic)') </i>
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-3x_cNvuZ50w/XxSNxD0IjPI/AAAAAAAAFOM/c659blDQmRQYs7R3U3DIaIa1u5I082l5QCLcBGAsYHQ/s809/4.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="564" data-original-width="809" height="446" src="https://1.bp.blogspot.com/-3x_cNvuZ50w/XxSNxD0IjPI/AAAAAAAAFOM/c659blDQmRQYs7R3U3DIaIa1u5I082l5QCLcBGAsYHQ/w640-h446/4.PNG" width="640" /></a></div><br />
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-ucnQXcnX0Cw/XxSNxIg1c4I/AAAAAAAAFOQ/ZzS136gZZmkW_lAONrxDZzJwlojnCPhBACLcBGAsYHQ/s659/5.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="582" data-original-width="659" height="565" src="https://1.bp.blogspot.com/-ucnQXcnX0Cw/XxSNxIg1c4I/AAAAAAAAFOQ/ZzS136gZZmkW_lAONrxDZzJwlojnCPhBACLcBGAsYHQ/w640-h565/5.PNG" width="640" /></a></div><br />
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-NRb7xJsBuW8/XxSNxf7OGjI/AAAAAAAAFOU/3ZOyF2l3-j0uriY_7UQgCayUeVCJXiD2ACLcBGAsYHQ/s785/6.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="561" data-original-width="785" height="458" src="https://1.bp.blogspot.com/-NRb7xJsBuW8/XxSNxf7OGjI/AAAAAAAAFOU/3ZOyF2l3-j0uriY_7UQgCayUeVCJXiD2ACLcBGAsYHQ/w640-h458/6.PNG" width="640" /></a></div><br />
+
+<h3>Drawing the Bar Charts </h3>
+
+<i style="color: blue">def plot_bar_graph(categories, values, title = "", xlabel = 'Sectors', ylabel = 'Weightage', figsize = (10, 8)):
+    colors = ['#f47961', '#f0c419', '#255c61', '#78909c', '#6ad4cf', '#17aee8', '#5c6bc0', '#444b6e', '#ef4c60', '#744593', 
+              '#ee5691', '#9ccc65', '#708b75', '#d1cb65', '#0d8de1', '#a4554b', '#694f5d', '#45adb3', '#26a69a', '#bdc7cc', ]
+    colors = colors[0:len(categories)]
+    
+    fig = plt.figure(figsize = figsize)
+    ax = fig.add_axes([0,0,1,1])
+    
+    barlist = ax.bar(categories, values)
+    for i in range(len(barlist)):
+        barlist[i].set_color(colors[i])
+    
+    plt.xticks(rotation=70)
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+	
+plot_bar_graph(pd_00.Sector.values, pd_00.Weightage.values, title = '2000 (Dot Com Bubble)', figsize = (7, 5))
+plot_bar_graph(pd_08.Sector.values, pd_08.Weightage.values, title = '2008 (Lehman Crisis)', figsize = (7, 5))
+plot_bar_graph(pd_20.Sector.values, pd_20.Weightage.values, title = '2020 (In Second Half Post COVID-19 Pandemic)', figsize = (7, 5)) </i>
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-1ACFRl3Mxno/XxSNx3hvLsI/AAAAAAAAFOY/4fb7iV-wkVIWLq6L7X7P_WJFZ9L0YG2XQCLcBGAsYHQ/s698/7.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="643" data-original-width="698" height="590" src="https://1.bp.blogspot.com/-1ACFRl3Mxno/XxSNx3hvLsI/AAAAAAAAFOY/4fb7iV-wkVIWLq6L7X7P_WJFZ9L0YG2XQCLcBGAsYHQ/w640-h590/7.PNG" width="640" /></a></div><br />
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-GP2uJdxs7aI/XxSNx31yadI/AAAAAAAAFOc/0y4amKnnhbcg4SPvmtMiAwT5uT_GQa3oQCLcBGAsYHQ/s721/8.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="637" data-original-width="721" height="566" src="https://1.bp.blogspot.com/-GP2uJdxs7aI/XxSNx31yadI/AAAAAAAAFOc/0y4amKnnhbcg4SPvmtMiAwT5uT_GQa3oQCLcBGAsYHQ/w640-h566/8.PNG" width="640" /></a></div><br />
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-0zm1toGo6O8/XxSNyNhEv3I/AAAAAAAAFOg/8DYXZDtB6FQpWJMze0Klpt8tn_xO3ylhQCLcBGAsYHQ/s712/9.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="643" data-original-width="712" height="578" src="https://1.bp.blogspot.com/-0zm1toGo6O8/XxSNyNhEv3I/AAAAAAAAFOg/8DYXZDtB6FQpWJMze0Klpt8tn_xO3ylhQCLcBGAsYHQ/w640-h578/9.PNG" width="640" /></a></div><br />
+
+<h3>Drawing the Grouped Bar Charts </h3>
+
+<i style="color: blue">import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+def autolabel(rects, ax):
+    """Attach a text label above each bar in *rects*, displaying its height."""
+    for rect in rects:
+        height = rect.get_height()
+        ax.annotate('{}'.format(height),
+                    xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha='center', va='bottom')
+
+def plot_grouped_bar_graph(xlabels, values, group_lables):
+    x = np.arange(len(values[0]))  # the label locations
+    width = 0.2  # the width of the bars
+    
+    fig, ax = plt.subplots()
+    
+    rects = []
+    for i in range(len(group_lables)):
+        rects += [ax.bar(x + (i * width), values[i], width, label = group_lables[i])]
+
+    # Add some text for labels, title and custom x-axis tick labels, etc.
+    ax.set_ylabel('Weightage')
+    ax.set_title('Nifty50 Composition as Industry Sectors Across Market Crashes')
+    ax.set_xticks(x)
+    ax.set_xticklabels(xlabels)
+    ax.legend()
+    
+    for i in range(len(rects)):
+        autolabel(rects[i], ax)
+
+    fig.tight_layout()
+    plt.show()
+	
+group_lables = ['OIL & GAS', 'FINANCIAL SERVICES']
+
+plot_grouped_bar_graph(
+    xlabels = ['2000', '2008', '2020'],
+    values = [
+        [pd_00[pd_00.Sector == 'OIL & GAS']['Weightage'].values[0], 
+         pd_08[pd_08.Sector == 'OIL & GAS']['Weightage'].values[0],
+         pd_20[pd_20.Sector == 'OIL & GAS']['Weightage'].values[0]],
+        
+        [pd_00[pd_00.Sector == 'FINANCIAL SERVICES']['Weightage'].values[0], 
+         pd_08[pd_08.Sector == 'FINANCIAL SERVICES']['Weightage'].values[0],
+         pd_20[pd_20.Sector == 'FINANCIAL SERVICES']['Weightage'].values[0]]
+    ],
+    group_lables = group_lables
+) </i>
+
+<b>The two sectors that have continued to be in top 5 across these years are 'Oil and Gas' and 'Financial Services': </b>
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-2DuCP5VSpDE/XxSNwfM-JvI/AAAAAAAAFOA/HYO2LACCIlIMwKZ1zV-FqAHHtRvmurYGwCLcBGAsYHQ/s527/10.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="347" data-original-width="527" height="422" src="https://1.bp.blogspot.com/-2DuCP5VSpDE/XxSNwfM-JvI/AAAAAAAAFOA/HYO2LACCIlIMwKZ1zV-FqAHHtRvmurYGwCLcBGAsYHQ/w640-h422/10.PNG" width="640" /></a></div>
+
+</pre>

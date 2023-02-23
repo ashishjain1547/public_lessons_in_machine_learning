@@ -1,0 +1,116 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<nav class="customDynamicNav"> </nav>
+<div class="customTemporaryCodeHolder"> </div>
+<br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre># import pandas.rpy.common as com
+# # load the R package ISLR
+# infert = com.importr("ISLR")
+
+# # load the Auto dataset
+# auto_df = com.load_data('Auto')
+
+import pandas as pd
+import seaborn as sns
+%matplotlib inline
+
+data = {
+    "x": range(0, 100),
+    "y": range(100, 0, -1),
+    "z": range(0, 100),
+    "a": [4, 5] * 50,
+    "b": [4, 5, 6, 7] * 25
+}
+
+df = pd.DataFrame(data)
+print(df.head())
+
+corr = df.corr()
+print(corr)
+# plot the heatmap
+sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns)
+
+OUTPUT IN JUPYTER NOTEBOOK:
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-jwFvq4O41OM/Xnrn00vfqYI/AAAAAAAAEiA/Q7MNvNBcs7s5sgs2yemtlZmWvLvrYxB1wCLcBGAsYHQ/s1600/C.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="508" data-original-width="447" src="https://1.bp.blogspot.com/-jwFvq4O41OM/Xnrn00vfqYI/AAAAAAAAEiA/Q7MNvNBcs7s5sgs2yemtlZmWvLvrYxB1wCLcBGAsYHQ/s1600/C.PNG" /></a></div>
+
+Changing color scheme of heatmap:
+
+Code: 
+	sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns, cmap="YlGnBu")
+
+Output:
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-BHK8X8fO62g/XnroNPXrNWI/AAAAAAAAEiE/ezj74q-VjqkO5oB5x1IJ7FB026NA84CFgCLcBGAsYHQ/s1600/Capture.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="287" data-original-width="445" src="https://1.bp.blogspot.com/-BHK8X8fO62g/XnroNPXrNWI/AAAAAAAAEiE/ezj74q-VjqkO5oB5x1IJ7FB026NA84CFgCLcBGAsYHQ/s1600/Capture.PNG" /></a></div>
+
+Another:
+
+cmap = sns.diverging_palette(5, 250, as_cmap=True)
+sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns, cmap = cmap)
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-cEx_sBhQdqo/Xnrohb13laI/AAAAAAAAEiM/-WhRh1RGOOEyhlX_EfLQM_xWW4osWpkIQCLcBGAsYHQ/s1600/Capture.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="288" data-original-width="443" src="https://1.bp.blogspot.com/-cEx_sBhQdqo/Xnrohb13laI/AAAAAAAAEiM/-WhRh1RGOOEyhlX_EfLQM_xWW4osWpkIQCLcBGAsYHQ/s1600/Capture.PNG" /></a></div>
+
+Viewing heatmap like color scheme in the Pandas textual output itself:
+
+Code:
+
+cmap = sns.diverging_palette(5, 250, as_cmap=True)
+def magnify():
+    rtnVal = [dict(selector="th",
+                 props=[("font-size", "10px")]),
+            dict(selector="td",
+                 props=[('padding', "2px 2px")]),
+            dict(selector="th:hover",
+                 props=[("font-size", "16px")]),
+            dict(selector="tr:hover td:hover",
+                 props=[('max-width', '200px'),
+                        ('font-size', '16px')])]
+    return []
+
+
+corr.style.background_gradient(cmap, axis=1)\
+    .set_properties(**{'max-width': '80px', 'font-size': '14px'})\
+    .set_caption("Hover to magify")\
+    .set_precision(2)\
+    .set_table_styles(magnify())
+	
+Output:
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-PbzIXwePMxo/Xnro-u8-aQI/AAAAAAAAEic/K3FJjqnlUAgB4Q4igA7pJ7VE-OtvWbzXgCLcBGAsYHQ/s1600/Capture.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="187" data-original-width="298" src="https://1.bp.blogspot.com/-PbzIXwePMxo/Xnro-u8-aQI/AAAAAAAAEic/K3FJjqnlUAgB4Q4igA7pJ7VE-OtvWbzXgCLcBGAsYHQ/s1600/Capture.PNG" /></a></div>
+
+</pre>

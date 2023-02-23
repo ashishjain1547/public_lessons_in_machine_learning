@@ -1,0 +1,103 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        i.ib {
+            color: blue
+        }
+    </style>
+</head>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>
+<i class="ib">import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
+import numpy as np
+
+df_uganda = pd.read_excel('20220927.xlsx', sheet_name = 'Uganda')
+df_brazil = pd.read_excel('20220927.xlsx', sheet_name = 'Brazil')
+df_canada = pd.read_excel('20220927.xlsx', sheet_name = 'Canada')
+df_uk = pd.read_excel('20220927.xlsx', sheet_name = 'UK')
+df_kenya = pd.read_excel('20220927.xlsx', sheet_name = 'Kenya')
+df_uae = pd.read_excel('20220927.xlsx', sheet_name = 'UAE')
+df_germany = pd.read_excel('20220927.xlsx', sheet_name = 'Germany')
+df_russia = pd.read_excel('20220927.xlsx', sheet_name = 'Russia')
+df_us = pd.read_excel('20220927.xlsx', sheet_name = 'US')
+df_india = pd.read_excel('20220927.xlsx', sheet_name = 'India')
+df_global = pd.read_excel('20220927.xlsx', sheet_name = 'Global')
+
+df = df_uganda.merge(df_brazil, on = 'Timestamp', how = 'inner')
+df = df.merge(df_canada, on = 'Timestamp', how = 'inner')
+df = df.merge(df_uk, on = 'Timestamp', how = 'inner')
+df = df.merge(df_kenya, on = 'Timestamp', how = 'inner')
+df = df.merge(df_uae, on = 'Timestamp', how = 'inner')
+df = df.merge(df_germany, on = 'Timestamp', how = 'inner')
+df = df.merge(df_russia, on = 'Timestamp', how = 'inner')
+df = df.merge(df_us, on = 'Timestamp', how = 'inner')
+df = df.merge(df_india, on = 'Timestamp', how = 'inner')
+df = df.merge(df_global, on = 'Timestamp', how = 'inner')
+
+df.tail()
+</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGgPSC8DanQnxIEL1prAH5hzIZ-AIuPyOm4fhkGipfB9Bzmhcy8zx6dH8-3u4tIvM-uQVgvYDw5d1wR9bV7UsOpgA-8CvR0XSi-7lxTH_oRniNzpkNpiS6WruNbyS3ElDPa__VEywGbknMVXIA1Z2NTWIHAXl0NnlViobcUEt9er6wtqWb2ROBmTCfzA/s1308/1.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="227" data-original-width="1308" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGgPSC8DanQnxIEL1prAH5hzIZ-AIuPyOm4fhkGipfB9Bzmhcy8zx6dH8-3u4tIvM-uQVgvYDw5d1wR9bV7UsOpgA-8CvR0XSi-7lxTH_oRniNzpkNpiS6WruNbyS3ElDPa__VEywGbknMVXIA1Z2NTWIHAXl0NnlViobcUEt9er6wtqWb2ROBmTCfzA/s600/1.png"/></a></div>
+
+<h2>Range 10K</h2>
+
+<i class="ib">
+figure(figsize=(16, 6), dpi=80)
+
+plt.plot(df['Timestamp'], df['Current Views in UK'], label = "UK")
+plt.plot(df['Timestamp'], df['Current Views in Kenya'], label = "Kenya")
+plt.plot(df['Timestamp'], df['Current Views in UAE'], label = "UAE")
+
+plt.xticks(rotation = 90) 
+plt.legend()
+plt.show()
+</i>
+
+<h3>UAE, UK and Kenya</h3>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3Z04iyz9HJR19DwNT5QOu1JLIsTZtLOrpW1cx2jy-aEJdQjw5bezpuaByn2M5NWCiVcHelKNywjk3j1khMdvBm0dKfy8cNg_KmMEBRZqjSb9oYygvM20HRErAtjEJLKHI-QBZtRLUAP982exnEFleTK8Bp44CI5OePXKX8F9YAOJy-_1Hab5oWNLafg/s948/2.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="432" data-original-width="948" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3Z04iyz9HJR19DwNT5QOu1JLIsTZtLOrpW1cx2jy-aEJdQjw5bezpuaByn2M5NWCiVcHelKNywjk3j1khMdvBm0dKfy8cNg_KmMEBRZqjSb9oYygvM20HRErAtjEJLKHI-QBZtRLUAP982exnEFleTK8Bp44CI5OePXKX8F9YAOJy-_1Hab5oWNLafg/s600/2.png"/></a></div>
+
+<h2>Range 20K</h2>
+
+<i class="ib">
+figure(figsize=(16, 6), dpi=80)
+
+plt.plot(df['Timestamp'], df['Current Views in Germany'], label = "Germany")
+plt.plot(df['Timestamp'], df['Current Views in Russia'], label = "Russia")
+plt.xticks(rotation = 90) 
+plt.legend()
+plt.show()
+</i>
+
+<h3>Germany, Russia</h3>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5ebHGuMJsCnMUimWRi8gsCviW6Mpl4YJuehiPpZeSMBXCJM4djSTXpu3T2du7DKbELa_qespe9fgDyit0rBhwzYY4Ghr7epRBHO6-SFOUVuEHmFluhZ8FXLLLj2uap1OMGSmc2D2nYJv7nTqX5U_nPa6iixm2UcuRc3DE6_Y-KjSxsPXMKAvD3I89-Q/s948/3.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="432" data-original-width="948" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5ebHGuMJsCnMUimWRi8gsCviW6Mpl4YJuehiPpZeSMBXCJM4djSTXpu3T2du7DKbELa_qespe9fgDyit0rBhwzYY4Ghr7epRBHO6-SFOUVuEHmFluhZ8FXLLLj2uap1OMGSmc2D2nYJv7nTqX5U_nPa6iixm2UcuRc3DE6_Y-KjSxsPXMKAvD3I89-Q/s600/3.png"/></a></div>
+
+</pre>
+<span style="display: none">Tags: Python,Technology,Data Visualization,</span>

@@ -1,0 +1,27 @@
+HTML Content
+Daniel Marsh-Patrick
+
+https://store.office.com/addinsinstallpage.aspx?rs=en-001&assetid=WA200001930
+
+
+Dynamically Embed a Web Page in a Power BI Report
+https://www.youtube.com/watch?v=syzA3PZx3qk
+
+
+
+Create a Dynamic HTML Slider for Power BI
+https://dataveld.com/2018/01/27/create-a-dynamic-html-slider-for-power-bi/
+
+
+
+Generate visualizations in Power BI using Python Scripts
+https://www.mssqltips.com/sqlservertip/5863/generate-visualizations-in-power-bi-using-python-scripts/
+
+
+Data Visualization with Power BI
+https://www.datacamp.com/community/tutorials/data-visualisation-powerbi
+
+
+Power BI Custom Visuals - HTML Viewer
+https://www.youtube.com/watch?v=EUfuUOqOZ2Y
+

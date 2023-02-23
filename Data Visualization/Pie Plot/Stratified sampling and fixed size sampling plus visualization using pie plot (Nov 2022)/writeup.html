@@ -1,0 +1,153 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .ib {
+            color: blue
+        }
+
+        .ig {
+            color: green
+        }
+
+        .ir {
+            color: red
+        }
+
+        .customLink {
+            background-color: #4CAF50;
+            border: none;
+            color: white !important;
+            padding: 8px 13px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .customLink:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<a class="customLink toggleBtn" href="https://github.com/ashishjain1547/pubML/blob/main/e15_stratified_sampling_and_fixed_size_sampling_plus_vis_using_pieplot/p1.ipynb" target="_blank">Download Code And Data</a>
+
+<pre><h1>1. Stratified Sampling Using Pandas</h1>
+
+<i class="ib">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+complete_data = pd.read_csv('sales_data_sample.csv')
+
+colslist = ['COUNTRY', 'PRODUCTLINE']
+train_size = 0.33
+
+data_sample = complete_data.groupby(colslist, group_keys=False).apply(
+    lambda x: x.sample(
+        int(train_size*len(x)), random_state=1
+    )
+)
+
+complete_data.head()</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzs28Qwuft_ZnyOl9DOp2xDGCQP9-F7NetGAMI3C0bWx_8A1uP0PV-oPYmnI243NbHwWQRC8bAzD4I9w4i8AjA6eH_V1zjFH23eLY-UdfIX8SlLd0Aq0AhK1jK7GEQrX_wCravZrOk8OHlHq8ur0rvjhPzCIpMePqjW2ouopXDYSDmjA2slqAXpoWSBA/s1079/Screenshot%20from%202022-11-03%2021-06-40.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="312" data-original-width="1079" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzs28Qwuft_ZnyOl9DOp2xDGCQP9-F7NetGAMI3C0bWx_8A1uP0PV-oPYmnI243NbHwWQRC8bAzD4I9w4i8AjA6eH_V1zjFH23eLY-UdfIX8SlLd0Aq0AhK1jK7GEQrX_wCravZrOk8OHlHq8ur0rvjhPzCIpMePqjW2ouopXDYSDmjA2slqAXpoWSBA/s600/Screenshot%20from%202022-11-03%2021-06-40.png"/></a></div>
+
+<i class="ib">complete_data.shape</i>
+<i class="ig">(2823, 25)</i>
+
+<i class="ib">data_sample.shape</i>
+<i class="ig">(865, 25)</i>
+
+<i class="ib">
+def plot_pie(labels, sizes, title = ""):
+    colors = ['#f47961', '#f0c419', '#255c61', '#78909c', '#6ad4cf', '#17aee8', '#5c6bc0', '#444b6e', '#ef4c60', '#744593', 
+              '#ee5691', '#9ccc65', '#708b75', '#d1cb65', '#0d8de1', '#a4554b', '#694f5d', '#45adb3', '#26a69a', '#bdc7cc', ]
+    colors = colors[0:len(labels)]
+    
+    explode = (0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)  # explode 1st slice
+    explode = explode[0:len(labels)]
+    
+    # Plot
+    plt.figure(num=None, figsize=(9, 7), dpi=80, facecolor='w', edgecolor='k')
+    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.title(title)
+    plt.axis('equal')
+    plt.show()
+</i>
+
+<i class="ib">
+pie_plot_data = complete_data.groupby('COUNTRY', as_index=False)['COUNTRY'].value_counts()
+pie_plot_data.sort_values(by=['count'], inplace = True)
+
+pie_plot_data.head()
+</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0AxgtbivM4ypXHVbaQo_DHFb4bPdZOb1_aL3e_jIHZ2cAZDt1QpCxAQMGf-kklrZwP7hRG7dAvxKUn7FwAF7mpin1CtejL3QOQGIy1Hq2I0Pve7cPx5HjHzKe167IEfWwsWYoIamv0eDtJEBjtVfxDXdN0FsjQuOuPqgwW-3FfiS1B_eMq4zbxndZUw/s180/Screenshot%20from%202022-11-03%2021-12-41.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="180" data-original-width="172" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0AxgtbivM4ypXHVbaQo_DHFb4bPdZOb1_aL3e_jIHZ2cAZDt1QpCxAQMGf-kklrZwP7hRG7dAvxKUn7FwAF7mpin1CtejL3QOQGIy1Hq2I0Pve7cPx5HjHzKe167IEfWwsWYoIamv0eDtJEBjtVfxDXdN0FsjQuOuPqgwW-3FfiS1B_eMq4zbxndZUw/s600/Screenshot%20from%202022-11-03%2021-12-41.png"/></a></div>
+
+<i class="ib">plot_pie(pie_plot_data.COUNTRY.values, pie_plot_data['count'].values, 'Countries Before Sampling')</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8_rH4-_STABwkRwFoPe8N_HbcvjKy-plo1Jl06JisLMlK2j_p-fLbAIblPmWS0Nz2hEUrpvEajhxJjuBnKZe08oIvbxY9uswA3y--UNlXRTnTRriid1l17GI8FruvFCbNn88M5ufA0j-DP841tfqnVMGylZce1B52e01XR5hYG8IB7PY9CC5WYuRiSw/s536/Screenshot%20from%202022-11-03%2021-14-48.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="467" data-original-width="536" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8_rH4-_STABwkRwFoPe8N_HbcvjKy-plo1Jl06JisLMlK2j_p-fLbAIblPmWS0Nz2hEUrpvEajhxJjuBnKZe08oIvbxY9uswA3y--UNlXRTnTRriid1l17GI8FruvFCbNn88M5ufA0j-DP841tfqnVMGylZce1B52e01XR5hYG8IB7PY9CC5WYuRiSw/s600/Screenshot%20from%202022-11-03%2021-14-48.png"/></a></div>
+
+<i class="ib">pie_plot_data = data_sample.groupby('COUNTRY', as_index=False)['COUNTRY'].value_counts()
+pie_plot_data.sort_values(by=['count'], inplace = True)
+pie_plot_data.head()
+</i>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAALSif95UUORV8GI35ZWKCo8w0sF2gO7jGn8pCtz5Wqecn44nAmZyFCBqvK7HWXUSIKXrvWCGx9IJKphYCijamJ5uWrpO3G_o_KUa7obH2E_13_WnUI3aju078kOLOw-iPQFJIg95oyMAQV9pBbOowtTD99GpslJCerWrZ5adAp6Ph2lRCgZnLeCyZQ/s194/Screenshot%20from%202022-11-03%2021-16-32.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="400" data-original-height="187" data-original-width="194" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAALSif95UUORV8GI35ZWKCo8w0sF2gO7jGn8pCtz5Wqecn44nAmZyFCBqvK7HWXUSIKXrvWCGx9IJKphYCijamJ5uWrpO3G_o_KUa7obH2E_13_WnUI3aju078kOLOw-iPQFJIg95oyMAQV9pBbOowtTD99GpslJCerWrZ5adAp6Ph2lRCgZnLeCyZQ/s400/Screenshot%20from%202022-11-03%2021-16-32.png"/></a></div>
+
+<i class="ib">plot_pie(pie_plot_data.COUNTRY.values, pie_plot_data['count'].values, 'Countries After Sampling')</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiszFKNzeKMBYP6_MVcW-0a1tJLmWIFlGBWkGCXk1kKbbMIrA21x7sqMefTJdc3fuAo4ctwn2M-WLWffNR2M7dUDH4It9y4bwuzF1oOuK43pO1rxIv_3rpXeH4_T1omns7nJuXvxyfJGGEN60QPQnMyY0yQycL9Qg_rTUeR2SBxB2f_LLkDma9jSyU1sA/s548/Screenshot%20from%202022-11-03%2021-17-44.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="472" data-original-width="548" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiszFKNzeKMBYP6_MVcW-0a1tJLmWIFlGBWkGCXk1kKbbMIrA21x7sqMefTJdc3fuAo4ctwn2M-WLWffNR2M7dUDH4It9y4bwuzF1oOuK43pO1rxIv_3rpXeH4_T1omns7nJuXvxyfJGGEN60QPQnMyY0yQycL9Qg_rTUeR2SBxB2f_LLkDma9jSyU1sA/s600/Screenshot%20from%202022-11-03%2021-17-44.png"/></a></div>
+
+<h1>2. Fixed Size Sampling With Equal Representation When Number of Records is Too Large</h1>
+
+<i class="ib">data_sample = complete_data.groupby(colslist, group_keys=False).apply(
+    lambda x: x.sample(n = 1, random_state=1)
+).reset_index(drop=True) 
+
+pie_plot_data = data_sample.groupby('COUNTRY', as_index=False)['COUNTRY'].value_counts()
+pie_plot_data.sort_values(by=['count'], inplace = True)
+
+pie_plot_data.head()
+</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6pcvQWo7DFyFdt5Y9Rz97T9Wr7qYii3CPHBuJqQydXYNWs20mItdV4tE8yK5Elu_K7JPQ8srslakiBwxufC0wLiVGzzbMlQXcKWsPt4itvL9YbR8_HGPBxS0_DT_rUY8eybBLehuZ7zXc-vBGYZ5aQndUxBNzwgHKAXHAOkPHXP5T2TVpAeakxCvHww/s188/Screenshot%20from%202022-11-03%2021-20-26.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="400" data-original-height="181" data-original-width="188" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6pcvQWo7DFyFdt5Y9Rz97T9Wr7qYii3CPHBuJqQydXYNWs20mItdV4tE8yK5Elu_K7JPQ8srslakiBwxufC0wLiVGzzbMlQXcKWsPt4itvL9YbR8_HGPBxS0_DT_rUY8eybBLehuZ7zXc-vBGYZ5aQndUxBNzwgHKAXHAOkPHXP5T2TVpAeakxCvHww/s400/Screenshot%20from%202022-11-03%2021-20-26.png"/></a></div>
+
+<i class="ib">pie_plot_data.tail()</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvndmgJp_dLHmawd3wM6axOEwyc7e0OPl3CorpSuXuq_1k-Zylkgs5_7yyhwyXb3cG0wDCFhGoMNo039EpVe8iLe6k5wgzUyvUNlzozWCxQd4q5cXSQ85sOXTolTHfwKprmB-cOBNdIPKat6qel9W1jiMiCWVmVeqB7v2kAyNpJSQlWJCQZh5ncRhvpw/s188/Screenshot%20from%202022-11-03%2021-21-06.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="400" data-original-height="181" data-original-width="188" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvndmgJp_dLHmawd3wM6axOEwyc7e0OPl3CorpSuXuq_1k-Zylkgs5_7yyhwyXb3cG0wDCFhGoMNo039EpVe8iLe6k5wgzUyvUNlzozWCxQd4q5cXSQ85sOXTolTHfwKprmB-cOBNdIPKat6qel9W1jiMiCWVmVeqB7v2kAyNpJSQlWJCQZh5ncRhvpw/s400/Screenshot%20from%202022-11-03%2021-21-06.png"/></a></div>
+
+<i class="ib">plot_pie(pie_plot_data.COUNTRY.values, pie_plot_data['count'].values, 'Countries After Sampling')</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNeYEz5v_iEyc2DpshtIbZoDGOAvsL-tKMRWxY-V56C8LQQXQSKSkDJJ0lBwsOsfe12v-N7ddcuJPvo0wWWxYyacNSmbALw6tse9KTTYtxKS4egmu98lucUht1pk1k0QhQ8JSni-JTvQ2X8C7bOGA8WXHb9saDtLN2wPb99e2MKScLLcrf8nD_ujTnVA/s539/Screenshot%20from%202022-11-03%2021-22-09.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="470" data-original-width="539" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNeYEz5v_iEyc2DpshtIbZoDGOAvsL-tKMRWxY-V56C8LQQXQSKSkDJJ0lBwsOsfe12v-N7ddcuJPvo0wWWxYyacNSmbALw6tse9KTTYtxKS4egmu98lucUht1pk1k0QhQ8JSni-JTvQ2X8C7bOGA8WXHb9saDtLN2wPb99e2MKScLLcrf8nD_ujTnVA/s600/Screenshot%20from%202022-11-03%2021-22-09.png"/></a></div>
+
+<i class="ib">data_sample[data_sample['COUNTRY'] == 'USA'][colslist]</i>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibG3rdmZDwA-3074rgmTHRbyj17QV1EVBtzOnjpmJWL0tZbD2YIxgkzci88QFQWK9U4VbCFUtnJkeRukFvQ29pLw4dcCQI9d7cTUgY2qUwoBEEV4UUpegeJDQWD-eKueAyQcLwGzgt5gfqzqdll7zE11ijM6SeUNW6-kf7fIgpWK9GiyB707tronLhjw/s239/Screenshot%20from%202022-11-03%2021-23-05.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="239" data-original-width="234" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibG3rdmZDwA-3074rgmTHRbyj17QV1EVBtzOnjpmJWL0tZbD2YIxgkzci88QFQWK9U4VbCFUtnJkeRukFvQ29pLw4dcCQI9d7cTUgY2qUwoBEEV4UUpegeJDQWD-eKueAyQcLwGzgt5gfqzqdll7zE11ijM6SeUNW6-kf7fIgpWK9GiyB707tronLhjw/s600/Screenshot%20from%202022-11-03%2021-23-05.png"/></a></div>
+</pre>
+<span style="display: none;">Tags: Technology,Data Visualization,Machine Learning,</span>

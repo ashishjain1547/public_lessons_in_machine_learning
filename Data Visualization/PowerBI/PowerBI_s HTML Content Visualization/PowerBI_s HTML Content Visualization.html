@@ -1,0 +1,122 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>For this post, we have an Excel:
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-3trKkL7lO5Q/X5hO_vWF3KI/AAAAAAAAFwg/GMUvakaAZdMOZUk-eX4aUr0gTwFsdTfXACLcBGAsYHQ/s486/1a%2B-%2BExcel.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="128" data-original-width="486" src="https://1.bp.blogspot.com/-3trKkL7lO5Q/X5hO_vWF3KI/AAAAAAAAFwg/GMUvakaAZdMOZUk-eX4aUr0gTwFsdTfXACLcBGAsYHQ/s600/1a%2B-%2BExcel.png"/></a></div>
+
+We will load it using "Get Data" facility of PowerBI.
+
+If data is coming from a different source, for example, Snowflake:
+
+We use PowerBI's 'Get Data' again to pull the data:
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-xCUn264BOFA/X5hO_jwLPOI/AAAAAAAAFwk/oIK2pxsHlZwwQQyTRnYMEKZDVQlEYrl0gCLcBGAsYHQ/s636/1b%2B-%2BUse%2B%2527Get%2BData%2527%2Bfor%2BSnowflake.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="636" data-original-width="593" src="https://1.bp.blogspot.com/-xCUn264BOFA/X5hO_jwLPOI/AAAAAAAAFwk/oIK2pxsHlZwwQQyTRnYMEKZDVQlEYrl0gCLcBGAsYHQ/s600/1b%2B-%2BUse%2B%2527Get%2BData%2527%2Bfor%2BSnowflake.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-SX1A2BO4EPE/X5hO_vR1ZwI/AAAAAAAAFwo/OeF6wu7rFwoKqfkCZD8Kvfp3Jm3t4tHgQCLcBGAsYHQ/s593/1c%2B-%2BSnowflake%2BDetails.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="448" data-original-width="593" src="https://1.bp.blogspot.com/-SX1A2BO4EPE/X5hO_vR1ZwI/AAAAAAAAFwo/OeF6wu7rFwoKqfkCZD8Kvfp3Jm3t4tHgQCLcBGAsYHQ/s600/1c%2B-%2BSnowflake%2BDetails.png"/></a></div>
+
+Note above that we did not pass the protocol for 'Server' field such as 'https':
+
+We entered only: "survival8.west-europe.azure.snowflakecomputing.com"
+
+Because if "https://survival8.west-europe.azure.snowflakecomputing.com" is opened in the browser, it opens the Snowflake Worksheet.
+
+We will transform it in PowerBI as shown below:
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-axH7LLsIOFQ/X5hPAQKqZbI/AAAAAAAAFws/t9KV6XvGTlsoXQ2q7J8HEMRLDQdyhMq9QCLcBGAsYHQ/s712/2%2B-%2BTransform%2BTab.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="273" data-original-width="712" src="https://1.bp.blogspot.com/-axH7LLsIOFQ/X5hPAQKqZbI/AAAAAAAAFws/t9KV6XvGTlsoXQ2q7J8HEMRLDQdyhMq9QCLcBGAsYHQ/s600/2%2B-%2BTransform%2BTab.png"/></a></div>
+
+In the 'Run R Script' window:
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-rU9_0FWwMEQ/X5hPAswNjbI/AAAAAAAAFww/QOtj8Ux9JpwjzgWAcywBGuI1AFPYco5_QCLcBGAsYHQ/s587/3%2B-%2BR%2Beditor.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="389" data-original-width="587" src="https://1.bp.blogspot.com/-rU9_0FWwMEQ/X5hPAswNjbI/AAAAAAAAFww/QOtj8Ux9JpwjzgWAcywBGuI1AFPYco5_QCLcBGAsYHQ/s600/3%2B-%2BR%2Beditor.png"/></a></div>
+
+<i style="color: blue;"># 'dataset' holds the input data for this script
+dataset$derived_dt <- format(as.Date(dataset$datetime), '%Y-%m-%d')
+output <- dataset </i>
+
+Press 'OK' and select 'Ignore Privacy Level Checks' in the next prompt.
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/--J85LK2_tgM/X5hPAmo2fYI/AAAAAAAAFw0/aqAJbWtDzy8moKgc2GgRDj8pA2waQ295QCLcBGAsYHQ/s608/4%2B-%2BIgnore%2BPrivacy%2BLevels.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="282" data-original-width="608" src="https://1.bp.blogspot.com/--J85LK2_tgM/X5hPAmo2fYI/AAAAAAAAFw0/aqAJbWtDzy8moKgc2GgRDj8pA2waQ295QCLcBGAsYHQ/s600/4%2B-%2BIgnore%2BPrivacy%2BLevels.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-0vXcxzT2FXM/X5hPBDCUXQI/AAAAAAAAFw4/XKLEEcYabE8VrQCjiC94pegE7zLJHqPLwCLcBGAsYHQ/s620/5%2B-%2BTransformed%2Bdata.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="126" data-original-width="620" src="https://1.bp.blogspot.com/-0vXcxzT2FXM/X5hPBDCUXQI/AAAAAAAAFw4/XKLEEcYabE8VrQCjiC94pegE7zLJHqPLwCLcBGAsYHQ/s600/5%2B-%2BTransformed%2Bdata.png"/></a></div>
+
+Then go to 'Home' tab in the top ribbon and then click on first icon: 'Close & Apply'
+
+Add the custom visual 'HTML Content':
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-yo-T9hukLHg/X5hPBen4WyI/AAAAAAAAFw8/NcRo9KkOlswBl8QKczoCKEBtB0YI6QgPACLcBGAsYHQ/s361/6a%2B-%2BNext%2Bfor%2BHTML%2BContent%252C%2Bwe%2Bimport%2Ba%2Bvisual%2Bfrom%2Ba%2Bfile.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="333" data-original-width="361" src="https://1.bp.blogspot.com/-yo-T9hukLHg/X5hPBen4WyI/AAAAAAAAFw8/NcRo9KkOlswBl8QKczoCKEBtB0YI6QgPACLcBGAsYHQ/s600/6a%2B-%2BNext%2Bfor%2BHTML%2BContent%252C%2Bwe%2Bimport%2Ba%2Bvisual%2Bfrom%2Ba%2Bfile.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-1eXROWfduyw/X5hPBYRLWuI/AAAAAAAAFxA/gNWPwXE80jwh383Z54vrn-mFhkPINgo5QCLcBGAsYHQ/s934/6b%2B-%2BA%2Bblank%2BHTML%2BContent%2BVisualization.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="308" data-original-width="934" src="https://1.bp.blogspot.com/-1eXROWfduyw/X5hPBYRLWuI/AAAAAAAAFxA/gNWPwXE80jwh383Z54vrn-mFhkPINgo5QCLcBGAsYHQ/s600/6b%2B-%2BA%2Bblank%2BHTML%2BContent%2BVisualization.png"/></a></div>
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-sjgTcCvL6wA/X5hPB3ZGarI/AAAAAAAAFxE/4USRZ9H41EgCyQKug8_P5eHyxTHsfjkaACLcBGAsYHQ/s415/6c%2B-%2BCreating%2Bnew%2Bcolumn.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="415" data-original-width="192" src="https://1.bp.blogspot.com/-sjgTcCvL6wA/X5hPB3ZGarI/AAAAAAAAFxE/4USRZ9H41EgCyQKug8_P5eHyxTHsfjkaACLcBGAsYHQ/s600/6c%2B-%2BCreating%2Bnew%2Bcolumn.png"/></a></div>
+
+We will create this custom column to hold the HTML code derived from other columns.
+
+<i style="color: blue;">HTML = "&lt;h1>" & 'Sheet1 (2)'[heading] & "&lt;/h1>&lt;h3>" & 'Sheet1 (2)'[subtext] & "&lt;/h3><&lt;i style='color: red;'>" & 'Sheet1 (2)'[derived_dt] & "&lt;/i>"</i>
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-HdfT7ZcbVGM/X5hPCN0XfcI/AAAAAAAAFxI/HW9-g-__2o8Q4WIC8YkHV4vlPAR_POnLQCLcBGAsYHQ/s1003/7%2B-%2BNew%2BColumn.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="213" data-original-width="1003" src="https://1.bp.blogspot.com/-HdfT7ZcbVGM/X5hPCN0XfcI/AAAAAAAAFxI/HW9-g-__2o8Q4WIC8YkHV4vlPAR_POnLQCLcBGAsYHQ/s600/7%2B-%2BNew%2BColumn.png"/></a></div>
+
+Next, click the 'Tick Mark' to save it and drag the column 'HTML' into the 'HTML Content' view.
+
+View looks like this:
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-3dBivpDeYds/X5hPCKdFftI/AAAAAAAAFxM/1kggFDH5kokAOjDe-w07wZ43LmAybz7jwCLcBGAsYHQ/s381/8%2B-%2BOutput.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="381" data-original-width="205" src="https://1.bp.blogspot.com/-3dBivpDeYds/X5hPCKdFftI/AAAAAAAAFxM/1kggFDH5kokAOjDe-w07wZ43LmAybz7jwCLcBGAsYHQ/s600/8%2B-%2BOutput.png"/></a></div>
+
+Note: the output is not in the same order as in the Excel sheet.
+
+You can find the PowerBI file, Excel file and HTML Content Visual File here: <a href="https://github.com/ashishjain1547/PublicSurvival8CodeSnippets/tree/main/PowerBI's%20HTML%20Content%20Visual" target="_blank">GitHub</a>
+</pre>

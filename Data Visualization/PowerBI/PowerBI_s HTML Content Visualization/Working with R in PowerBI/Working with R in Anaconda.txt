@@ -1,0 +1,8 @@
+We have Anaconda already installed on a Windows 10 machine.
+We will install 'R' packages using 'conda' command:
+
+Creating a new environment with R: When creating a new environment, you can use R by explicitly including r-base in your list of packages.
+
+With conda 4.6:
+ conda create -n r-env r-essentials r-base
+

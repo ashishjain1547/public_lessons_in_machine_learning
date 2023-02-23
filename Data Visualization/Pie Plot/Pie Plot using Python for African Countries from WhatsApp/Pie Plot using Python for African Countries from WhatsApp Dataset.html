@@ -1,0 +1,275 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        });
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .customOl {
+            font-size: 15px;
+        }
+
+        .customPre {
+            white-space: pre-wrap;
+        }
+
+        .customLink {
+            background-color: #4CAF50;
+            border: none;
+            color: white !important;
+            padding: 8px 13px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .customLink:hover {
+            text-decoration: none;
+        }
+
+        .custom_5px_0px_padding_noMargin {
+            padding: 5px 0px;
+            margin: 0px;
+        }
+
+        i.ig {
+            color: green
+        }
+
+        i.ibb {
+            display: block;
+            background-color: black;
+            color: white;
+        }
+
+        i.ibr {
+            display: block;
+            background-color: red;
+            color: white;
+        }
+
+        i.ibg {
+            background-color: rgb(50, 50, 50);
+            color: white;
+            display: block;
+        }
+    </style>
+</head>
+
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>
+FYI:
+Country: Code 
+Kenya: +254
+Uganda: +256
+
+<i class="ibb">import os
+import re
+import json
+from time import time
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+import phonenumbers
+from phonenumbers.phonenumberutil import region_code_for_country_code
+from phonenumbers.phonenumberutil import region_code_for_number
+import pycountry
+
+
+for path, subdirs, files in os.walk("f1/WA_Africa_202112/"):
+    p = path
+    files_list = files
+
+all_lines = []
+
+for i in files_list:
+    with open(os.path.join(p, i), mode='r', encoding='utf-8') as f:
+        lines = f.readlines()
+        all_lines += lines
+
+lines_2 = []
+for j in all_lines:
+    if "Ashish Jain" in j:
+        pass
+    else:
+        lines_2.append(j)
+
+lines_3 = []
+lines_wags = []
+for i in lines_2:
+    if "https://chat.whatsapp.com/" in i:
+        lines_wags.append(i)
+    else:
+        lines_3.append(i)
+
+phone_numbers = []
+lines_temp = []
+for i in lines_3:
+    
+    x = re.findall(r"[+][0-9]{3}\s[0-9][0-9][0-9]\s[0-9]{6}", i) # +123 123 123456
+    y = re.findall(r"[+][0-9][0-9][0-9]\s[0-9]{9}", i) # +254 111222333
+    z = re.findall(r"[+][0-9][0-9][0-9]\s[0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]", i) # +258 12 345 6789 
+    a = re.findall(r"[+][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9]{7}", i) # +92 123 1234567
+    b = re.findall(r"[+][0-9][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]", i) # +234 123 456 1234
+    c = re.findall(r"[+][0-9][0-9]\s[0-9][0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9][0-9][0-9]", i) # +44 1234 123456
+    d = re.findall(r"[0][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]", i) # 0123412345
+    e = re.findall(r"[+][0-9]{11}", i) # +12345678901
+    f = re.findall(r"[+][0-9][0-9][0-9]\s[0-9][0-9][0-9][-][0-9][0-9][0-9][0-9][0-9][0-9]", i) # +212 123-123456
+    g = re.findall(r"[+][0-9]\s[\(][0-9][0-9][0-9][\)]\s[0-9]{3}[-][0-9]{4}", i) # +1 (123) 123-1234
+    h = re.findall(r"[+][0-9][0-9]\s[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]", i) # +31 12345671234
+    i2 = re.findall(r"[+][0-9]{2}\s[0-9]{5}\s[0-9]{5}", i) # +91 12345 12345
+    j = re.findall(r"[+][0-9]{2}\s[0-9]{3}[-][0-9]{4}[-][0-9]{5}", i) # +62 123-1234-12345
+    k = re.findall(r"[+][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9][0-9]\s[0-9][0-9]\s[0-9][0-9]", i) # +90 123 123 27 12
+    l = re.findall(r"[+][0-9]{2}\s[0-9]{4}\s[0-9]{3}\s[0-9]{3}", i) # +91 1234 123 123
+    m = re.findall(r"[+][0-9]{2}\s[0-9]{2}\s[0-9]{3}\s[0-9]{4}", i) # +27 65 123 1234
+    n = re.findall(r"[+][0-9]{5}[-][0-9]{7}", i) # +12345-1234567
+    o = re.findall(r"[+][0-9]{3}\s[0-9]{4}\s[0-9]{4}", i) # +968 1234 1234
+    p = re.findall(r"[+][0-9]{12}", i) # +123451234512
+    q = re.findall(r"[+][0-9]{3}\s[0-9]{8}", i) # +229 12345678
+    r = re.findall(r"[+][0-9]{2}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}", i) # +40 123 123 123 
+    s = re.findall(r"[+][0-9]{2}\s[0-9]{3}\s[0-9]{3}\s[0-9]{4}", i) # +98 123 123 1234
+    t = re.findall(r"[+][0-9]{3}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}", i) # +123 123 123 123
+    u = re.findall(r"[+][0-9]{3}\s([0-9]{2}\s){3}[0-9]{2}", i) # +228 12 34 56 78
+    v = re.findall(r"[+][0-9]{3}\s[0-9]{2}\s[0-9]{6}", i) # +232 30 123456
+    w2 = re.findall(r"[+][0-9]{3}\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}\s[0-9]{2}", i) # +265 123 45 67 89
+    x2 = re.findall(r"[+][0-9]{3}\s[0-9]{2}\s[0-9]{3}\s[0-9]{3}", i) # # +267 12 123 123
+    
+    w = x + y + z + a + b + c + d + e + f + g + h + i2 + j + k + l + m + n + o + p + q + r + s + t + u + v + w2 + x2
+    
+    phone_numbers += w
+    lines_temp += [i for j in range(len(w))]
+
+
+
+ts = str(time())
+
+print("Before:", len(phone_numbers))
+phone_numbers = sorted(set(phone_numbers))
+print("After:", len(phone_numbers))
+with open(file = "phone_numbers_" + ts + ".txt", mode="w", encoding = "utf-8") as f:
+    f.write(json.dumps(phone_numbers))
+
+phone_numbers_2 = [i.replace("\xa0", " ") for i in phone_numbers]
+
+phn_num_list = []
+cntry = []
+
+for i in phone_numbers_2:
+    try:
+        pn = phonenumbers.parse(i)
+        # print(region_code_for_country_code(pn.country_code))
+
+        country = pycountry.countries.get(alpha_2 = region_code_for_number(pn))
+        
+        phn_num_list.append(i)
+        cntry.append(country.name)
+    except:
+        pass
+
+df1 = pd.DataFrame({
+    "phn": phn_num_list,
+    "cntry": cntry
+})
+
+df2 = df1.groupby('cntry').count()
+
+
+def plot_pie(labels, sizes, title = ""):
+    colors = ['#f47961', '#f0c419', '#255c61', '#78909c', '#6ad4cf', '#17aee8', '#5c6bc0', '#444b6e', '#ef4c60', '#744593', 
+              '#ee5691', '#9ccc65', '#708b75', '#d1cb65', '#0d8de1', '#a4554b', '#694f5d', '#45adb3', '#26a69a', '#bdc7cc', ]
+    colors = colors[0:len(labels)]
+    
+    explode = explode = [0.1] + [0]*1000  # explode 1st slice
+    explode = explode[0:len(labels)]
+    
+    # Plot
+    plt.figure(num=None, figsize=(9, 7), dpi=80, facecolor='w', edgecolor='k')
+    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.title(title)
+    plt.axis('equal')
+    plt.show()
+
+
+top_10 = sorted(df2.phn.values)[::-1][0:9]
+
+df2.head()
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEg-R3e5g-rR1NpOZVg0lEFj7VEhbcoiGEVeHEH2NundauumW1FadsqLe6ixlE-RlsPV_KA72gPCdbvqlZMCZceNADwYw1Jo7CmrvqqAZih9zLrdK3OTXTbrbsDezDv2_6U5yS3MVub7M0lIzfh5b9lUJZqrnvhLgo-zjheY3OVP2xcOdIKxJ2jWhEKTIQ=s284" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="248" data-original-width="284" src="https://blogger.googleusercontent.com/img/a/AVvXsEg-R3e5g-rR1NpOZVg0lEFj7VEhbcoiGEVeHEH2NundauumW1FadsqLe6ixlE-RlsPV_KA72gPCdbvqlZMCZceNADwYw1Jo7CmrvqqAZih9zLrdK3OTXTbrbsDezDv2_6U5yS3MVub7M0lIzfh5b9lUJZqrnvhLgo-zjheY3OVP2xcOdIKxJ2jWhEKTIQ=s600"/></a></div>
+
+df2 = df2.reset_index()
+df2.head()
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEg9dOEw66NcuYy0nt16fRIsYL91Q7bqSrrHnXbz02_2BjQ2WHMp6baveEz79USPX4FQMIq1-PA2xbxxc7_lsX2TToyJ44R4u1dAXG0SKomQ6zfVJwuTtqPxKtkw55aEnYtJ-B27ZBEADNx68Ktb4fyB9o1jiesCx9vGD6erRPSUekNHRbT1y0JtNFtv2Q=s293" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="219" data-original-width="293" src="https://blogger.googleusercontent.com/img/a/AVvXsEg9dOEw66NcuYy0nt16fRIsYL91Q7bqSrrHnXbz02_2BjQ2WHMp6baveEz79USPX4FQMIq1-PA2xbxxc7_lsX2TToyJ44R4u1dAXG0SKomQ6zfVJwuTtqPxKtkw55aEnYtJ-B27ZBEADNx68Ktb4fyB9o1jiesCx9vGD6erRPSUekNHRbT1y0JtNFtv2Q=s600"/></a></div>
+
+
+def get_cntry_label(in_row):
+    if(in_row['phn'] in top_10):
+        return in_row['cntry']
+    else:
+        return 'Others'
+
+df2['cntry_lbl'] = df2.apply(get_cntry_label, axis = 1)
+df3 = df2[['cntry_lbl', 'phn']].groupby('cntry_lbl').sum('phn')
+
+df3
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEhM_JM0-V2C76WST1Dz6xf0w4KdDPO6lIjlfNRYEKQumAd6-PK9o2NDABtcXB55QkFvktoR4hbWVSZWnv9JT0nPf-p9TMNTnldPmhr0QUq_EOP1ZW0aExvVvrzyUepxPr3BUkmJJxW8yh08t3WPfdbxu-MwCi814MJtUCXi5gbAnP3LhFikhBK0P8vSHA=s459" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="459" data-original-width="266" src="https://blogger.googleusercontent.com/img/a/AVvXsEhM_JM0-V2C76WST1Dz6xf0w4KdDPO6lIjlfNRYEKQumAd6-PK9o2NDABtcXB55QkFvktoR4hbWVSZWnv9JT0nPf-p9TMNTnldPmhr0QUq_EOP1ZW0aExvVvrzyUepxPr3BUkmJJxW8yh08t3WPfdbxu-MwCi814MJtUCXi5gbAnP3LhFikhBK0P8vSHA=s600"/></a></div>
+
+plot_pie(df3.index, df3.phn.values, 'Countries')
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEhADkE8VnmxgqWLrpTwkKP-zunTTrjahyzxyJjgj06YWCe8p71ZSnrcPfnNIDd8DVF2g7-4w25W91qPJT2PM6KigfFOx8I4I_VF0SoxkqToy9doXlKmIZLGml4Ms1Ald-Ka6lSpXs7YoXo_QYOE586dlaYN6G4H1BQDMeSGPA1nDvPPeoSEBRB9TSuW0Q=s648" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="566" data-original-width="648" src="https://blogger.googleusercontent.com/img/a/AVvXsEhADkE8VnmxgqWLrpTwkKP-zunTTrjahyzxyJjgj06YWCe8p71ZSnrcPfnNIDd8DVF2g7-4w25W91qPJT2PM6KigfFOx8I4I_VF0SoxkqToy9doXlKmIZLGml4Ms1Ald-Ka6lSpXs7YoXo_QYOE586dlaYN6G4H1BQDMeSGPA1nDvPPeoSEBRB9TSuW0Q=s600"/></a></div>
+</i>    
+</pre>
+<span class="" style="display: none;">Tags: Technology,Data Visualization,Machine Learning,</span>

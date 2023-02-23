@@ -1,0 +1,164 @@
+<head>
+  <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $.ajax({
+              url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+              success: function (result) {
+                  $("div.customTemporaryCodeHolder").html(result);
+                  $("nav.customDynamicNav").html(
+                      $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                  );
+              }
+          });
+
+          $.ajax({
+              url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+              success: function (result) {
+                  $("span.customTempCodeHolderForSocialMedia").html(result);
+                  $("div.customSocialMediaBtnsWrapper").html(
+                      $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                  );
+              }
+
+          });
+      }); 
+  </script>
+  <!-- Google AdSense Using Machine Learning Code -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3071098372371409",
+          enable_page_level_ads: true
+      });
+  </script>
+
+  <style>
+      .customTempCodeHolderForSocialMedia {
+          display: none;
+      }
+
+      pre {
+          white-space: pre-wrap;
+          white-space: -moz-pre-wrap;
+          white-space: -pre-wrap;
+          white-space: -o-pre-wrap;
+          word-wrap: break-word;
+      }
+  </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>We are creating an HTML based 'Timeline' visual in PowerBI.
+We have a dataset in Excel file that looks like this:
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-DyWj0Lm1VJU/X55sjXUiMOI/AAAAAAAAFz0/uTm71Xj8rDA3VXTwCZvR0HiJn-g2Z7EEwCLcBGAsYHQ/s509/1%2B-%2BExcel%2Bdata.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600"
+    data-original-height="509" data-original-width="385"
+    src="https://1.bp.blogspot.com/-DyWj0Lm1VJU/X55sjXUiMOI/AAAAAAAAFz0/uTm71Xj8rDA3VXTwCZvR0HiJn-g2Z7EEwCLcBGAsYHQ/s600/1%2B-%2BExcel%2Bdata.png" /></a>
+</div>
+
+We are going to use Python to add clock icons according to time recorded in "dt_ts" column.
+
+Go to "Home >> Transform Data >> Transform >> Run Python Script".
+Ignore any Privacy warnings that you might get while running script the first time.
+
+Code for the "Python Editor":
+
+<i style="color: blue"># 'dataset' holds the input data for this script
+from dateutil.parser import parse
+
+def get_icon(x):
+ icon_dict = {
+  "1:0" : "&amp;#128336;",
+  "2:0" : "&amp;#128337;",
+  "3:0" : "&amp;#128338;",
+  "4:0" : "&amp;#128339;",
+  "5:0" : "&amp;#128340;",
+  "6:0" : "&amp;#128341;",
+  "7:0" : "&amp;#128341;",
+  "8:0" : "&amp;#128343;",
+  "9:0" : "&amp;#128344;",
+  "10:0" : "&amp;#128345;",
+  "11:0" : "&amp;#128346;",
+  "12:0" : "&amp;#128347;",
+  
+  "1:30" : "&amp;#128348;",
+  "2:30" : "&amp;#128349;",
+  "3:30" : "&amp;#128350;",
+  "4:30" : "&amp;#128351;",
+  "5:30" : "&amp;#128352;",
+  "6:30" : "&amp;#128353;",
+  "7:30" : "&amp;#128354;",
+  "8:30" : "&amp;#128355;",
+  "9:30" : "&amp;#128356;",
+  "10:30" : "&amp;#128357;",
+  "11:30" : "&amp;#128358;",
+  "12:30" : "&amp;#128359;",
+ }
+ hour = parse(x['dt_ts']).hour
+ min = parse(x['dt_ts']).minute
+ if min >= 0 and min &lt; 30:
+  min = 0
+ else:
+  min = 30
+ return icon_dict[str(hour) + ":" + str(min)]
+ 
+dataset['icon'] = dataset.apply(get_icon, axis = 1) </i>
+
+The above code creates a new column "icon".
+
+Then, "Close and Apply" 'Transform Window' and come back to "Home" tab.
+There on the right hand side, you can see your 'Sheet1' (Sheet1 in our case, this is the name of your Excel sheet or Database table).
+Click on "Ellipsis" and "New Column".
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-ksLu5WoqmDg/X55sjIS5IDI/AAAAAAAAFzs/-Ag10RSvDmAQC6WGZadrMeRdCTBKM-bEgCLcBGAsYHQ/s194/2%2B-%2BCreate%2Bnew%2Bcolumn.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="132" data-original-width="194"
+    src="https://1.bp.blogspot.com/-ksLu5WoqmDg/X55sjIS5IDI/AAAAAAAAFzs/-Ag10RSvDmAQC6WGZadrMeRdCTBKM-bEgCLcBGAsYHQ/s600/2%2B-%2BCreate%2Bnew%2Bcolumn.png" /></a>
+</div>
+
+What we are going to write next is a mix of HTML, CSS and DAX code.
+
+HTML = "&lt;p style='font-size: 25px'>" & Sheet1[icon] & ": Message: " & Sheet1[read_time] & "; Char: " & IF( 
+    OR(ISBLANK(Sheet1[col_with_empty_cells]), LEN(Sheet1[col_with_empty_cells]) = 0) , "NA", Sheet1[col_with_empty_cells] )  & "&lt;/p>"
+
+To get the HTML Visual, we get the HTML Visual from <a href="https://github.com/ashishjain1547/PublicSurvival8CodeSnippets/blob/main/PowerBI's%20HTML%20Content%20Visual/htmlContent.htmlContent443BE3AD55E043BF878BED274D3A6855.1.0.2.0.pbiviz" target="_blank">GitHub</a>
+
+Load the Visual using the downloaded "pbiviz" file. (Ref: <a href="https://survival8.blogspot.com/2020/10/powerbis-html-content-visualization.html" target="_blank">PowerBI's HTML Content Visualization</a>)
+
+To get the HTML content in the Visual:
+Either: Drag the column into the 'HTML Content' Visual.
+Or: Click on the 'Tick' mark before the "HTML" column in the side bar on the right named "Fields".
+
+Output:
+
+<div class="separator" style="clear: both;"><a
+  href="https://1.bp.blogspot.com/-FoJw__xa0bM/X55sjTX_ARI/AAAAAAAAFzw/7K1UvqLddR4s0x6-EU7JMAV0qpreZvk-wCLcBGAsYHQ/s592/3%2B-%2BOutput.png"
+  style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+    data-original-height="473" data-original-width="592"
+    src="https://1.bp.blogspot.com/-FoJw__xa0bM/X55sjTX_ARI/AAAAAAAAFzw/7K1UvqLddR4s0x6-EU7JMAV0qpreZvk-wCLcBGAsYHQ/s600/3%2B-%2BOutput.png" /></a>
+</div>
+
+<b>References  </b>
+
+% <a href="https://github.com/ashishjain1547/PublicSurvival8CodeSnippets/tree/main/Timeline%20View%20Using%20HTML%20Content%20Visual%20in%20PowerBI" target="_blank">GitHub Link to PowerBI Notebook and Excel used for this demo</a>
+% <a href="https://survival8.blogspot.com/2020/11/integration-of-anaconda-and-powerbi.html" target="_blank">Intergration of Anaconda and PowerBI</a>
+% <a href="https://store.office.com/addinsinstallpage.aspx?rs=en-001&assetid=WA200001930" target="_blank">Get 'HTML Content Visual' from store.office.com</a>
+% <a href="https://docs.microsoft.com/en-us/dax/or-function-dax/or-function-dax" target="_blank">OR Function DAX (Microsoft)</a>
+% <a href="https://docs.microsoft.com/en-us/dax/dax-operator-reference" target="_blank">DAX Operator Reference (Microsoft)</a>
+% <a href="https://www.alt-codes.net/clock-symbols" target="_blank">Clock Symbols</a>
+
+</pre>
+
+
+

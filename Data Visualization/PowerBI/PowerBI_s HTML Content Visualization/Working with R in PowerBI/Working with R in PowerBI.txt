@@ -1,0 +1,89 @@
+If you install an environment for R in Anaconda, and pass the path to that environment in PowerBI, PowerBI does not accept it as the correct location for finding 'R'.
+
+Also note: you do not get R along with R-Studio. You need to install R and R-Studio separately.
+
+
+
+
+
+dataset$double_revenue <- dataset$Revenue*2
+
+
+Testing 'RGui':
+as.Date('2020-10-26T06:04:47.590257Z')
+[1] "2020-10-26"
+
+
+
+--------------------------------------------------------------------------
+
+# 'dataset' holds the input data for this script
+dataset$derived_dt <- as.Date(dataset$ACTIVITY_DATE)
+output <- dataset
+
+
+DataSource.Error: ADO.NET: R script error.
+Error in `$<-.data.frame`(`*tmp*`, derived_dt, value = numeric(0)) : 
+  replacement has 0 rows, data has 213
+Calls: $<- -> $<-.data.frame
+Execution halted
+
+Details:
+    DataSourceKind=R
+    DataSourcePath=R
+    Message=R script error.
+Error in `$<-.data.frame`(`*tmp*`, derived_dt, value = numeric(0)) : 
+  replacement has 0 rows, data has 213
+Calls: $<- -> $<-.data.frame
+Execution halted
+
+    ErrorCode=-2147467259
+    ExceptionType=Microsoft.PowerBI.Scripting.R.Exceptions.RScriptRuntimeException
+
+
+ERROR REASON: There is no column such as 'ACTIVITY_DATE'
+	
+------------------------------------------------------
+
+
+
+
+Code	Value
+%d	Day of the month (decimal number)
+%m	Month (decimal number)
+%b	Month (abbreviated)
+%B	Month (full name)
+%y	Year (2 digit)
+%Y	Year (4 digit)
+
+
+# 'dataset' holds the input data for this script. 
+
+# The 'format' argument below is for specifying input.
+
+dataset$derived_dt <- as.Date(dataset$ACTIVITY_TIME, format='%Y-%m-%d')
+output <- dataset
+
+
+
+----------------------------------
+
+
+Code	Meaning	Code	Meaning
+%a	Abbreviated weekday	%A	Full weekday
+%b	Abbreviated month	%B	Full month
+%c	Locale-specific date and time	%d	Decimal date
+%H	Decimal hours (24 hour)	%I	Decimal hours (12 hour)
+%j	Decimal day of the year	%m	Decimal month
+%M	Decimal minute	%p	Locale-specific AM/PM
+%S	Decimal second	%U	Decimal week of the year (starting on Sunday)
+%w	Decimal Weekday (0=Sunday)	%W	Decimal week of the year (starting on Monday)
+%x	Locale-specific Date	%X	Locale-specific Time
+%y	2-digit year	%Y	4-digit year
+%z	Offset from GMT	%Z	Time zone (character)
+
+
+
+dataset$derived_dt <- format(as.Date(dataset$ACTIVITY_TIME), '%Y-%m-%d')
+output <- dataset
+

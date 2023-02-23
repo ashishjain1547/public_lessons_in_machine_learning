@@ -1,0 +1,358 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>Checking 'cartopy' version:
+
+(temp) C:\Users\Ashish Jain>conda list cartopy
+<i style="color: green;"># packages in environment at E:\programfiles\Anaconda3\envs\temp:
+#
+# Name   Version  Build           Channel
+cartopy  0.18.0   py37ha46f164_4  conda-forge </i>
+
+(temp) C:\Users\Ashish Jain>pip show cartopy
+<i style="color: green;">Name: Cartopy
+Version: 0.18.0
+Summary: A cartographic python library with Matplotlib support for visualisation
+Home-page: https://scitools.org.uk/cartopy/docs/latest/
+Author: UK Met Office
+Author-email: None
+License: LGPLv3
+Location: e:\programfiles\anaconda3\envs\temp\lib\site-packages
+Requires: shapely, setuptools, pyshp, six, numpy
+Required-by: </i>
+
+The map we will draw:
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-8VsEzrZdp-c/X5HQhu2HGcI/AAAAAAAAFwI/Q-l6APjTj3cGL-WcWNstc2eH1-w9xyaYQCLcBGAsYHQ/s950/World%2BHeat%2BMap.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="500" data-original-width="950" src="https://1.bp.blogspot.com/-8VsEzrZdp-c/X5HQhu2HGcI/AAAAAAAAFwI/Q-l6APjTj3cGL-WcWNstc2eH1-w9xyaYQCLcBGAsYHQ/s600/World%2BHeat%2BMap.png"/></a></div>
+
+Given below is code that draws a World Heat Map showing countries in grey scale:
+
+<i style="color: blue;">import cartopy
+import cartopy.crs as ccrs
+import cartopy.io.shapereader as shpreader
+from cartopy.feature import LAND
+
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
+from datetime import datetime
+
+# Setting the color to shade the countries.
+cmap = mpl.cm.Greys # Other color: mpl.cm.Blues
+
+countries = {
+    "India": 49,
+    "United States": 48,
+    "United Arab Emirates": 47,
+    "Germany": 46,
+    "Singapore": 45,
+    "United Kingdom": 44,
+    "Russian Federation": 43,
+    "Ukraine":42,              
+    "Netherlands": 41,
+    "Hong Kong": 40,
+    "Canada": 39,
+    "France": 38,
+    "Oman": 37,
+    "Australia": 36,
+    "Pakistan": 35,
+    "Kenya": 34,
+    "Malaysia": 33,
+    "Saudi Arabia": 32,
+    "Turkey": 31,
+    "Spain": 30, 
+    "Nepal": 29,
+    "Qatar": 28,
+    "Kuwait": 27,
+    "Indonesia": 26,
+    "Italy": 25,
+    "Sweden": 24,
+    "Portugal": 23,
+    "Mauritius": 22,
+    "New Zealand": 21,
+    "Japan": 20,
+    "Republic of Korea": 21, # South Korea
+    "Barbados": 20, # Not listed in cartopy package
+    "Brazil": 19,
+    "China": 18,
+    "Greece": 17,
+    "Poland": 16,
+    "Czech Republic": 15,
+    "Kazakhstan": 14,
+    "Latvia": 13,
+    "Ireland": 12,
+    "Finland": 11,
+    "Peru": 10
+}
+
+
+max_users = float(max(countries.values()))
+shapename = 'admin_0_countries'
+countries_shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shapename)
+ax = plt.axes(projection=ccrs.Robinson())
+
+for country in shpreader.Reader(countries_shp).records():
+    name = country.attributes['NAME_LONG']
+    
+    if name in countries:
+        num_users = countries[name]
+    else:
+        num_users = 1
+    
+    # ax.add_geometries(country.geometry, ccrs.PlateCarree(), facecolor=cmap(num_users/max_users, 1))
+    # TypeError: 'Polygon' object is not iterable
+    # name: Fiji, type(country.geometry): [class 'shapely.geometry.multipolygon.MultiPolygon']
+    # name: Tanzania, type(country.geometry): [class 'shapely.geometry.polygon.Polygon']
+    
+    try:
+        ax.add_geometries(country.geometry, ccrs.PlateCarree(), facecolor=cmap(num_users/max_users, 1))
+    except Exception as e:
+        #print(e)
+        import shapely.wkt as wkt
+        from shapely.geometry import MultiPolygon
+
+        list_str_polygons = [str(country.geometry)]
+
+        c = MultiPolygon(map(wkt.loads, list_str_polygons))
+        ax.add_geometries(c, ccrs.PlateCarree(), facecolor=cmap(num_users/max_users, 1))
+
+    ax.add_feature(cartopy.feature.OCEAN, color='lightblue')
+
+#Save the image as a file.
+plt.savefig('Audience_' + str(datetime.now()).replace(':', '_') + '.png', transparent=True, dpi=900)  
+print("Done") </i>
+
+Given below is the list of countries recognized by 'cartopy':
+Afghanistan
+Albania
+Algeria
+Angola
+Antarctica
+Argentina
+Armenia
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bangladesh
+Belarus
+Belgium
+Belize
+Benin
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Brazil
+Brunei Darussalam
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Central African Republic
+Chad
+Chile
+China
+Colombia
+Costa Rica
+Côte d'Ivoire
+Croatia
+Cuba
+Cyprus
+Czech Republic
+Dem. Rep. Korea
+Democratic Republic of the Congo
+Denmark
+Djibouti
+Dominican Republic
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+eSwatini
+Ethiopia
+Falkland Islands
+Fiji
+Finland
+France
+French Southern and Antarctic Lands
+Gabon
+Georgia
+Germany
+Ghana
+Greece
+Greenland
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Honduras
+Hungary
+Iceland
+India
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kosovo
+Kuwait
+Kyrgyzstan
+Lao PDR
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Lithuania
+Luxembourg
+Macedonia
+Madagascar
+Malawi
+Malaysia
+Mali
+Mauritania
+Mexico
+Moldova
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nepal
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+Northern Cyprus
+Norway
+Oman
+Pakistan
+Palestine
+Panama
+Papua New Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Puerto Rico
+Qatar
+Republic of Korea
+Republic of the Congo
+Romania
+Russian Federation
+Rwanda
+Saudi Arabia
+Senegal
+Serbia
+Sierra Leone
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+Somaliland
+South Africa
+South Sudan
+Spain
+Sri Lanka
+Sudan
+Suriname
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+The Gambia
+Timor-Leste
+Togo
+Trinidad and Tobago
+Tunisia
+Turkey
+Turkmenistan
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Western Sahara
+Yemen
+Zambia
+Zimbabwe
+
+</pre>

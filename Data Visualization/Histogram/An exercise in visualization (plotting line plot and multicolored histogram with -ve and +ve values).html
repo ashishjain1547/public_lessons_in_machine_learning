@@ -1,0 +1,127 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>This post is an exercise in visualization (plotting line plot and multicolored histogram with -ve and +ve values). We will be using Pandas and Matplotlib libraries.
+
+We are going to do plotting for a week of Nifty50 data from Aug 2017.
+
+<i style="color: green;">import pandas as pd
+
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+%matplotlib inline
+
+from dateutil import parser
+
+df = pd.read_csv("files_1/201708.csv", encoding='utf8')
+df['Change'] = 0
+prev_close = 10114.65
+
+def gen_change(row):
+    global prev_close
+    if row.Date == '01-Aug-2017':
+        rtn_val = 0
+    else:
+        rtn_val = round(((row.Close - prev_close) / prev_close) * 100, 2)
+        prev_close = row.Close
+    return rtn_val
+
+df.Change = df.apply(gen_change, axis = 1) </i>
+
+We will plot for only a few dates of Aug 2017:
+
+<b>Line plot: </b>
+<i style="color: green;">subset_df = df[6:13]
+plt.figure()
+ax = subset_df[['Date', 'Close']].plot(figsize=(20,7))
+ax.set_xticks(subset_df.index)
+ax.set_ylim([9675, 9950])
+ticklabels = plt.xticks(rotation=90)
+plt.ylabel('Close')
+plt.show() </i>
+
+<div class="separator" style="clear: both; text-align: center;"><a
+    href="https://1.bp.blogspot.com/-EDvAmKRYmRE/Xu5AfqxmxGI/AAAAAAAAE_w/J7cIuMsl9bomo4G85RfZVCZnzeG7bI2iwCK4BGAsYHg/s990/1.PNG"
+    imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="364"
+        data-original-width="990" height="236"
+        src="https://1.bp.blogspot.com/-EDvAmKRYmRE/Xu5AfqxmxGI/AAAAAAAAE_w/J7cIuMsl9bomo4G85RfZVCZnzeG7bI2iwCK4BGAsYHg/w640-h236/1.PNG"
+        width="640" /></a></div><br />
+
+<b>Multicolored Histogram for Negative and Positive values</b>
+
+<i style="color: green;">negative_data = [x if x &lt; 0 else 0 for x in list(subset_df.Change.values)]
+positive_data = [x if x > 0 else 0 for x in list(subset_df.Change.values)]
+
+fig = plt.figure()
+ax = plt.subplot(111)
+ax.bar(subset_df.Date.values, negative_data, width=1, color='r')
+ax.bar(subset_df.Date.values, positive_data, width=1, color='g')
+ticklabels = plt.xticks(rotation=90)
+plt.xlabel('Date')
+plt.ylabel('% Change')
+plt.show()</i>
+
+<div class="separator" style="clear: both; text-align: center;"><a
+    href="https://1.bp.blogspot.com/-qi8q8h15px0/Xu5Af5IfvaI/AAAAAAAAE_0/KNc9dP4c3lIEg115unc8G2M46QKKRr-AgCK4BGAsYHg/s401/2.PNG"
+    imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="317"
+        data-original-width="401"
+        src="https://1.bp.blogspot.com/-qi8q8h15px0/Xu5Af5IfvaI/AAAAAAAAE_0/KNc9dP4c3lIEg115unc8G2M46QKKRr-AgCK4BGAsYHg/d/2.PNG" /></a>
+</div>
+
+Link to data file: <a href="https://drive.google.com/file/d/1_XWHxb7uFvN2ieErQDwmv-KapM9JkZKz/view?usp=sharing" target="_blank">Google Drive</a>
+</pre>
