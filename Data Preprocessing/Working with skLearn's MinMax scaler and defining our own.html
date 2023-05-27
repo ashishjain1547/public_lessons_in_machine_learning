@@ -1,0 +1,176 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>We are going to try out scikit-learn's MinMaxScaler for two features of a dataset.
+
+<i style="color: blue;">import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+
+# Two lists with 20 values
+train_df = pd.DataFrame({'A': list(range(1000, 3000, 100)), 'B': list(range(1000, 5000, 200))}) 
+
+# Two lists with 42 values
+test_df = pd.DataFrame({'A': list(range(-200, 4000, 100)), \
+                        'B': sorted(list(range(1000, 4900, 100)) + [1050, 1150, 1250])}) 
+
+scaler_a = MinMaxScaler(feature_range = (0, 10)) # feature_range: tuple (min, max), default=(0, 1)
+scaler_b = MinMaxScaler(feature_range = (0, 10)) # feature_range: tuple (min, max), default=(0, 1)
+
+train_df['a_skl'] = scaler_a.fit_transform(train_df[['A']])
+train_df['b_skl'] = scaler_b.fit_transform(train_df[['B']])
+
+print(train_df[0:1])
+print(train_df[-1:])</i>
+
+<i style="color: green;">Output:
+       A     B  a_skl  b_skl
+0  1000  1000    0.0    0.0
+       A     B  a_skl  b_skl
+19  2900  4800   10.0   10.0</i>
+
+<i style="color: blue;">test_df['a_skl'] = scaler_a.transform(test_df[['A']])
+test_df['b_skl'] = scaler_b.transform(test_df[['B']])
+
+print(test_df[0:1])
+print(test_df[-1:])</i>
+
+<i style="color: green;">Output:
+    A     B     a_skl  b_skl
+0 -200  1000 -6.315789    0.0
+    A     B      a_skl  b_skl
+41  3900  4800  15.263158   10.0</i>
+
+<i style="color: blue;">train_df_minmax_a = train_df['A'].agg([np.min, np.max])
+train_df_minmax_b = train_df['B'].agg([np.min, np.max])
+
+test_df_minmax_a = test_df['A'].agg([np.min, np.max])
+test_df_minmax_b = test_df['B'].agg([np.min, np.max])
+
+print(train_df_minmax_a)
+print(train_df_minmax_b)</i>
+
+<i style="color: green;">Output:
+
+amin    1000
+amax    2900
+Name: A, dtype: int64
+
+amin    1000
+amax    4800
+Name: B, dtype: int64</i>
+
+<b>The problem</b>
+
+We have two features A and B. In training data, A has range: 1000 to 2900 and B has range: 1000 to 4800.
+In test data, A has range: -200 to 3900, and B has range: 1000 to 4800.
+
+On test data, B gets converted to values between 0 to 10 as specified in MinMaxScaler definition.
+But A in test data gets converted to range: -6.3 to 15.26.
+
+Result: A and B are still in different ranges on test data.
+
+<b>Fix</b>
+
+We should be able to anticipate the range we are going to observe in test data or in real time situation / production.
+Next, we define a MinMaxScaler of our own.
+
+For A, we set expected minimum to -500 and for B, we set expected minimum to 0. (Similarly for maximums.)
+
+<i style="color: blue;">r_min = 0
+r_max = 10
+
+def getMinMax(cell, amin, amax):
+    a = cell - amin
+    x_std = a / (amax - amin)
+    x_scaled = x_std * (r_max - r_min) + r_min
+    return x_scaled 
+
+test_df['a_gmm'] = test_df['A'].apply(lambda x: getMinMax(x, -500, train_df_minmax_a.amax))
+test_df['b_gmm'] = test_df['B'].apply(lambda x: getMinMax(x, 800, train_df_minmax_b.amax))
+
+print(test_df) </i>
+
+<i style="color: green;">Output:
+
+      A       B       a_skl   b_skl   a_gmm   b_gmm
+0	-200	1000	-6.31	0.00	0.88	0.50
+1	-100	1050	-5.78	0.13	1.17	0.62
+2	0   	1100	-5.26	0.26	1.47	0.75
+...
+39	3700	4600	14.21	9.47	12.35	9.50
+40	3800	4700	14.73	9.73	12.64	9.75
+41	3900	4800	15.26	10.0	12.94	10.0 </i>
+
+The way we have adjusted expected minimum value in test data, similarly we have to do for expected maximum to bring the scaled values in the same range. 
+
+Issue fixed.
+
+<b>References</b>
+
+% https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html
+
+% https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.minmax_scale.html
+
+% https://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html
+
+% https://scikit-learn.org/stable/modules/preprocessing.html
+
+% https://benalexkeen.com/feature-scaling-with-scikit-learn/
+
+</pre>

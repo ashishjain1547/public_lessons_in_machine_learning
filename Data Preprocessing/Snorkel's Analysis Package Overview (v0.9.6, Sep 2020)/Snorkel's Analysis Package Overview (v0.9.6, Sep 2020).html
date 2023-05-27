@@ -1,0 +1,171 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre><div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-1hmVJO_ncT4/X2I_F-XENqI/AAAAAAAAFeE/MEHlZybFuzcrYztepaLjUSnUS_E02tM2wCLcBGAsYHQ/s0/Snorkel%2BHeader.png" style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0" data-original-height="198" data-original-width="480" src="https://1.bp.blogspot.com/-1hmVJO_ncT4/X2I_F-XENqI/AAAAAAAAFeE/MEHlZybFuzcrYztepaLjUSnUS_E02tM2wCLcBGAsYHQ/s0/Snorkel%2BHeader.png" /></a></div>
+
+Current version of Snorkel is v0.9.6 (as on 16-Sep-2020). Link to <a href="https://github.com/snorkel-team/snorkel" target="_blank">GitHub</a>
+
+Snorkel has 8 packages.
+
+Package Reference:
+
+1. <a href="https://snorkel.readthedocs.io/en/latest/packages/analysis.html" target="_blank">Snorkel Analysis Package</a>
+2. <a href="https://snorkel.readthedocs.io/en/latest/packages/augmentation.html" target="_blank">Snorkel Augmentation Package</a>
+3. <a href="https://snorkel.readthedocs.io/en/latest/packages/classification.html" target="_blank">Snorkel Classification Package</a>
+4. <a href="https://snorkel.readthedocs.io/en/latest/packages/labeling.html" target="_blank">Snorkel Labeling Package</a>
+5. <a href="https://snorkel.readthedocs.io/en/latest/packages/map.html" target="_blank">Snorkel Map Package</a>
+6. <a href="https://snorkel.readthedocs.io/en/latest/packages/preprocess.html" target="_blank">Snorkel Preprocess Package</a>
+7. <a href="https://snorkel.readthedocs.io/en/latest/packages/slicing.html" target="_blank">Snorkel Slicing Package</a>
+8. <a href="https://snorkel.readthedocs.io/en/latest/packages/utils.html" target="_blank">Snorkel Utils Package</a>
+
+<b>What is Snorkel's Analysis Package for? </b>
+<i>This package dicusses how to interpret classification results. </i>
+
+Generic model analysis utilities shared across Snorkel.
+
+<b>1: Scorer</b>
+Calculate one or more scores from user-specified and/or user-defined metrics.
+
+This defines a class 'Scorer' with two methods: 'score()' and 'score_slices()'. You have specify input arguments such as metrics (this is related to the 'metric_score()' discussed below), true labels, predicted labels and predicted probabilities.
+
+It is through this that we make use of code in 'metrics.py'
+
+Code Snippet:
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-Rs-nUIBXxXI/X2JzULGp76I/AAAAAAAAFeU/I-ZewAzxZp0FXSPWMs3fnOL-7GsAxax1QCLcBGAsYHQ/s0/Scorer.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="846" data-original-width="598" src="https://1.bp.blogspot.com/-Rs-nUIBXxXI/X2JzULGp76I/AAAAAAAAFeU/I-ZewAzxZp0FXSPWMs3fnOL-7GsAxax1QCLcBGAsYHQ/s0/Scorer.png"/></a></div>
+
+~~~   ~~~   ~~~
+
+<b>2: get_label_buckets</b>
+Return data point indices bucketed by label combinations.
+
+This is a function written in the <a href="https://github.com/snorkel-team/snorkel/blob/v0.9.6/snorkel/analysis/error_analysis.py" target="_blank">error_analysis.py</a> file.
+  
+Code:
+<i style="color: blue">import snorkel
+import numpy as np
+from snorkel.analysis import get_label_buckets
+print("Snorkel version:", snorkel.__version__) </i>
+
+<i style="color: green">Snorkel version: 0.9.3</i>
+
+A common use case is calling ``buckets = label_buckets(Y_gold, Y_pred)`` where ``Y_gold`` is a set of gold (i.e. ground truth) labels and ``Y_pred`` is a corresponding set of predicted labels.
+ 
+<i style="color: blue">Y_gold = np.array([1, 1, 1, 0, 0, 0, 1])
+Y_pred = np.array([1, 1, -1, -1, 1, 0, 1])
+
+buckets = get_label_buckets(Y_gold, Y_pred) </i>
+# If gold and pred have different number of elements >> ValueError: Arrays must all have the same number of elements
+
+The returned ``buckets[(i, j)]`` is a NumPy array of data point indices with true label i and predicted label j. More generally, the returned indices within each bucket refer to the order of the labels that were passed in as function arguments.
+
+print(buckets[(1, 1)])  # true positives where both are 1
+
+Out: array([0, 1, 6])
+
+buckets[(0, 0)]  # true positives where both are 0
+
+Out: array([5])
+
+# false positives, false negatives and true negatives
+print((1, 0) in buckets, '/', (0, 1) in buckets, '/', (0, 0) in buckets)  
+
+Out: False / True / True
+
+buckets[(1, -1)]  # abstained positives
+
+Out: array([2])
+
+buckets[(0, -1)]  # abstained negatives
+
+Out: array([3])
+
+~~~   ~~~   ~~~
+
+<b>3: metric_score()</b>
+Evaluate a standard metric on a set of predictions/probabilities.
+
+Code for metric_score() is in: <a href="https://github.com/snorkel-team/snorkel/blob/v0.9.6/snorkel/analysis/metrics.py"> target="_blank">metrics.py</a>
+
+Using this you can evaluate a standard metric on a set of predictions (True Labels and Predicted Labels) / probabilities.
+
+Scores available are:
+1. _coverage_score
+2. _roc_auc_score
+3. _f1_score
+4. _f1_micro_score
+5. _f1_macro_score
+
+It is a wrapper around "sklearn.metrics" and adds to it by giving the above five metrics.
+
+<i style="color: blue">METRICS = {
+    "accuracy":  Metric(sklearn.metrics.accuracy_score),
+    "coverage":  Metric(_coverage_score, ["preds"]),
+    "precision": Metric(sklearn.metrics.precision_score),
+    "recall": 	 Metric(sklearn.metrics.recall_score),
+    "f1": 		 Metric(_f1_score, ["golds", "preds"]),
+    "f1_micro":  Metric(_f1_micro_score, ["golds", "preds"]),
+    "f1_macro":  Metric(_f1_macro_score, ["golds", "preds"]),
+    "fbeta": 	 Metric(sklearn.metrics.fbeta_score),
+	
+    "matthews_corrcoef": 
+				 Metric(sklearn.metrics.matthews_corrcoef),
+				 
+    "roc_auc": 	 Metric(_roc_auc_score, ["golds", "probs"]),
+} </i>
+
+</pre>

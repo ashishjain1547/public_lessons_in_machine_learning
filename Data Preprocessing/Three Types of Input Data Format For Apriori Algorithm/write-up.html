@@ -1,0 +1,176 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        i.ibb {
+            display: block;
+            background-color: black;
+            color: white;
+        }
+
+        i.ibg {
+            display: block;
+            background-color: rgb(50, 50, 50);
+            color: white;
+        }
+
+
+        ul.no-bullets {
+            list-style-type: none;
+            /* Remove bullets */
+            padding: 0;
+            /* Remove padding */
+            margin: 0;
+            /* Remove margins */
+        }
+
+        ol.customOl li a {
+            display: block;
+            padding: 5px 0px;
+        }
+
+        li.customLi {
+            float: left;
+        }
+
+        li.customLi>span.customSpan {
+            display: block;
+            padding: 8px;
+            background-color: #dddddd;
+        }
+
+        .customOl {
+            font-size: 15px;
+        }
+    </style>
+</head>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+    
+<h2>Input Data Format (1)</h2>
+<h3>Two Column Format</h3>
+<div class="separator" style="clear: both;"><a
+        href="https://blogger.googleusercontent.com/img/a/AVvXsEgFeyDPEMWy6blG3DbEfblWz2W13dnhwXiqQ2ppGxyocHHjSSRHLHUEBxGlT-bD8VxGIocL9ggwGL4H05LlZBbUS-TLJYayTO-XhVEFZW_2kE1KODWt0ZsdkwCmNI0P-GSRccFCRc9c__NtuRRuC-iwqbgTBoc7-aynPgDwwiANJWZS7t_A2gQaT1Wr2A=s817"
+        style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600"
+            data-original-height="817" data-original-width="217"
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEgFeyDPEMWy6blG3DbEfblWz2W13dnhwXiqQ2ppGxyocHHjSSRHLHUEBxGlT-bD8VxGIocL9ggwGL4H05LlZBbUS-TLJYayTO-XhVEFZW_2kE1KODWt0ZsdkwCmNI0P-GSRccFCRc9c__NtuRRuC-iwqbgTBoc7-aynPgDwwiANJWZS7t_A2gQaT1Wr2A=s600" /></a>
+</div>
+<pre><i>order_id,product_id
+2,33120
+2,28985
+2,9327
+2,45918
+2,30035
+2,17794
+2,40141
+2,1819
+2,43668
+3,33754
+3,24838
+3,17704
+3,21903
+3,17668
+3,46667
+3,17461
+3,32665
+4,46842
+4,26434
+4,39758
+4,27761
+4,10054
+4,21351
+4,22598
+4,34862
+4,40285
+4,17616
+4,25146
+4,32645
+4,41276
+5,13176
+5,15005
+5,47329
+5,27966
+5,23909
+5,48370
+5,13245
+5,9633
+5,27360</i></pre>
+
+<h2>Input Data Format (2)</h2>
+<h3>Fixed columns, True-False Format</h3>
+<div class="separator" style="clear: both;"><a
+        href="https://blogger.googleusercontent.com/img/a/AVvXsEhU_KpmfBrwbqm8mP9_cBRPErnd6LyAHb_bJ50tUJ0VnZD8Alx38jBlH5wAMAUND8zIVEbi9E9sNKBunRzjrFNTGg6HFeLPluCf9nJ4VEiTskP7rL7lTWeOn7LARAF5IEeghicJR8D2xMGNeq2XxCQxNYLaJTo0AhVOaehdx2hjMzsp1Wj2dRL0dFoUKA=s1147"
+        style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+            data-original-height="853" data-original-width="1147"
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEhU_KpmfBrwbqm8mP9_cBRPErnd6LyAHb_bJ50tUJ0VnZD8Alx38jBlH5wAMAUND8zIVEbi9E9sNKBunRzjrFNTGg6HFeLPluCf9nJ4VEiTskP7rL7lTWeOn7LARAF5IEeghicJR8D2xMGNeq2XxCQxNYLaJTo0AhVOaehdx2hjMzsp1Wj2dRL0dFoUKA=s600" /></a>
+</div>
+
+<pre><i>,Apple,Bread,Butter,Cheese,Corn,Dill,Eggs,Ice cream,Kidney Beans,Milk,Nutmeg,Onion,Sugar,Unicorn,Yogurt,chocolate
+
+0,False,True,False,False,True,True,False,True,False,False,False,False,True,False,True,True
+
+1,False,False,False,False,False,False,False,False,False,True,False,False,False,False,False,False
+
+2,True,False,True,False,False,True,False,True,False,True,False,False,False,False,True,True
+
+3,False,False,True,True,False,True,False,False,False,True,True,True,False,False,False,False
+
+4,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False</i></pre>
+
+<h2>Input Data Format (3)</h2>
+<h3>Sparse Matrix, Varying Columns Format</h3>
+<div class="separator" style="clear: both;"><a
+        href="https://blogger.googleusercontent.com/img/a/AVvXsEjbJKYIcmlZS-9H112MJ_e32lX7dlZvujWK4z75GanlcOxjDwjKpmzJBFVwkRIbwybffXIbvBZBbg0SBkCntdxhOrlX-vgJqd6z_e4DKSJyhMVf4otZCK-cEXusM6702k3AhMbvlSM_lvq7eSjsUwwGxZYYyxMhFIk4hHYVzGCefmbATcFshIKL3MAHJA=s1920"
+        style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+            data-original-height="867" data-original-width="1920"
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEjbJKYIcmlZS-9H112MJ_e32lX7dlZvujWK4z75GanlcOxjDwjKpmzJBFVwkRIbwybffXIbvBZBbg0SBkCntdxhOrlX-vgJqd6z_e4DKSJyhMVf4otZCK-cEXusM6702k3AhMbvlSM_lvq7eSjsUwwGxZYYyxMhFIk4hHYVzGCefmbATcFshIKL3MAHJA=s600" /></a>
+</div>
+
+<pre><i>shrimp,almonds,avocado,vegetables mix,green grapes,whole weat flour,yams,cottage cheese,energy drink,tomato juice,low fat yogurt,green tea,honey,salad,mineral water,salmon,antioxydant juice,frozen smoothie,spinach,olive oil
+
+burgers,meatballs,eggs
+
+chutney
+
+turkey,avocado
+
+mineral water,milk,energy bar,whole wheat rice,green tea
+
+low fat yogurt
+
+whole wheat pasta,french fries
+
+soup,light cream,shallot
+
+frozen vegetables,spaghetti,green tea
+
+french fries
+
+eggs,pet food
+
+cookies
+
+turkey,burgers,mineral water,eggs,cooking oil
+
+spaghetti,champagne,cookies
+
+mineral water,salmon</i></pre>
+
+<span style="display: none;">Tags: Technology,Machine Learning,</span>

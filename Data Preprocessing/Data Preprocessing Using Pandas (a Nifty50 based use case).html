@@ -1,0 +1,104 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre><h3>Use Case: Creating a Nifty50 SIP Simulator</h3>
+    
+This is a post on data preprocessing using Pandas. The data set we are using is the Nifty50 index data from 1994 to Jun 13th, 2020.
+
+The steps we have are:
+
+1. Reading data from multiple CSV files.
+
+2. Converting string Date column to a 'DateTime' type column.
+
+3. Generate columns such as 'Year', 'Half-Yearly Marker (viz H1 or H2)', 'Quarter' and 'Month'.
+
+4. Fix the column 'Open' to populate it with values for the years 1994 and 1995. 'Open' was given values starting from 1996 in CSV files.
+
+Output:
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-2-oHoR_vNcY/Xw12YUUXagI/AAAAAAAAFMQ/uI_I1N4gCMwtJ5m0ECYPM3alqPX9N29lgCLcBGAsYHQ/s852/Capture1.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="215" data-original-width="852" height="162" src="https://1.bp.blogspot.com/-2-oHoR_vNcY/Xw12YUUXagI/AAAAAAAAFMQ/uI_I1N4gCMwtJ5m0ECYPM3alqPX9N29lgCLcBGAsYHQ/w640-h162/Capture1.PNG" width="640" /></a></div>
+
+Next, we generate SIP data assuming that SIP deposit will happen on first of each month.
+
+In the function "get_sip_df()", we process input transactional level data frame and add the following columns:
+
+1. CostValue 	
+2. PctChange
+3. SipClose
+4. SipOpen
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-HVgmOfMM5Ac/Xw12rzKRRsI/AAAAAAAAFMY/wGalQcofp5MCsHQ0_3GfPwgdQsI8f52qgCLcBGAsYHQ/s1166/Capture2.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="212" data-original-width="1166" height="116" src="https://1.bp.blogspot.com/-HVgmOfMM5Ac/Xw12rzKRRsI/AAAAAAAAFMY/wGalQcofp5MCsHQ0_3GfPwgdQsI8f52qgCLcBGAsYHQ/w640-h116/Capture2.PNG" width="640" /></a></div>
+
+Next, we aggregate the data on the level of 'Month' and create the following report using our function "get_monthly_df()":
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-F5KwVG_WyS8/Xw13KoWbFLI/AAAAAAAAFMg/bD0LbiGDX0wb0_v90Rq6X0gtKn_-sIJFACLcBGAsYHQ/s976/Capture3.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="212" data-original-width="976" height="140" src="https://1.bp.blogspot.com/-F5KwVG_WyS8/Xw13KoWbFLI/AAAAAAAAFMg/bD0LbiGDX0wb0_v90Rq6X0gtKn_-sIJFACLcBGAsYHQ/w640-h140/Capture3.PNG" width="640" /></a></div>
+
+We can use the "get_sip_df()" function for any year as shown below (this code snippet is also present in the Jupyter Notebook):
+
+<i style="color: blue">df_19 = df[(df.Year == '2018') | (df.Year == '2019') | (df.Year == '2020')]
+df_sip_19 = get_sip_df(df_19)
+df_sip_19_monthly = get_monthly_df(df_sip_19, col_name = 'SipClose') </i>
+
+Output:
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/--70spvq2j7I/Xw14RGIiS0I/AAAAAAAAFMs/F9PpTMDk7gExwGLnazm_xDavm_dLrYHoQCLcBGAsYHQ/s1034/Capture4.PNG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="765" data-original-width="1034" height="474" src="https://1.bp.blogspot.com/--70spvq2j7I/Xw14RGIiS0I/AAAAAAAAFMs/F9PpTMDk7gExwGLnazm_xDavm_dLrYHoQCLcBGAsYHQ/w640-h474/Capture4.PNG" width="640" /></a></div>
+
+Here is the link to Jupyter Notebook: <a href="https://drive.google.com/file/d/15TG88L5e6g0lSSeTzkix181v-5gnqz6Y/view?usp=sharing" target="_blank">Notebook</a>
+
+Link to data set: <a href="https://drive.google.com/file/d/1eihHW7xXYhzSwrjxxirimMwl7F7TxqMl/view?usp=sharing" target="_blank">Data</a>
+</pre>

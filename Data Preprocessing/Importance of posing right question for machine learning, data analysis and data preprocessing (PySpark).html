@@ -1,0 +1,216 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div> <br />
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>We are going to demonstrate in this post the importance of posing the right question (presenting the ML use case, the ML problem correctly) and the importance of understanding data and presenting it to the ML model in the correct form.
+
+The problem we are considering is of classification of data based on two columns, viz, alphabet and number.
+
++--------+------+------+
+|alphabet|number|animal|
++--------+------+------+
+|       A|     1|   Cat|
+|       A|     3|   Cat|
+|       A|     5|   Cat|
+|       A|     7|   Cat|
+|       A|     9|   Cat|
+|       A|     0|   Dog|
+|       A|     2|   Dog|
+|       A|     4|   Dog|
+|       A|     6|   Dog|
+|       A|     8|   Dog|
+|       B|     1|   Dog|
+|       B|     3|   Dog|
+|       B|     5|   Dog|
+|       B|     7|   Dog|
+|       B|     9|   Dog|
+|       B|     0|   Cat|
+|       B|     2|   Cat|
+|       B|     4|   Cat|
+|       B|     6|   Cat|
+|       B|     8|   Cat|
++--------+------+------+
+
+We have to tell if the "animal" is 'Cat' or 'Dog' based on 'alphabet' and 'number'. 
+Rules are as follows:
+If alphabet is A and number is odd, animal is cat.
+If alphabet is A and number is even, animal is dog.
+If alphabet is B and number is odd, animal is dog.
+If alphabet is B and number is even, animal is cat.
+
+We have written following "DecisionTreeClassifier" code for this task and we are going to see how the data preprocessing aids for this problem.
+
+<i style="color: blue">from pyspark import SparkContext
+from pyspark.sql import SQLContext # Main entry point for DataFrame and SQL functionality.
+from pyspark.ml import Pipeline
+
+from pyspark.ml.classification import DecisionTreeClassifier
+from pyspark.ml.feature import StringIndexer, VectorIndexer, OneHotEncoder
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+
+sc = SparkContext.getOrCreate()
+sqlCtx = SQLContext(sc)
+
+a = list()
+for i in range(0, 100000, 2):
+ a.append(('A', i+1, 'Cat'))   
+b = list()
+for i in range(0, 100000, 2):
+ a.append(('A', i, 'Dog'))   
+c = list()
+for i in range(0, 100000, 2):
+ c.append(('B', i+1, 'Dog'))   
+d = list()
+for i in range(0, 100000, 2):
+ d.append(('B', i, 'Cat'))   
+ 
+l = a + b + c + d
+
+df = sqlCtx.createDataFrame(l, ['alphabet', 'number', 'animal'])
+
+alphabetIndexer = StringIndexer(inputCol="alphabet", outputCol="indexedAlphabet").fit(df)
+df = alphabetIndexer.transform(df)
+
+from pyspark.ml.feature import VectorAssembler
+
+assembler = VectorAssembler(inputCols=["indexedAlphabet", "number"], outputCol="features")
+
+# VectorAssembler does not have a "fit" method.
+# VectorAssembler would not work on "alphabet" column directly. Throws the error: "IllegalArgumentException: Data type string of column alphabet is not supported". It would work on "indexedAlphabet".
+
+df = assembler.transform(df)
+
+# Index labels, adding metadata to the label column.
+# Fit on whole dataset to include all labels in index.
+labelIndexer = StringIndexer(inputCol="animal", outputCol="label").fit(df)
+
+df = labelIndexer.transform(df)
+
+dt = DecisionTreeClassifier(labelCol="label", featuresCol="features")
+
+# Chain indexers and tree in a Pipeline
+# pipeline = Pipeline(stages=[labelIndexer, featureIndexer, dt])
+pipeline = Pipeline(stages=[dt])
+
+# Split the data into training and test sets (30% held out for testing)
+(trainingData, testData) = df.randomSplit([0.95, 0.05])
+
+# Train model.  This also runs the indexers.
+model = pipeline.fit(trainingData)
+
+# Make predictions.
+predictions = model.transform(testData)
+
+# Select example rows to display.
+# predictions.select("prediction", "label", "features").show()
+
+
+# Select (prediction, true label) and compute test error
+evaluator = MulticlassClassificationEvaluator(
+    labelCol="label", predictionCol="prediction") # 'precision' and 'recall' for 'metricName' arg are invalid.
+
+accuracy = evaluator.evaluate(predictions)
+#print("Test Error = %g" % (1.0 - accuracy))
+print(df.count())
+print("Accuracy = %g" % (accuracy))
+
+treeModel = model.stages[0]
+print(treeModel) # summary only </i>
+
+With this code, we observe the following results:
+
+<i style="color: green">df.count(): 20000
+Accuracy = 0.439774
+
+df.count(): 200000
+Accuracy = 0.471752
+
+df.count(): 2000000
+Accuracy = 0.490135 </i>
+
+<b>What went wrong? </b>
+
+We posed a simple classification problem to DecisionTreeClassifier, but we did not simplify the data to turn numbers into 'odd or even' indicator. This makes the learning so hard for model that with even 2 million data points, the classification accuracy stood at 49%.
+
+~ ~ ~
+
+Code changes to produce simplified data:
+Change 1: replacing 'number' with 'odd or even' indicator.
+Change 2: reducing number of data points.
+
+<i style="color: blue">a = list()
+for i in range(0, 1000, 2):
+ a.append(('A', (i+1) % 2, 'Cat'))   
+b = list()
+for i in range(0, 1000, 2):
+ a.append(('A', i%2, 'Dog'))   
+c = list()
+for i in range(0, 1000, 2):
+ c.append(('B', (i+1) % 2, 'Dog'))   
+d = list()
+for i in range(0, 1000, 2):
+ d.append(('B', i%2, 'Cat'))</i>
+ 
+Result:
+
+<i style="color: green">df.count(): 200
+Accuracy = 0.228571
+
+df.count(): 2000
+Accuracy = 1 </i>
+
+</pre>

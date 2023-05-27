@@ -1,0 +1,158 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/personal-posts-menu.html",
+                success: function (result) {
+                    $("div.customTemporaryCodeHolder").html(result);
+                    $("nav.customDynamicNav").html(
+                        $("div.customTemporaryCodeHolder nav.customBitsWilpMenu").html()
+                    );
+                }
+            });
+
+            $.ajax({
+                url: window.location.protocol + "//" + window.location.hostname + "/p/follow-us-on-social-media.html",
+
+                success: function (result) {
+                    $("span.customTempCodeHolderForSocialMedia").html(result);
+                    $("div.customSocialMediaBtnsWrapper").html(
+                        $("span.customTempCodeHolderForSocialMedia div.customSocialMediaWrapper").html()
+                    );
+                }
+
+            });
+        }); 
+    </script>
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        .customTempCodeHolderForSocialMedia {
+            display: none;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<div class="customTemporaryCodeHolder"> </div>
+<span class="customTempCodeHolderForSocialMedia"> </span>
+
+<nav class="customDynamicNav"> </nav> <br />
+<div class="customSocialMediaBtnsWrapper"> </div>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>The data set we have is the "Iris" dataset. We will augment the dataset to create "test" dataset and then use "Scikit-Learn's Support Vector Machines' classifier 'SVC'" to classify the test points into one of the Iris species.
+
+<i style="color: blue;">import pandas as pd
+import numpy as np
+
+from snorkel.augmentation import transformation_function
+from snorkel.augmentation import RandomPolicy
+from snorkel.augmentation import PandasTFApplier
+
+from sklearn import svm
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+
+df = pd.read_csv('files_1/datasets_19_420_Iris.csv')
+
+for i in set(df.Species):
+    # Other columns are ['count', 'mean', 'std', 'min', '25%', '50%', '75%', 'max']
+    print(i)
+    print(df[df.Species == i].describe().loc[['min', '25%', '50%', '75%', 'max'], :])
+	
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-C6aXcpvFdog/X0FxgL-khLI/AAAAAAAAFYQ/5zyZGcAYQzkox4vk0T7DVDAiPLLTWLAlQCLcBGAsYHQ/s0/Capture.PNG" style="display: block; padding: 1em 0; text-align: center;"><img alt="" border="0" data-original-height="456" data-original-width="636" src="https://1.bp.blogspot.com/-C6aXcpvFdog/X0FxgL-khLI/AAAAAAAAFYQ/5zyZGcAYQzkox4vk0T7DVDAiPLLTWLAlQCLcBGAsYHQ/s0/Capture.PNG"/></a></div>
+
+features = ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+
+classes = ['Iris-setosa', 'Iris-virginica', 'Iris-versicolor']
+desc_dict = {}
+for i in classes:
+    desc_dict[i] = df[df.Species == i].describe()
+	
+df['Train'] = 'Train'
+
+# random.randint returns a random integer N such that a &lt;= N &lt;= b
+@transformation_function(pre = [])
+def get_new_instance_for_this_class(x):
+    x.SepalLengthCm = np.random.randint(round(desc_dict[x.Species].loc[['25%'], ['SepalLengthCm']].iloc[0,0], 2) * 100, 
+                  round(desc_dict[x.Species].loc[['75%'], ['SepalLengthCm']].iloc[0,0], 2) * 100) / 100
+    
+    x.SepalWidthCm = np.random.randint(round(desc_dict[x.Species].loc[['25%'], ['SepalWidthCm']].iloc[0,0], 2) * 100, 
+                  round(desc_dict[x.Species].loc[['75%'], ['SepalWidthCm']].iloc[0,0], 2) * 100) / 100
+    
+    x.PetalLengthCm = np.random.randint(round(desc_dict[x.Species].loc[['25%'], ['PetalLengthCm']].iloc[0,0], 2) * 100, 
+                  round(desc_dict[x.Species].loc[['75%'], ['PetalLengthCm']].iloc[0,0], 2) * 100) / 100
+    
+    x.PetalWidthCm = np.random.randint(round(desc_dict[x.Species].loc[['25%'], ['PetalWidthCm']].iloc[0,0], 2) * 100, 
+                  round(desc_dict[x.Species].loc[['75%'], ['PetalWidthCm']].iloc[0,0], 2) * 100) / 100
+    
+    x.Train = 'Test'
+    return x
+
+tfs = [ get_new_instance_for_this_class ]
+
+random_policy = RandomPolicy(
+    len(tfs), sequence_length=2, n_per_original=1, keep_original=True
+)
+
+tf_applier = PandasTFApplier(tfs, random_policy)
+df_train_augmented = tf_applier.apply(df)
+
+print(f"Original training set size: {len(df)}")
+print(f"Augmented training set size: {len(df_train_augmented)}") </i>
+
+Output:
+<i style="color: green;">Original training set size: 150
+Augmented training set size: 300 </i>
+
+<i style="color: blue;">df_test = df_train_augmented[df_train_augmented.Train == 'Test']
+
+clf = svm.SVC(gamma = 'auto')
+
+clf.fit(df[features], df['Species'])</i>
+
+Output:
+<i style="color: green;">SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf',
+    max_iter=-1, probability=False, random_state=None, shrinking=True,
+    tol=0.001, verbose=False)</i>
+	
+<i style="color: blue;">pred = clf.predict(df_test[features])
+
+print("Accuracy: {:.3f}".format(accuracy_score(df_test['Species'], pred)))
+print("Confusion matrix:\n{}".format(confusion_matrix(df_test['Species'], pred))) </i>
+
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-uDhOB5503oU/X0Fx98S3KaI/AAAAAAAAFYY/OFUspnA4f_U8SoeFKqTum9aaxcVi60kPACLcBGAsYHQ/s0/2.PNG" style="display: block; padding: 1em 0; text-align: center;"><img alt="" border="0" data-original-height="117" data-original-width="164" src="https://1.bp.blogspot.com/-uDhOB5503oU/X0Fx98S3KaI/AAAAAAAAFYY/OFUspnA4f_U8SoeFKqTum9aaxcVi60kPACLcBGAsYHQ/s0/2.PNG"/></a></div>
+
+To confirm that we do not have an overlap in training and testing data:
+
+<i style="color: blue;">left = df[features]
+right = df_test[features]
+print(left.merge(right, on = features, how = 'inner').shape)</i>
+
+Output:
+(0, 4)
+
+<i style="color: blue;">left = df[['Id']]
+right = df_test[['Id']]
+print(left.merge(right, on = ['Id'], how = 'inner').shape)</i>
+
+(150, 1)
+
+</pre>
