@@ -1,0 +1,113 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<pre>
+<h2>Poisson Distribution for Traffic Prediction in Layman Terms</h2>
+
+Imagine you're trying to predict how many cars will pass through a specific point on a road during a certain period, like an hour. The Poisson distribution can help you make this prediction.
+
+Here's how it works in simple terms:
+
+<b>Events Occurring Over Time</b>
+
+The Poisson distribution is used when you're dealing with events that happen randomly over a fixed period of time. In our example, these events are cars passing by.
+
+<b>Average Rate</b>
+
+You start by knowing the average rate at which these events occur. For instance, on average, 30 cars pass by in an hour.
+
+<b>Independence</b>
+
+You assume that the arrival of each car is independent of the others. In other words, one car passing by doesn't affect the likelihood of another car passing by.
+
+<b>Probability of a Specific Number</b>
+    
+With the Poisson distribution, you can calculate the probability of a specific number of events happening in that fixed time period. So, you can calculate the chance of exactly 25 cars passing by in an hour or any other number.
+
+<b>Shape of Distribution</b>
+    
+The Poisson distribution has a particular shape that's skewed to the right. It's more likely to have fewer events than the average rate, and less likely to have more events, but it allows for some variability.
+
+<i>On a side note: 
+Right skewed: The mean is greater than the median. The mean overestimates the most common values in a positively skewed distribution. Left skewed: The mean is less than the median.</i>
+
+<b>Use in Traffic Prediction</b>
+
+To predict traffic, you can use the Poisson distribution to estimate the likelihood of different traffic volumes. If the average rate is 30 cars per hour, you can calculate the probabilities of having 20 cars, 40 cars, or any other number during that hour. This information can be useful for traffic planning and management.
+
+In summary, the Poisson distribution helps you make educated guesses about the number of random events (like cars passing by) happening in a fixed time period, assuming they occur independently and at a known average rate. It's a valuable tool for predicting and managing things like traffic flow.
+
+<h2>Here is how I used it to predict the traffic on my blog</h2>
+
+<h3>1: Glimpse of the data</h3>
+<div class="separator" style="clear: both;"><a
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-Nizm3cUGpq5w_Txk_i6zkATIpbmydf7HTtbXLiVn61-d2Lz7vCP7WXHpFllI1-AOR86R00x50azSUFcyn8gtE1HAechF06K8Jl_QmyK76jjap7l6TIp046iF1CZFsqbSPT3uV2t7jhNx_Ous-gnQ7tNxqPjQNfN5UJ46CKpyf1xmERseBfI7FO_zJH9l/s522/1%20data.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="421" data-original-width="522"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-Nizm3cUGpq5w_Txk_i6zkATIpbmydf7HTtbXLiVn61-d2Lz7vCP7WXHpFllI1-AOR86R00x50azSUFcyn8gtE1HAechF06K8Jl_QmyK76jjap7l6TIp046iF1CZFsqbSPT3uV2t7jhNx_Ous-gnQ7tNxqPjQNfN5UJ46CKpyf1xmERseBfI7FO_zJH9l/s600/1%20data.png" /></a>
+</div>
+
+<h3>2: Tail of the data</h3>
+<div class="separator" style="clear: both;"><a
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEDg3NGgZNBDK6Tx1xmYjdlElpARGM_8ZYY0LyUcGerIS0pvl17I7N_RxYTomiXj_ajFdWdjee4gvV6BsR4kn6cfXh-gjJzmHYACvFgfUauTNUWQjfukF9kBZPNe3iYOP7BK0G7G2xoBfeL4N0k9XAdTiqW-LrFBPQ4irS1492qbaj7HZoJDZAgOhe69k5/s529/2%20tail.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="507" data-original-width="529"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEDg3NGgZNBDK6Tx1xmYjdlElpARGM_8ZYY0LyUcGerIS0pvl17I7N_RxYTomiXj_ajFdWdjee4gvV6BsR4kn6cfXh-gjJzmHYACvFgfUauTNUWQjfukF9kBZPNe3iYOP7BK0G7G2xoBfeL4N0k9XAdTiqW-LrFBPQ4irS1492qbaj7HZoJDZAgOhe69k5/s600/2%20tail.png" /></a>
+</div>
+
+<h3>3: Frequency plot for views in thousands</h3>
+<div class="separator" style="clear: both;"><a
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeD-DBfIiyYP1jasMffzz0I_j6dgh-fGG_XEFuGCu25RDuT3YSJXLQqYUfLPprK5ihq3IgIQMbydH4lnOJ1etKkDSbuY1u5OfXK6ckhYR16Mg2FjTMh4GvDeP3Gizs9l26D-X1vcdH-mjJRJKyA5Wdwl-20HMojE9HatNiXKt_8w87Oxt4vI0_BPJd8muS/s656/3%20frequency%20plot%20for%20views%20in%20thousands.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="633" data-original-width="656"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeD-DBfIiyYP1jasMffzz0I_j6dgh-fGG_XEFuGCu25RDuT3YSJXLQqYUfLPprK5ihq3IgIQMbydH4lnOJ1etKkDSbuY1u5OfXK6ckhYR16Mg2FjTMh4GvDeP3Gizs9l26D-X1vcdH-mjJRJKyA5Wdwl-20HMojE9HatNiXKt_8w87Oxt4vI0_BPJd8muS/s600/3%20frequency%20plot%20for%20views%20in%20thousands.png" /></a>
+</div>
+
+<h3>4: Number of views in thousands and probability of seeing that many views</h3>
+<div class="separator" style="clear: both;"><a
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWeg2p9NVQT3jHnqpk74kzMnwBfIRPo0jquNWqO9oC-yP9Koo6SkYSPkX-YgCzq6KI2ZHpyWM1zr79ydgLXROwxgQ7MsM9JGaOBL6hJPr3J-QF48HB3vJgKd-ja_TvcDQ5kPrKawmU8FQahw35oBC6PrnEdcQ29QF5wrl0gZtgbxHzR8nFwT-96c7E80li/s598/4%20number%20of%20views%20in%20thousands%20and%20probability%20of%20seeing%20that%20many%20views.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600"
+        data-original-height="598" data-original-width="178"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWeg2p9NVQT3jHnqpk74kzMnwBfIRPo0jquNWqO9oC-yP9Koo6SkYSPkX-YgCzq6KI2ZHpyWM1zr79ydgLXROwxgQ7MsM9JGaOBL6hJPr3J-QF48HB3vJgKd-ja_TvcDQ5kPrKawmU8FQahw35oBC6PrnEdcQ29QF5wrl0gZtgbxHzR8nFwT-96c7E80li/s600/4%20number%20of%20views%20in%20thousands%20and%20probability%20of%20seeing%20that%20many%20views.png" /></a>
+</div>
+
+<h3>5: Poisson distribution for views in thousands</h3>
+<div class="separator" style="clear: both;"><a
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLt1WG5yPEWb3OfKxHPQI4lQjoJsCjCEhOIBtx8EHaqY2vMM2G_pKerB4Xmbsz-PuPe7gBauIBY73mwYRVPVg0Q6wPtefXe3Eda32mzNYiiGZCbMtPDp1fJliZ51H71COllGxMRfuzZzyv_kidnAzt0iPylGmh7SUkSwusi1ORp96cbSH-Y48enDr0CFQK/s691/5%20poisson%20distribution%20for%20views%20in%20k.png"
+    style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600"
+        data-original-height="543" data-original-width="691"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLt1WG5yPEWb3OfKxHPQI4lQjoJsCjCEhOIBtx8EHaqY2vMM2G_pKerB4Xmbsz-PuPe7gBauIBY73mwYRVPVg0Q6wPtefXe3Eda32mzNYiiGZCbMtPDp1fJliZ51H71COllGxMRfuzZzyv_kidnAzt0iPylGmh7SUkSwusi1ORp96cbSH-Y48enDr0CFQK/s600/5%20poisson%20distribution%20for%20views%20in%20k.png" /></a>
+</div>
+
+<h3>6: Conclusion</h3>
+
+# There is ~1.5% chance that there will be 9 thousand views.
+
+# There is ~10% chance that there will be 16 thousand views.
+
+# There is ~7.8% chance that there will be 19 thousand views.
+ 
+<b><a href="https://github.com/ashishjain1547/machine_learning_oct_2023/tree/main/1_poisson%20distribution%20for%20blogger%20traffic%20prediction" target="_blank">Download Code and Data</a></b>
+</pre>
+<span style="display: none;">Tags: Technology,Machine Learning,Data Analytics,Python</span>
