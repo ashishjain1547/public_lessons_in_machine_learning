@@ -1,0 +1,93 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+    <style>
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        div.customWrapper img {
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<pre>Previously we had seen how we were trying to fit Poisson Distribution to the traffic data on our blog. 
+
+<b><a href="http://survival8.blogspot.com/2023/10/traffic-prediction-on-my-blog-oct-2023.html" target="_blank">Link to the Post</a></b>
+
+Today, we study why our analysis could be wrong.
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmcwSHqJrqjHw6zjEPu1EsI2RF2nCTP_T6j06QeZkObC_3t35LcOWOcUKKFLL51LamN1OlLSKdRLtd25LQ46FxCzroVcVYIZreI19YTtMs2PbrOjyUhXzUSIVl1i_L4JV-U-tgffG4lqBoMvZzRZNMOK6I-BerOwpsgFPrzLYBPD4esJwf-Xw9qMm-Urtn/s877/all%20time%20page%20views%20plot%20against%20time.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="285" data-original-width="877" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmcwSHqJrqjHw6zjEPu1EsI2RF2nCTP_T6j06QeZkObC_3t35LcOWOcUKKFLL51LamN1OlLSKdRLtd25LQ46FxCzroVcVYIZreI19YTtMs2PbrOjyUhXzUSIVl1i_L4JV-U-tgffG4lqBoMvZzRZNMOK6I-BerOwpsgFPrzLYBPD4esJwf-Xw9qMm-Urtn/s600/all%20time%20page%20views%20plot%20against%20time.png"/></a></div>
+
+By looking at this plot, we suspect three things:
+
+1. The data has outliers. A bunch of points around May 2021.
+
+2. The data has some local trend. Upward trend till Jan 2022 and then downward trend till Mar 2023.
+
+3. Because of the above two points, we feel: there is constant rate (average) for the events occurring within a specific time interval.
+
+</pre>
+
+<h2>Can we use poisson distribution when we suspect there are outliers in the data?</h2>
+
+<p data-sourcepos="1:1-1:84">The Poisson distribution has its limitations when dealing with outliers. Here's why:</p><ul data-sourcepos="3:1-6:0">
+    <li data-sourcepos="3:1-4:0">
+    <p data-sourcepos="3:3-3:192"><strong>Underlying Assumption:</strong> The Poisson distribution assumes a constant rate of events across the observed interval. Outliers, by definition, deviate significantly from this expected pattern.</p>
+    </li>
+    <li data-sourcepos="5:1-6:0">
+    <p data-sourcepos="5:3-5:206"><strong>Impact on Results:</strong>  If outliers are present, the Poisson model might not accurately reflect the actual probability of observing certain counts. This can lead to misleading interpretations of the data.</p>
+    </li>
+    </ul><p data-sourcepos="7:1-7:57">However, there are still ways to approach this situation:</p><ul data-sourcepos="9:1-14:0">
+    <li data-sourcepos="9:1-10:0">
+    <p data-sourcepos="9:3-9:181"><strong>Outlier Detection:</strong>  You can use statistical methods to identify potential outliers in your data. Techniques like Grubbs' test or examining standardized residuals can help [3].</p>
+    </li>
+    <li data-sourcepos="11:1-12:0">
+    <p data-sourcepos="11:3-11:288"><strong>Alternative Models:</strong> Depending on the nature of the outliers, alternative models like the negative binomial distribution might be a better fit. This model accounts for overdispersion, which is a higher variance than expected by the Poisson distribution, often caused by outliers [1].</p>
+    </li>
+    <li data-sourcepos="13:1-14:0">
+    <p data-sourcepos="13:3-13:181"><strong>Data Transformation:</strong>  In some cases, transforming the data (like using the Anscombe transform) before applying the Poisson model can help reduce the influence of outliers [3].</p>
+    </li>
+    </ul><p data-sourcepos="15:1-15:150"><strong>Ultimately, the decision of using the Poisson distribution with outliers depends on the severity of the outliers and the purpose of your analysis.</strong></p><p data-sourcepos="17:1-17:58">Here are some additional resources you might find helpful:</p><ul data-sourcepos="19:1-19:279">
+    <li data-sourcepos="19:1-19:279">Outliers in long-tailed discrete data: <a class="traceable-link" target="_blank" rel="noopener noreferrer" href="https://web-archive.lshtm.ac.uk/csm.lshtm.ac.uk/wp-content/uploads/sites/6/2016/04/Mario-Cortina-Borja-16-11-2012.pdf">https://web-archive.lshtm.ac.uk/csm.lshtm.ac.uk/wp-content/uploads/sites/6/2016/04/Mario-Cortina-Borja-16-11-2012.pdf</a></li>
+    </ul>
+
+<h2>And can we use poisson distribution when we suspect there is a trend in the data?</h2>
+
+<div _ngcontent-ng-c3705332133="" class="markdown markdown-main-panel" style="--animation-duration: 600ms; --fade-animation-function: linear;" dir="ltr"><p data-sourcepos="1:1-1:95">No, the standard Poisson distribution is not ideal for data with a suspected trend. Here's why:</p><ul data-sourcepos="3:1-6:0">
+    <li data-sourcepos="3:1-4:0">
+    <p data-sourcepos="3:3-3:249"><strong>Constant Rate Assumption:</strong> The Poisson distribution assumes a constant rate (average) for the events occurring within a specific time interval. A trend implies a non-constant rate, where the frequency of events increases or decreases over time.</p>
+    </li>
+    <li data-sourcepos="5:1-6:0">
+    <p data-sourcepos="5:3-5:153"><strong>Misleading Results:</strong>  Using the Poisson model with a trend can lead to inaccurate estimates of event probabilities and unreliable hypothesis tests.</p>
+    </li>
+    </ul><p data-sourcepos="7:1-7:58">However, there are ways to analyze count data with trends:</p><ul data-sourcepos="9:1-14:0">
+    <li data-sourcepos="9:1-10:0">
+    <p data-sourcepos="9:3-9:198"><strong>Poisson Regression:</strong> This statistical technique incorporates a trend term into the Poisson model. You can use a linear trend or even more complex functions to capture the non-constant rate [2].</p>
+    </li>
+    <li data-sourcepos="11:1-12:0">
+    <p data-sourcepos="11:3-11:186"><strong>Segmented Poisson Regression:</strong> This approach divides the data into segments with potentially different rates. It's useful when the trend has breaks or shifts at specific points [2].</p>
+    </li>
+    <li data-sourcepos="13:1-14:0">
+    <p data-sourcepos="13:3-13:182"><strong>Change-Point Detection:</strong> Methods exist to statistically identify the time points where the event rate changes, allowing for further analysis of segments with constant rates [1].</p>
+    </li>
+    </ul><p data-sourcepos="15:1-15:190"><strong>In conclusion, the standard Poisson distribution is not suitable for data with trends. Consider using Poisson regression or other techniques that account for the non-constant event rate.</strong></p><p data-sourcepos="17:1-17:58">Here are some additional resources you might find helpful:</p><ul data-sourcepos="19:1-20:117">
+    <li data-sourcepos="19:1-19:120">Trend analysis with count data: <a class="traceable-link" target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/29775435/">https://pubmed.ncbi.nlm.nih.gov/29775435/</a></li>
+    <li data-sourcepos="20:1-20:117">Poisson regression for trends: <a class="traceable-link" target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/7977282/">https://pubmed.ncbi.nlm.nih.gov/7977282/</a></li>
+    </ul></div>
+
+<span style="display: none;">Tags: Mathematical Foundations for Data Science,Technology,</span>
