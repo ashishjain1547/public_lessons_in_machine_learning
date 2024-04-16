@@ -1,0 +1,242 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+    <style>
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .right {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+
+        .up {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        .customLink {
+            background-color: #4CAF50;
+            border: none;
+            color: white !important;
+            padding: 8px 13px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .customLink:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<!-- End of 'Personal Posts Menu Template For Copy-Paste'. It started from the top of the page from <HEAD> tag. -->
+
+<pre>
+In the previous two articles in this series, we explored Poisson Distribution for modeling our traffic data on the blog ( <a href="https://survival8.blogspot.com/2023/10/traffic-prediction-on-my-blog-oct-2023.html" target="_blank">Link to Poisson Distribution Based Modeling</a> ).
+And we encoutered the challenges there of outliers and local trends as shown in this post: <a href="https://survival8.blogspot.com/2024/04/when-not-to-use-poisson-distribution.html" target="_blank">Data Issues</a>
+
+This triggered us to explore further and we came up with the idea of using Exponential Moving Average (EMA) based model to do the traffic prediction.
+
+All of the code and data is available to download from this link:
+<a class="customLink" href="https://github.com/ashishjain1547/machine_learning_oct_2023/tree/main/5_time%20series%20analysis%20of%20page%20views%20data%20using%20explonential%20moving%20average%20(2024%20Apr%2016)" target="_blank">Download Code and Data</a>
+
+<h2>First, a visual story:</h2>
+
+<b>1: Plotting EMA</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUmeZ8Npqt_ludS4-724JQYWWpL2uIld9kC982gwaAl58I9yNoYIKHiF_bgo5RHiq2wtPeZe0iSMHHl86fE0q6bHkgthdDVuFPlCo4pEo_PqwzzGRmAYUDiB2vHAh9-Tn3M3V8nGrF-Lx94JolpeD7plMhk2XX4KMudiwLbiL450t5IdS0o7wVtJlfmdSK/s692/2_analysis%20using%20EMA.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="497" data-original-width="692" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUmeZ8Npqt_ludS4-724JQYWWpL2uIld9kC982gwaAl58I9yNoYIKHiF_bgo5RHiq2wtPeZe0iSMHHl86fE0q6bHkgthdDVuFPlCo4pEo_PqwzzGRmAYUDiB2vHAh9-Tn3M3V8nGrF-Lx94JolpeD7plMhk2XX4KMudiwLbiL450t5IdS0o7wVtJlfmdSK/s600/2_analysis%20using%20EMA.png"/></a></div>
+
+<b>2: EMA numbers we got</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhl1RBfSZLtIZPjpQMY61eIWB8b_f9k_G6Xx96pz6uXi6q_fw4JVUKHqXo3vD7VAYN7hJqgTK4IMwekmme-pw6bQIXVkhe2CUJ1lpcIEjNBR__hxB6GjVk7-tkJxHM7GKPi-VUHjD6Nd7LnG5Q4s3JGdNdEKLrPid9ykasZwUuIFkMWWULGXLV_301kQNaJ/s421/3_ema.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" height="600" data-original-height="421" data-original-width="263" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhl1RBfSZLtIZPjpQMY61eIWB8b_f9k_G6Xx96pz6uXi6q_fw4JVUKHqXo3vD7VAYN7hJqgTK4IMwekmme-pw6bQIXVkhe2CUJ1lpcIEjNBR__hxB6GjVk7-tkJxHM7GKPi-VUHjD6Nd7LnG5Q4s3JGdNdEKLrPid9ykasZwUuIFkMWWULGXLV_301kQNaJ/s600/3_ema.png"/></a></div>
+
+<b>3: Predictions using ExponentialSmoothing (or EMA)</b>
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieb3jIRwAtu1erH1NCLHmSL-xIm_gg-nsYUtlGwq6XYTbxnmUoaRhQWitW6V-PLBm7wTp6F43fSDgwXhMhR17xOGI4caO8OnQ7Z5khpSrmW0c6_xo2GEW6H73LfUdrpjF4CO-lPkfY21zPVSVeZFfx3UPlWDbzTsj1yxoR9wO04fOCGYB5WfKqdRXtraRT/s692/4_forecasting%20using%20holtwinters.ExponentialSmoothing%20model%20from%20statsmodels.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="497" data-original-width="692" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieb3jIRwAtu1erH1NCLHmSL-xIm_gg-nsYUtlGwq6XYTbxnmUoaRhQWitW6V-PLBm7wTp6F43fSDgwXhMhR17xOGI4caO8OnQ7Z5khpSrmW0c6_xo2GEW6H73LfUdrpjF4CO-lPkfY21zPVSVeZFfx3UPlWDbzTsj1yxoR9wO04fOCGYB5WfKqdRXtraRT/s600/4_forecasting%20using%20holtwinters.ExponentialSmoothing%20model%20from%20statsmodels.png"/></a></div>
+</pre>
+
+<h2>How we used Gemini to help us?</h2>
+
+<h3>Can you share exponential moving average based python code for 1D time series prediction?</h3>
+
+<p data-sourcepos="1:1-1:104">Absolutely, here's the Python code for 1D time series prediction using Exponential Moving Average (EMA):</p><code-block _nghost-ng-c987575795="" ng-version="0.0.0-PLACEHOLDER"><!----><!----><!----><!----><div _ngcontent-ng-c987575795="" class="code-block ng-star-inserted"><div _ngcontent-ng-c987575795="" class="code-block-decoration header gmat-subtitle-1 ng-star-inserted"><span _ngcontent-ng-c987575795="">Python</span></div><!----><div _ngcontent-ng-c987575795="" class="code-block-internal-container"><pre _ngcontent-ng-c987575795=""><code _ngcontent-ng-c987575795="" role="text" data-test-id="code-content" class="code-container" data-sourcepos="3:1-29:40"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">predict_ema</span>(<span class="hljs-params">data, alpha</span>):</span>
+      <span class="hljs-string">"""
+      This function calculates the Exponential Moving Average (EMA) for a given time series data.
+    
+      Args:
+          data (pandas.Series): The time series data.
+          alpha (float): The smoothing factor (0 &lt; alpha &lt;= 1).
+    
+      Returns:
+          pandas.Series: The EMA of the time series data.
+      """</span>
+      ema = [data.iloc[<span class="hljs-number">0</span>]]  <span class="hljs-comment"># Initialize with the first data point</span>
+      <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(data)):
+        ema.append((alpha * data.iloc[i]) + ((<span class="hljs-number">1</span> - alpha) * ema[i-<span class="hljs-number">1</span>]))
+      <span class="hljs-keyword">return</span> pd.Series(ema)
+    
+    <span class="hljs-comment"># Example usage</span>
+    <span class="hljs-comment"># Assuming your time series data is loaded in a pandas Series named 'values'</span>
+    predictions = predict_ema(values, alpha=<span class="hljs-number">0.5</span>)  <span class="hljs-comment"># Adjust alpha as needed</span>
+    
+    <span class="hljs-comment"># Plot the original data and the EMA predictions</span>
+    values.plot(label=<span class="hljs-string">"Original Data"</span>)
+    predictions.plot(label=<span class="hljs-string">"EMA Prediction"</span>)
+    </code></pre><!----><!----><!----></div><div _ngcontent-ng-c987575795="" hide-from-message-actions="" class="code-block-decoration footer gmat-overline hide-from-message-actions ng-star-inserted">
+        
+        </div><!----></div><!----></code-block><p data-sourcepos="31:1-31:234">This code defines a function <code>predict_ema</code> that takes the time series data and the smoothing factor (<code>alpha</code>) as arguments. The function iterates through the data points and calculates the EMA using the following formula at each step:</p><code-block _nghost-ng-c987575795="" ng-version="0.0.0-PLACEHOLDER"><!----><!----><!----><!----><div _ngcontent-ng-c987575795="" class="code-block ng-star-inserted"><!----><div _ngcontent-ng-c987575795="" class="code-block-internal-container"><pre _ngcontent-ng-c987575795=""><code _ngcontent-ng-c987575795="" role="text" data-test-id="code-content" class="code-container no-decoration-radius" data-sourcepos="33:1-35:53">EMA[i] = (alpha * data[i]) + ((1 - alpha) * EMA[i-1])
+    </code></pre><!----><!----><!----></div><!----></div><!----></code-block><ul data-sourcepos="37:1-40:0">
+    <li data-sourcepos="37:1-37:168"><code>alpha</code>: Smoothing factor (0 &lt; alpha &lt;= 1). A higher alpha gives more weight to recent data points, resulting in a more responsive but potentially noisier EMA.</li>
+    <li data-sourcepos="38:1-38:36"><code>data[i]</code>: The current data point.</li>
+    <li data-sourcepos="39:1-40:0"><code>EMA[i-1]</code>: The EMA of the previous data point.</li>
+    </ul><p data-sourcepos="41:1-41:129">The example usage demonstrates how to call the function with your data and plot the original data along with the EMA predictions.</p><p data-sourcepos="43:1-43:9"><strong>Note:</strong></p><ul data-sourcepos="45:1-46:152">
+    <li data-sourcepos="45:1-45:186">This is a basic implementation. For more advanced functionalities, consider libraries like <code>statsmodels.tsa.holtwinters</code> which offer functionalities for trend and seasonality handling.</li>
+    <li data-sourcepos="46:1-46:152">Exponential Moving Averages are best suited for capturing recent trends. They might not be ideal for data with strong seasonality or long-term trends.</li>
+    </ul>
+
+<h3>Using statsmodels?</h3>
+
+<div _ngcontent-ng-c1219956002="" class="markdown markdown-main-panel" style="--animation-duration: 600ms; --fade-animation-function: linear;" dir="ltr"><p data-sourcepos="1:1-1:125">Certainly, here's the code for using <code>statsmodels.tsa.holtwinters</code> for exponential moving average (EMA) prediction in Python:</p><code-block _nghost-ng-c987575795="" ng-version="0.0.0-PLACEHOLDER"><!----><!----><!----><!----><div _ngcontent-ng-c987575795="" class="code-block ng-star-inserted"><div _ngcontent-ng-c987575795="" class="code-block-decoration header gmat-subtitle-1 ng-star-inserted"><span _ngcontent-ng-c987575795="">Python</span></div><!----><div _ngcontent-ng-c987575795="" class="code-block-internal-container"><pre _ngcontent-ng-c987575795=""><code _ngcontent-ng-c987575795="" role="text" data-test-id="code-content" class="code-container" data-sourcepos="3:1-30:40"><span class="hljs-keyword">from</span> statsmodels.tsa.holtwinters <span class="hljs-keyword">import</span> ExponentialSmoothing
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">predict_ema_statsmodels</span>(<span class="hljs-params">data, alpha=<span class="hljs-number">0.5</span></span>):</span>
+      <span class="hljs-string">"""
+      This function uses statsmodels to fit an Exponential Smoothing model (equivalent to EMA) 
+      and generate predictions for a 1D time series data.
+    
+      Args:
+          data (pandas.Series): The time series data.
+          alpha (float): The smoothing factor (0 &lt; alpha &lt;= 1).
+    
+      Returns:
+          pandas.Series: The predicted values using EMA.
+      """</span>
+      model = ExponentialSmoothing(data, trend=<span class="hljs-string">"add"</span>, seasonal=<span class="hljs-literal">None</span>)  <span class="hljs-comment"># Set trend to 'add' for EMA</span>
+      model_fit = model.fit()
+      predictions = model_fit.forecast(<span class="hljs-built_in">len</span>(data))
+      <span class="hljs-keyword">return</span> predictions
+    
+    <span class="hljs-comment"># Example usage</span>
+    <span class="hljs-comment"># Assuming your time series data is loaded in a pandas Series named 'values'</span>
+    predictions = predict_ema_statsmodels(values, alpha=<span class="hljs-number">0.5</span>)  <span class="hljs-comment"># Adjust alpha as needed</span>
+    
+    <span class="hljs-comment"># Plot the original data and the EMA predictions</span>
+    values.plot(label=<span class="hljs-string">"Original Data"</span>)
+    predictions.plot(label=<span class="hljs-string">"EMA Prediction"</span>)
+    </code></pre><!----><!----><!----></div>
+    </div><!----></div><!----></code-block><p data-sourcepos="32:1-32:125">This code utilizes the <code>ExponentialSmoothing</code> class from <code>statsmodels.tsa.holtwinters</code>. Here's a breakdown of the key points:</p><ol data-sourcepos="34:1-44:0">
+    <li data-sourcepos="34:1-38:3">
+    <p data-sourcepos="34:4-34:24"><strong>Model Definition:</strong></p>
+    <ul data-sourcepos="35:4-38:3">
+    <li data-sourcepos="35:4-38:3">We create an <code>ExponentialSmoothing</code> model instance with:
+    <ul data-sourcepos="36:6-38:3">
+    <li data-sourcepos="36:6-36:63"><code>data</code>: The time series data (<code>values</code> in this example).</li>
+    <li data-sourcepos="37:6-38:3"><code>trend="add"</code>: This specifies the trend component as additive, which is equivalent to a basic EMA. Setting <code>seasonal=None</code> excludes seasonality.</li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li data-sourcepos="39:1-41:0">
+    <p data-sourcepos="39:4-39:21"><strong>Model Fitting:</strong></p>
+    <ul data-sourcepos="40:4-41:0">
+    <li data-sourcepos="40:4-41:0"><code>model_fit = model.fit()</code>: This fits the EMA model to the data.</li>
+    </ul>
+    </li>
+    <li data-sourcepos="42:1-44:0">
+    <p data-sourcepos="42:4-42:18"><strong>Prediction:</strong></p>
+    <ul data-sourcepos="43:4-44:0">
+    <li data-sourcepos="43:4-44:0"><code>predictions = model_fit.forecast(len(data))</code>: This generates predictions for the next <code>len(data)</code> periods using the fitted model.</li>
+    </ul>
+    </li>
+    </ol><p data-sourcepos="45:1-45:36"><strong>Advantages of using statsmodels:</strong></p><ul data-sourcepos="47:1-49:0">
+    <li data-sourcepos="47:1-47:97"><strong>Flexibility:</strong> It allows for handling trend and seasonality by adjusting the model arguments.</li>
+    <li data-sourcepos="48:1-49:0"><strong>Additional functionalities:</strong> The model provides methods for calculating fit statistics, confidence intervals, and more.</li>
+    </ul><p data-sourcepos="50:1-50:116">Remember to replace <code>values</code> with your actual time series data and adjust the <code>alpha</code> value for smoothing as needed.</p></div>
+
+<h3>How do we validate the results?</h3>
+
+<p data-sourcepos="1:1-1:201">I can provide some insights on interpreting the Exponential Moving Average (EMA) results and offer pointers for further validation:</p><p data-sourcepos="3:1-3:40"><strong>General Observations from the Image:</strong></p><ul data-sourcepos="5:1-8:0">
+    <li data-sourcepos="5:1-5:70">The y-axis likely represents the predicted values (possibly scaled).</li>
+    <li data-sourcepos="6:1-6:43">The x-axis seems to represent time steps.</li>
+    <li data-sourcepos="7:1-8:0">There's a visible upward trend in the prediction, indicating a positive bias.</li>
+    </ul><p data-sourcepos="9:1-9:31"><strong>Code Validation Techniques:</strong></p><ol data-sourcepos="11:1-19:0">
+    <li data-sourcepos="11:1-13:0">
+    <p data-sourcepos="11:4-11:25"><strong>Visual Inspection:</strong></p>
+    <ul data-sourcepos="12:4-13:0">
+    <li data-sourcepos="12:4-13:0">Plot the original time series data alongside the predicted EMA values. This helps identify how well the EMA captures the underlying trend and seasonality (if applicable).</li>
+    </ul>
+    </li>
+    <li data-sourcepos="14:1-16:0">
+    <p data-sourcepos="14:4-14:21"><strong>Error Metrics:</strong></p>
+    <ul data-sourcepos="15:4-16:0">
+    <li data-sourcepos="15:4-16:0">Calculate error metrics like Mean Squared Error (MSE) or Mean Absolute Error (MAE) to quantify the difference between the predictions and actual future values (assuming you have those). Lower errors suggest a better fit.</li>
+    </ul>
+    </li>
+    <li data-sourcepos="17:1-19:0">
+    <p data-sourcepos="17:4-17:24"><strong>Domain Knowledge:</strong></p>
+    <ul data-sourcepos="18:4-19:0">
+    <li data-sourcepos="18:4-19:0">Consider your understanding of the time series data's domain. Does the predicted trend align with your expectations? Are there any outliers or unexpected patterns in the predictions?</li>
+    </ul>
+    </li>
+    </ol><p data-sourcepos="20:1-20:30"><strong>Additional Considerations:</strong></p><ul data-sourcepos="22:1-24:0">
+    <li data-sourcepos="22:1-22:185">The value of the smoothing factor (<code>alpha</code>) can significantly impact the EMA's responsiveness to trends. Experiment with different alpha values to see how they affect the predictions.</li>
+    <li data-sourcepos="23:1-24:0">If your data exhibits seasonality, you might want to explore seasonal extensions of exponential smoothing models provided by <code>statsmodels.tsa.holtwinters</code>.</li>
+    </ul><p data-sourcepos="25:1-25:181">By following these suggestions and incorporating your domain knowledge, you can effectively validate your EMA model and assess its suitability for your time series forecasting task.</p>
+
+<pre>
+<h2>Conclusion</h2>
+
+Based on the results we are getting from ExponentialSmoothing:
+
+90    10811.852982
+91    10840.919992
+92    10869.987003
+
+We can say that we can see around 10K monthly views in the coming 2-3 months.
+
+On a side note: Views for April 2024 have already touched 8500 at the point of writing this.
+</pre>
