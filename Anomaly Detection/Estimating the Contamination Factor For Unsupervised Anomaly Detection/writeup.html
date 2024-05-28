@@ -1,13 +1,131 @@
+<head>
+    <script crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
+    <!-- Google AdSense Using Machine Learning Code -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3071098372371409",
+            enable_page_level_ads: true
+        });
+    </script>
+  
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://raw.githubusercontent.com/ashishjain1547/pubLessonsInTechnology/main/links_to_tech_clubs.json", 
+                success: function (result) {
+                    let grouplink = JSON.parse(result)['Beta Tech Club'];
+                    $("#customWhatsAppGroupLinkWrapper").html(
+                        `
+                        <h2 class="custom_link_h2"><a href="${grouplink}" target="_blank"> 
+                            <span>Join us on:</span>
+                            <span class="customLink"><i class="fa fa-whatsapp"></i> Whatsapp </span>
+                            </a>
+                        </h2>
+                        `    
+                    );
+                }
+            });
+        });
+    </script>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <style>
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+  
+        .customLink {
+            background-color: #4CAF50;
+            border: none;
+            color: white !important;
+            padding: 8px 13px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+  
+        .customLink:hover {
+            text-decoration: none;
+        }
+  
+        div.code-block-decoration.footer {
+            display: none;
+        }
+  
+        button.export-sheets-button-wrapper {
+            display: none;
+        }
+    </style>
+  
+    <style>
+        .custom_link_h2 a {
+            color: black;
+            text-decoration: none;
+            text-align: center;
+        }
+  
+        .custom_link_h2 a:hover {
+            color: black;
+        }
+  
+        .custom_link_h2 a:active {
+            color: black;
+        }
+  
+        .custom_link_h2 span {
+            translate: 0px -5px;
+            display: inline-block;
+        }
+  
+        .custom_link_h2 img {
+            width: 100px;
+            padding: 0px;
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+    <style>
+      .customul {
+        list-style: none;
+      }
+  
+      [aria-hidden='true'] {
+        display: none;
+      }
+    </style>
+  
+  </head>
+  
+  
+<div id="customWhatsAppGroupLinkWrapper"></div>
+
+To See All Tech Articles: <a class="customLink" href="http://survival8.blogspot.com/p/index-of-lessons-in-technology.html" target="_blank">Index of Lessons in Technology </a>
+<br>
+
 <pre>
 For this article we went through the following research paper:
 
 <b>Estimating the Contamination Factor's Distribution in Unsupervised Anomaly Detection
 Lorenzo Perini . Paul-Christian B¨urkner . Arto Klami </b>
 
+All of the code and data is available to download from this link:
+<a class="customLink" href="https://github.com/ashishjain1547/public_lessons_in_machine_learning/blob/main/Anomaly%20Detection/Estimating%20the%20Contamination%20Factor%20For%20Unsupervised%20Anomaly%20Detection/Identifying_Contamination_Factor_For_Unsupervised_Anomaly_Detection.ipynb" target="_blank">Download Code and Data</a>
+
 Here are some highlights from the paper:
 
 <i style="color: blue;">
-<h2>Introduction</h2>
+<h2>1. Introduction</h2>
 ...
 Therefore, we are the first to study the estimation of the contamination factor from a Bayesian perspective. We propose γGMM, the first algorithm for estimating the contamination factor's (posterior) distribution in unlabeled anomaly detection setups. First, we use a set of unsupervised anomaly detectors to assign anomaly scores for all samples and use these scores as a new representation of the data. Second, we fit a Bayesian Gaussian Mixture model with a Dirichlet Process prior (DPGMM) (Ferguson, 1973; Rasmussen, 1999) in this new space. If we knew which components contain the anomalies, we could derive the contamination factor's posterior distribution as the distribution of the sum of such components' weights. Because we do not know this, as a third step γGMM estimates the probability that the k most extreme components are jointly anomalous, and uses this information to construct the desired posterior. The method explained in detail in Section 3.
 
@@ -110,3 +228,5 @@ This percentage is our contamination factor.
     </li>
 </ul>
 
+
+<span style="display: none;">Tags: Technology,Machine Learning,</span>
