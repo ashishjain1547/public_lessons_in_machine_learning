@@ -1,0 +1,112 @@
+<pre>
+For this article we went through the following research paper:
+
+<b>Estimating the Contamination Factor's Distribution in Unsupervised Anomaly Detection
+Lorenzo Perini . Paul-Christian B¨urkner . Arto Klami </b>
+
+Here are some highlights from the paper:
+
+<i style="color: blue;">
+<h2>Introduction</h2>
+...
+Therefore, we are the first to study the estimation of the contamination factor from a Bayesian perspective. We propose γGMM, the first algorithm for estimating the contamination factor's (posterior) distribution in unlabeled anomaly detection setups. First, we use a set of unsupervised anomaly detectors to assign anomaly scores for all samples and use these scores as a new representation of the data. Second, we fit a Bayesian Gaussian Mixture model with a Dirichlet Process prior (DPGMM) (Ferguson, 1973; Rasmussen, 1999) in this new space. If we knew which components contain the anomalies, we could derive the contamination factor's posterior distribution as the distribution of the sum of such components' weights. Because we do not know this, as a third step γGMM estimates the probability that the k most extreme components are jointly anomalous, and uses this information to construct the desired posterior. The method explained in detail in Section 3.
+
+...
+<h2>3. Methodology</h2>
+
+We tackle the problem: Given an unlabeled dataset D and a set of M unsupervised anomaly detectors; Estimate a (posterior) distribution of the contamination factor γ. Learning from an unlabeled dataset has three key challenges. 
+
+First, the absence of labels forces us to make relatively strong assumptions. 
+
+Second, the anomaly detectors rely on different heuristics that may or may not hold, and their performance can hence vary significantly across datasets. 
+
+Third, we need to be careful in introducing user-specified hyperparameters, because setting them properly may be as hard as directly specifying the contamination factor.
+
+In this paper, we propose γGMM, a novel Bayesian approach that estimates the contamination factor's posterior distribution in four steps, which are illustrated in Figure 1:
+
+Step 1. Because anomalies may not follow any particular pattern in covariate space, γGMM maps the covariates X ∈ Rd into an M dimensional anomaly space, where the dimensions correspond to the anomaly scores assigned by the M unsupervised anomaly detectors. Within each dimension of such a space, the evident pattern is that “the higher the more anomalous”.
+
+Step 2. We model the data points in the new space RM using a Dirichlet Process Gaussian Mixture Model (DPGMM) (Neal, 1992; Rasmussen, 1999). We assume that each of the (potentially many) mixture components contains either only normals or only anomalies. If we knew which components contained anomalies, we could then easily derive γ's posterior as the sum of the mixing proportions π of the anomalous components. However, such information is not available in our setting.
+
+Step 3. Thus, we order the components in decreasing order, and we estimate the probability of the largest k components being anomalous. 
+
+This poses three challenges: 
+(a) how to represent each M -dimensional component by a single value to sort them from the most to the least anomalous, 
+
+(b) how to compute the probability that the kth component is anomalous given that the (k − 1)th is such, 
+
+(c) how to derive the target probability that k components are jointly anomalous.
+
+Step 4. γGMM estimates the contamination factor's posterior by exploiting such a joint probability and the components' mixing proportions posterior.</i>
+
+<h2>A Simplified Implementation of The Above Algorithm</h2>
+
+1. We have our dataset consisting of page views for our blog on Blogger. We load this dataset using Pandas.
+
+2. We initialize two Unsupervised Anomaly Detection models namely:
+ - IsolationForest
+ - LocalOutlierFactor
+
+Both of them are available in Scikit-Learn.
+
+3. To begin with, we initialize them with the default values for hyperparameters as in the code below:
+
+clf = IsolationForest(random_state=0).fit(X)
+clf = LocalOutlierFactor().fit(X)
+
+That means at this point the model's contamination factor is set to 'auto'.
+
+4. Since we two models here so M = 2 for us. If there were three models, then M would be 3.
+
+5. We get the anomaly scores:
+
+anomalyscores_if = clf.decision_function(X)
+anomalyscores_lof = clf.negative_outlier_factor_
+
+6. For a simplified view, we plot this 2D data in a scatter plot.
+
+import matplotlib.pyplot as plt
+
+x = anomalyscores_if
+y = anomalyscores_lof
+
+plt.scatter(x, y)
+plt.show()
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy0Z1om1OHlEtFgWCSg3jj3te8c9g0rGr-2vePkdUKnmViGTZDils7Hm8-Z4Y7YaRhrH_vL_rztVpM7U5VrnYdQP48HXENa_WXDufhPSaOe05UOng72P5BvxeNTMYPoUTYva1B89L5WKFaW_eoKI6wFQDAgNk3oxXkXkI-eSEa-rVRYBcw-zHyWrsL7e2D/s559/scatter%20plot.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="413" data-original-width="559" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy0Z1om1OHlEtFgWCSg3jj3te8c9g0rGr-2vePkdUKnmViGTZDils7Hm8-Z4Y7YaRhrH_vL_rztVpM7U5VrnYdQP48HXENa_WXDufhPSaOe05UOng72P5BvxeNTMYPoUTYva1B89L5WKFaW_eoKI6wFQDAgNk3oxXkXkI-eSEa-rVRYBcw-zHyWrsL7e2D/s600/scatter%20plot.png"/></a></div>
+
+7. Next, we use Bayesian Gaussian Mixture model to cluster the data of anomaly scores into two groups (one being anomalous, other being normal).
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiX0kwSzNUg2HLryru_nz6Nt9zk_XUtWyfyIMFj4CPB7GsOIkdS_Xrh0_muDX2HuLOJPxaTAbQUomhEYFTUgJZsdioZWzMByS7mx6byngd3zfWBwASY_dhMqCfzPc6GUvuHt21MyzZMEM1icMFCChTsTN8QBp909RxTexOxv6T8i_5exGmNmd-opz9w6UPA/s673/bayesian%20gaussian%20mixture%20modeling.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="410" data-original-width="673" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiX0kwSzNUg2HLryru_nz6Nt9zk_XUtWyfyIMFj4CPB7GsOIkdS_Xrh0_muDX2HuLOJPxaTAbQUomhEYFTUgJZsdioZWzMByS7mx6byngd3zfWBwASY_dhMqCfzPc6GUvuHt21MyzZMEM1icMFCChTsTN8QBp909RxTexOxv6T8i_5exGmNmd-opz9w6UPA/s600/bayesian%20gaussian%20mixture%20modeling.png"/></a></div>
+
+8. Next, we find the percentage of anomalous points (Class: 1).
+This percentage is our contamination factor.
+
+9. Using the above contamination factor for IsolationForest model, we find out anomalies as shown below in red:
+
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdtJwGBpR1G-MlLVD7WBi19mUXQZpOGCiKHYl7qv-QnvyBGAYBXj1vNpzR_y4Y2dNc3OXoQTaU1jfLgC5AMmqNfm46ooIGm2bBLleQG0Ok9fyF1Why9hYVxbNLL6-dmJ0Kkr6gafbRtrCHe44Gh6iZxFKfp58x626kLo2AGu5SmtxILRojxyTn-WLdYqBq/s569/anomaly.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="413" data-original-width="569" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdtJwGBpR1G-MlLVD7WBi19mUXQZpOGCiKHYl7qv-QnvyBGAYBXj1vNpzR_y4Y2dNc3OXoQTaU1jfLgC5AMmqNfm46ooIGm2bBLleQG0Ok9fyF1Why9hYVxbNLL6-dmJ0Kkr6gafbRtrCHe44Gh6iZxFKfp58x626kLo2AGu5SmtxILRojxyTn-WLdYqBq/s600/anomaly.png"/></a></div>
+
+</pre>
+
+
+<h2>References</h2>
+
+<ul>
+    <li>
+        <a href="https://arxiv.org/abs/2210.10487" target="_blank">arxiv.org <br>
+            Estimating the Contamination Factor's Distribution in Unsupervised Anomaly Detection <br>
+            Lorenzo Perini, Paul Buerkner, Arto Klami
+        </a>
+    </li>
+
+    <li>
+        <a href="https://paperswithcode.com/paper/estimating-the-contamination-factor-s" target="_blank">paperswithcode</a>
+    </li>
+
+    <li>
+        <a href="https://github.com/Lorenzo-Perini/GammaGMM" target="_blank">
+            /Lorenzo-Perini/GammaGMM
+        </a>
+    </li>
+</ul>
+
